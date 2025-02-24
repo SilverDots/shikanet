@@ -1,0 +1,6 @@
+protobuf
+python-dotenv
+chromadb
+google-generativeai
+streamlit
+streamlit_chat
