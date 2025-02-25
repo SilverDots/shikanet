@@ -25,7 +25,7 @@ class EvalState(MessagesState):
     ground_truth_supporting_messages: List[str] = Field(..., description="The supporting messages for the ground truth answer")
     evaluation: Evaluation = Field(..., description="The evaluation of the model's response")
 
-questions = json.load(open("/Users/kastenwelsh/Documents/cse481-p/newmain/questions_test.json"))
+questions = json.load(open("/Users/kastenwelsh/Documents/cse481-p/newmain/questions.json"))
 
 retriever = vector_store.as_retriever(search_kwargs={"k": 1})
 
@@ -51,6 +51,9 @@ eval_msg = """
     You are an agent designed to evaluate whether an answer to a prompt or question is correct or not.
     You will be given a ground-truth answer with a set of corresponding messages, and the answer provided
     by the model. Give a score 1-10 on how well the model answered the question.
+    10: The model's response is perfect and exactly matches the ground-truth answer.
+    5: The model's response is partially correct but contains some errors.
+    1: The model's response is completely wrong.
     Here is the question:
     {question}
     Here is the response provided by the model:
@@ -106,7 +109,7 @@ print(graph.get_graph().print_ascii())
 
 evaluations = []
 
-for question in questions[:20]:
+for question in questions[:1]:
     state = {
         "question": question.get("question"),
         "ground_truth": question.get("answer"),
@@ -123,14 +126,13 @@ for question in questions[:20]:
         new_e["question"] = question.get("question")
         evaluations.append(new_e)
 
-# take the average of the evaluation scores
 average_score = sum([e["score"] for e in evaluations]) / len(evaluations)
 
 try:
-    existing_evaluations = json.load(open("/Users/kastenwelsh/Documents/cse481-p/newmain/evaluations.json"))
+    existing_evaluations = json.load(open("/Users/kastenwelsh/Documents/cse481-p/newmain/evaluations_test.json"))
 except FileNotFoundError:
     existing_evaluations = []
 
 existing_evaluations.extend(evaluations)
 
-json.dump(existing_evaluations, open("/Users/kastenwelsh/Documents/cse481-p/newmain/evaluations.json", "w"), indent=2)
+json.dump(existing_evaluations, open("/Users/kastenwelsh/Documents/cse481-p/newmain/evaluations_test.json", "w"), indent=2)
