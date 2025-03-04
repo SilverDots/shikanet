@@ -20,7 +20,9 @@ class RetrievedDocState(MessagesState):
     question: str = Field(..., description="The question to evaluate")
     answer: str = Field(..., description="The answer to the question")
     context = Annotated[list, operator.add]
-    step_back
+    step_back_docs = Annotated[list, operator.add]
+    sub_query_docs = Annotated[list, operator.add]
+    original_query_docs = Annotated[list, operator.add]
 
 class SubQueries(BaseModel):
     sub_queries: List[str] = Field(..., description="The subqueries generated from the original query")
@@ -67,18 +69,18 @@ Sub-queries:
 
 def original_query_agent(state: RetrievedDocState):
     res = [llm_with_tools.invoke([sys_msg] + state["messages"])]
-    return {"messages": res}
+    return {"original_query_docs": res}
 
 def step_back_agent(state: RetrievedDocState):
     structured_llm = llm.with_structured_output(SubQueries)
     res = structured_llm.invoke([SystemMessage(content=step_back_template.format(original_query=state["question"]))])
-    return {"messages": res}
+    return {"step_back_docs": res}
 
 def sub_query_agent(state: RetrievedDocState):
     structured_subquery_llm = llm.with_structured_output(SubQueries)
     structured_subquery_llm.bind_tools(tools)
     res = structured_subquery_llm.invoke()
-    return {"messages": res}
+    return {"sub_query_docs": res}
 
 def final_agent(state: RetrievedDocState):
     docs = state["sub_query_docs"] + state["step_back_docs"] + state["original_query_docs"]

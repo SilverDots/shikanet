@@ -26,11 +26,11 @@ print("CSV indexed, uploading to ChromaDB...")
 print("This may take a minute...")
 
 # Create the vector store using Chroma.from_documents with a specified collection name
-vector_store = Chroma.from_documents(
-    documents=documents,
-    embedding=OpenAIEmbeddings(),
-    persist_directory="/Users/kastenwelsh/Documents/cse481-p/.data/vectorDB",
-    collection_name="openai_0.0.2"
-)
+# vector_store = Chroma.from_documents(
+#     documents=documents,
+#     embedding=OpenAIEmbeddings(),
+#     persist_directory="/Users/kastenwelsh/Documents/cse481-p/.data/vectorDB",
+#     collection_name="openai_0.0.2"
+# )
 
 print("Upload complete!")

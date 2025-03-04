@@ -8,9 +8,11 @@ from langchain.tools.retriever import create_retriever_tool
 from langgraph.prebuilt import ToolNode
 import json
 
+from langchain_ollama.llms import OllamaLLM
+
 vector_store = Chroma(
     persist_directory="/Users/kastenwelsh/Documents/cse481-p/.data/vectorDB",
-    collection_name="openai_0.0.2",
+    collection_name="timescale_WA_v1",
     embedding_function=OpenAIEmbeddings(),
 )
 
@@ -23,9 +25,9 @@ class EvalState(MessagesState):
     question: str = Field(..., description="The question to evaluate")
     ground_truth: str = Field(..., description="The ground truth answer")
     ground_truth_supporting_messages: List[str] = Field(..., description="The supporting messages for the ground truth answer")
-    evaluation: Evaluation = Field(..., description="The evaluation of the model's response")
+    evaluation: Evaluation = Field(None, description="The evaluation of the model's response")
 
-questions = json.load(open("/Users/kastenwelsh/Documents/cse481-p/newmain/questions.json"))
+questions = json.load(open("/Users/kastenwelsh/Documents/cse481-p/main/questions_krishna.json"))
 
 retriever = vector_store.as_retriever(search_kwargs={"k": 1})
 
@@ -129,10 +131,10 @@ for question in questions[:1]:
 average_score = sum([e["score"] for e in evaluations]) / len(evaluations)
 
 try:
-    existing_evaluations = json.load(open("/Users/kastenwelsh/Documents/cse481-p/newmain/evaluations_test.json"))
+    existing_evaluations = json.load(open("/Users/kastenwelsh/Documents/cse481-p/main/evaluations_test.json"))
 except FileNotFoundError:
     existing_evaluations = []
 
 existing_evaluations.extend(evaluations)
 
-json.dump(existing_evaluations, open("/Users/kastenwelsh/Documents/cse481-p/newmain/evaluations_test.json", "w"), indent=2)
+json.dump(existing_evaluations, open("/Users/kastenwelsh/Documents/cse481-p/main/evaluations_test.json", "w"), indent=2)

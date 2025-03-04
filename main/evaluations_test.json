@@ -1,0 +1,14 @@
+[
+  {
+    "score": 9,
+    "reasoning": "The model's response is mostly accurate. It correctly identified 'Portage Bay' as the restaurant being discussed, which aligns with the ground-truth. Additionally, the model mentioned 'somewhere in the U district' which is also supported by the context. The mention of them agreeing to meet at 2 PM slightly deviates from the ground truth about the reservation at 1:15, but this detail does not significantly affect the answer's correctness regarding the restaurant discussed.",
+    "model_answer": "The group discussed going to a restaurant called \"Portage Bay,\" and other suggestions included somewhere in the U district. They seemed to agree on meeting at 2 PM.",
+    "question": "What restaurant did the group discuss going to?"
+  },
+  {
+    "score": 1,
+    "reasoning": "The model's response does not match the ground-truth answer at all. The model incorrectly identified the restaurants being considered as \"Burger Hut\" or \"a new Indian place,\" while the ground-truth states that the group discussed going to Portage Bay. The discrepancy between the model's response and the true answer is quite significant, leading to a score of 1.",
+    "model_answer": "The group discussed going to either \"Burger Hut\" or a \"new Indian place on the ave.\"",
+    "question": "What restaurant did the group discuss going to?"
+  }
+]
