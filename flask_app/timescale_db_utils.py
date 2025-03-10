@@ -2,6 +2,10 @@ LLAMA_3B_NAME = 'llama3.2'
 
 import os
 from datetime import datetime
+from logging import getLogger
+
+os.environ["GOOGLE_API_KEY"] = os.environ["API_KEY"]
+logger = getLogger(__name__)
 
 import pandas as pd
 from dotenv import load_dotenv
@@ -13,7 +17,15 @@ COLLECTION_NAME = os.environ['TIMESCALE_COLLECTION_NAME']
 from langchain_community.vectorstores.timescalevector import TimescaleVector
 from langchain_core.output_parsers import StrOutputParser
 from langchain_ollama import OllamaEmbeddings, ChatOllama
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.callbacks.manager import CallbackManagerForRetrieverRun
+from langchain_core.documents import Document
+from langchain.chains.query_constructor.base import AttributeInfo
+from langchain.retrievers.self_query.base import SelfQueryRetriever
+from langchain_community.query_constructors.timescalevector import TimescaleVectorTranslator
+from typing import List
+from types import MethodType
 from pydantic import BaseModel, Field
 
 
@@ -82,19 +94,53 @@ def format_docs(docs):
 
 data = pd.read_csv(DATA_FILE, sep='\t', parse_dates=['DATETIME'])
 big_llm = ChatOllama(model=LLAMA_3B_NAME)
+ret_llm = ChatGoogleGenerativeAI(
+    model="gemini-2.0-flash",
+    temperature=0,
+    timeout=None,
+    max_retries=2,
+)
 embed_model = OllamaEmbeddings(model=LLAMA_3B_NAME)
-db = TimescaleVector(
+
+vector_db = TimescaleVector(
   collection_name=COLLECTION_NAME,
   service_url=os.environ['TIMESCALE_SERVICE_URL'],
   embedding=embed_model,
 )
 
-def answer_user_question(question):
-  # TODO: add kwargs for start, end datetime
+
+def my_get_relevant_documents(self, query: str, *, run_manager: CallbackManagerForRetrieverRun) -> List[Document]:
+  """Get documents relevant for a query.
+
+  Args:
+      query: string to find relevant documents for
+
+  Returns:
+      List of relevant documents
+  """
+  structured_query = self.query_constructor.invoke(
+    {"query": query}, config={"callbacks": run_manager.get_child()}
+  )
+  if self.verbose:
+    logger.info(f"Generated Query: {structured_query}")
+  new_query, search_kwargs = self._prepare_query(query, structured_query)
+  # ################# BEGIN: MY INTRODUCTION #################
+  # Double the requested message count, and return at least 10
+  search_kwargs['k'] = search_kwargs.get('k', 10)
+  search_kwargs['k'] = search_kwargs['k'] * 2
+  if search_kwargs['k'] < 10:
+    search_kwargs['k'] = 10
+  if self.verbose:
+    logger.info(f"Final Query: {new_query} with args {search_kwargs}")
+  # #################  END: MY INTRODUCTION  #################
+  docs = self._get_docs_with_query(new_query, search_kwargs)
+  return docs
+
+def answer_user_question_timescale(question):
   # ******************* STEP 1: Retrieve Documents *******************
   # start_dt = datetime(2025, 1, 1)  # Start date = Jan 1, 2025
   # end_dt = datetime.now()  # End date = today
-  retriever = db.as_retriever(
+  retriever = vector_db.as_retriever(
     search_type="similarity",
     search_kwargs={'k': 10}
     # search_kwargs={"start_date": start_dt, "end_date": end_dt, 'k': 10}
@@ -124,6 +170,88 @@ def answer_user_question(question):
     res = retrieval_grader.invoke({"question": question, "document": msg_context})
     print(res, '\n\n\n')
     if res.binary_score == 'yes':
+      docs_to_use.append({'MSG_ID': msg_id, 'FULL_CONTEXT': msg_context})
+
+  # ******************* STEP 4: Generate Result *******************
+
+  # Chain
+  rag_chain = result_prompt | big_llm | StrOutputParser()
+
+  # Run
+  generation = rag_chain.invoke({"documents":format_docs(docs_to_use), "question": question})
+  return generation
+
+def answer_user_question_ts_self_query(question):
+  # ******************* STEP 1: Retrieve Documents *******************
+  # start_dt = datetime(2025, 1, 1)  # Start date = Jan 1, 2025
+  # end_dt = datetime.now()  # End date = today
+  # Give LLM info about the metadata fields
+  metadata_field_info = [
+    AttributeInfo(
+      name="DATETIME",
+      description="The time the message was sent. **A high priority filter**",
+      type="timestamp",
+    ),
+    AttributeInfo(
+      name="SENDER",
+      description="The *case sensitive* name or ID of the message's author. **A high priority filter**",
+      type="string",
+    ),
+    AttributeInfo(
+      name="ID",
+      description="A UUID v1 generated from the timestamp of the message",
+      type="uuid",
+    ),
+    AttributeInfo(
+      name="PLATFORM",
+      description="The app where the message was sent. Valid values are ['Discord', 'WhatsApp']",
+      type="string",
+    ),
+    AttributeInfo(
+      name="CHAT",
+      description=f"The name of the chat room where the message was sent, will be invoked as 'the chat' or 'the chats'. Valid values are [{[f'\'{name}\'' for name in sorted(data.CHAT.unique())]}]",
+      type="string",
+    ),
+  ]
+  document_content_description = "A conversation with a sequence of messages and their authors"
+
+  # Instantiate the self-query retriever from an LLM
+
+  retriever = SelfQueryRetriever.from_llm(
+    ret_llm,
+    vector_db,
+    document_content_description,
+    metadata_field_info,
+    structured_query_translator=TimescaleVectorTranslator(),
+    enable_limit=True,
+    use_original_query=True,
+    verbose=True
+  )
+
+  docs = retriever.invoke(question)
+
+  # ******************* STEP 2: Add more Context *******************
+  fuller_context = [
+    (
+      doc.metadata['MSG_ID'],
+      retrieve_more_context(data, doc.metadata['MSG_ID'], doc.metadata['PLATFORM'], doc.metadata['CHAT'])
+    )
+    for doc in docs
+  ]
+
+  # ******************* STEP 3: Grade Document Relevancy *******************
+  # LLM with function call
+  structured_llm_grader = big_llm.with_structured_output(GradeDocuments)
+
+  retrieval_grader = grade_prompt | structured_llm_grader
+
+  docs_to_use = []
+
+  for (msg_id, msg_context) in fuller_context:
+    print(msg_context, '\n', '-' * 50)
+    res = retrieval_grader.invoke({"question": question, "document": msg_context})
+    print(res, '\n\n\n')
+    if res.binary_score and res.binary_score == 'yes':
       docs_to_use.append({'MSG_ID': msg_id, 'FULL_CONTEXT': msg_context})
 
   # ******************* STEP 4: Generate Result *******************
