@@ -7,19 +7,20 @@ part 'chat_response_provider.g.dart';
 
 @riverpod
 Future<String> chatResponse(Ref ref, String query) async {
-  var response = await http.post(
-    Uri.http('10.0.2.2:5000', '/generate'),
-    headers: {'Content-Type': 'application/json'},
-    body: jsonEncode({'query': query})
-  );
-  var answer = response.body.trim();
-  if (answer[0] == '"' && answer[answer.length - 1] == '"') {
-    answer = answer.substring(1, answer.length - 1);
-  }
+  // var response = await http.post(
+  //   Uri.http('10.0.2.2:5000', '/generate'),
+  //   headers: {'Content-Type': 'application/json'},
+  //   body: jsonEncode({'query': query})
+  // );
+  // var answer = response.body.trim();
+  // if (answer[0] == '"' && answer[answer.length - 1] == '"') {
+  //   answer = answer.substring(1, answer.length - 1);
+  // }
 
-  answer = answer
-    .replaceAll('\\"', '"')
-    .replaceAll('\\n', '\n');
-  // var answer = "**Hello World** That text was **bold**.";
+  // answer = answer
+  //   .replaceAll('\\"', '"')
+  //   .replaceAll('\\n', '\n');
+  // await Future.delayed(Duration(seconds: 20));
+  var answer = "**Hello World** That text was **bold**.";
   return answer;
 }

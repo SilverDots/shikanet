@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:shikanet/utils/utils.dart';
 
 class AnimatedCardButton extends StatefulWidget {
-  const AnimatedCardButton({super.key, required this.child, required this.onTap});
+  const AnimatedCardButton({
+    super.key,
+    required this.child,
+    required this.onTap,
+    this.backgroundColor,
+    this.highlightColor,
+    this.borderRadius,
+    this.padding = const EdgeInsets.all(4.0),
+    this.shadow = true
+  });
 
   final Widget child;
   final Function() onTap;
+  final Color? backgroundColor;
+  final Color? highlightColor;
+  final BorderRadius? borderRadius;
+  final EdgeInsets padding;
+  final bool shadow;
 
   @override
   State<AnimatedCardButton> createState() => _AnimatedCardButtonState();
@@ -16,6 +29,8 @@ class _AnimatedCardButtonState extends State<AnimatedCardButton> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+
     return InkWell(
       onTap: widget.onTap,
       onHighlightChanged: (value) {
@@ -24,20 +39,24 @@ class _AnimatedCardButtonState extends State<AnimatedCardButton> {
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
       child: Padding(
-        padding: const EdgeInsets.all(4.0),
+        padding: widget.padding,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 150),
           curve: Curves.easeInOut,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: selected ? darkerred : black,
+            borderRadius: widget.borderRadius ?? BorderRadius.circular(12),
+            color: selected ?
+              widget.highlightColor ?? theme.colorScheme.secondaryFixedDim
+              :
+              widget.backgroundColor ?? theme.colorScheme.secondaryContainer,
             boxShadow: [
-              BoxShadow(
-                color: Colors.grey,
-                blurRadius: 2,
-                spreadRadius: 0,
-                offset: Offset(0, 2),
-              ),
+              if (widget.shadow)
+                BoxShadow(
+                  color: theme.colorScheme.shadow,
+                  blurRadius: 1,
+                  spreadRadius: 0,
+                  offset: Offset(0, 2),
+                ),
             ],
           ),
           child: widget.child

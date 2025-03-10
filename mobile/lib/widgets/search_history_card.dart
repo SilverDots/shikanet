@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shikanet/data/data.dart';
 import 'package:shikanet/pages/pages.dart';
 import 'package:shikanet/providers/providers.dart';
-import 'package:shikanet/utils/utils.dart';
 import 'package:shikanet/widgets/widgets.dart';
 
 class SearchHistoryCard extends ConsumerWidget {
@@ -12,6 +12,8 @@ class SearchHistoryCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var theme = Theme.of(context);
+    
     void searchCallback() {
       ref.read(chatLogProvider.notifier)
         .addMessage(data, true, DateTime.now());
@@ -20,17 +22,20 @@ class SearchHistoryCard extends ConsumerWidget {
           builder: (context) => ChatPage()
         )
       );
-      ref.read(questionLogProvider.notifier)
-        .addQuestion(data);
+      User user = ref.read(userInfoProvider);
+      if (!user.appPreferences['pauseHistory']) {
+        ref.read(questionLogProvider.notifier)
+          .addQuestion(data);
+      }
     }
-    
+
     return AnimatedCardButton(
       onTap: searchCallback,
       child: ListTile(
-        leading: Icon(Icons.message, color: rustorange),
+        leading: Icon(Icons.message, color: theme.colorScheme.secondary),
         title: Text(data),
         titleTextStyle: TextStyle(
-          color: lightyellow,
+          color: theme.colorScheme.onSecondaryContainer,
           fontSize: 16,
           fontFamily: 'Roboto'
         ),

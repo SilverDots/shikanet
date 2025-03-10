@@ -10,3 +10,7 @@ export 'search_history_list.dart';
 export 'animated_bubble.dart';
 export 'chat_bubbles.dart';
 export 'chat_input_bar.dart';
+export 'edit_profile_text_field.dart';
+export 'setting_menu_button.dart';
+export 'settings_heading.dart';
+export 'color_grid_sample.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shikanet/utils/utils.dart';
 import 'package:shikanet/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,10 +7,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: gold,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.only(
+            top: 12,
+            left: 12,
+            right: 12
+          ),
           child: ListView(
             children: [
               Column(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shikanet/data/data.dart';
 import 'package:shikanet/providers/providers.dart';
-import 'package:shikanet/utils/utils.dart';
 
 class ChatInputBar extends ConsumerStatefulWidget {
   const ChatInputBar({super.key});
@@ -27,7 +27,8 @@ class _ChatInputBarState extends ConsumerState<ChatInputBar> {
   @override
   Widget build(BuildContext context) {
     TextEditingController textController = ref.watch(chatFieldTextProvider);
-    
+    var theme = Theme.of(context);
+
     return Row(
       children: [
         SizedBox(width: 12),
@@ -37,7 +38,7 @@ class _ChatInputBarState extends ConsumerState<ChatInputBar> {
             onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
             decoration: InputDecoration(
               filled: true,
-              fillColor: lightyellow,
+              // fillColor: theme.colorScheme.,
               hintText: 'Search for answers',
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(30),
@@ -59,14 +60,18 @@ class _ChatInputBarState extends ConsumerState<ChatInputBar> {
         ),
         SizedBox(width: 16),
         Theme(
-          data: Theme.of(context).copyWith(highlightColor: darkred),
+          // data: Theme.of(context).copyWith(highlightColor: darkred),
+          data: Theme.of(context),
           child: FloatingActionButton(
             onPressed: canSubmit ?
               () {
+                User user = ref.read(userInfoProvider);
                 ref.read(chatLogProvider.notifier)
                   .addMessage(textController.text, true, DateTime.now());
-                ref.read(questionLogProvider.notifier)
-                  .addQuestion(textController.text);
+                if (!user.appPreferences['pauseHistory']) {
+                  ref.read(questionLogProvider.notifier)
+                    .addQuestion(textController.text);
+                }
                 textController.clear();
                 setState(() => canSubmit = false);
               } : null,
@@ -74,8 +79,8 @@ class _ChatInputBarState extends ConsumerState<ChatInputBar> {
             focusElevation: 0,
             hoverElevation: 0, 
             highlightElevation: 0,
-            backgroundColor: canSubmit ? rustorange : black,
-            foregroundColor: white,
+            backgroundColor: canSubmit ? theme.colorScheme.secondaryContainer : theme.disabledColor,
+            foregroundColor: theme.colorScheme.onSecondaryContainer,
             focusColor: Colors.lightGreen,
             hoverColor: Colors.lightGreen,
             splashColor: Colors.transparent,

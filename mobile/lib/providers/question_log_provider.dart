@@ -24,4 +24,8 @@ class QuestionLog extends _$QuestionLog {
     copy.addFirst(q);
     state = copy;
   }
+
+  void clear() {
+    state = Queue();
+  }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shikanet/utils/utils.dart';
 import 'package:shikanet/widgets/widgets.dart';
 
 class ChatPage extends ConsumerWidget {
@@ -8,12 +7,22 @@ class ChatPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var theme = Theme.of(context);
+    
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: rustorange,
-        title: Text("Chat", style: TextStyle(color: white, fontWeight: FontWeight.w500))
+        backgroundColor: theme.colorScheme.secondaryContainer,
+        title: Text(
+          "Chat",
+          style: TextStyle(color: theme.colorScheme.onSecondaryContainer,
+          fontWeight: FontWeight.w500)
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          color: theme.colorScheme.onSecondaryContainer,
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
-      backgroundColor: gold,
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Column(

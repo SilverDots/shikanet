@@ -1,10 +1,27 @@
-import 'package:flutter/material.dart';
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 
-// Theme colors (remove once FlexColorScheme implemented)
-final lightyellow = Color(0xfff4e3b2);
-final gold = Color(0xffefc88b);
-final rustorange = Color(0xffb23a48);
-final black = Color(0xff2b2b2a);
-final white = Color(0xfff4f4f9);
-final darkred = Color(0xff8c2f39);
-final darkerred = Color(0xff5B1D24);
+Map<String, FlexScheme> colors = {
+  'Brand blue' : FlexScheme.brandBlue,
+  'Pink sakura' : FlexScheme.sakura,
+  'Red wine' : FlexScheme.redWine,
+  'Rosewood' : FlexScheme.rosewood,
+  'Aqua blue' : FlexScheme.aquaBlue,
+  'Oranges' : FlexScheme.orangeM3,
+  'Shark' : FlexScheme.shark,
+  'Gold sunset' : FlexScheme.gold,
+  'Amber' : FlexScheme.amber,
+  'Mango' : FlexScheme.mango,
+  'Green forest' : FlexScheme.greenM3,
+  'Verdun hemlock' : FlexScheme.verdunHemlock,
+  'Jungle' : FlexScheme.jungle,
+  'Barossa' : FlexScheme.barossa,
+  'San Juan blue' : FlexScheme.sanJuanBlue,
+  'Deep sea blue' : FlexScheme.deepBlue,
+  'Indigo nights' : FlexScheme.indigoM3,
+  'Espresso' : FlexScheme.espresso,
+  'Sepia' : FlexScheme.sepia,
+  'Greys' : FlexScheme.greys,
+  'Black and white' : FlexScheme.blackWhite
+};
+
+var defaultLight = FlexThemeData.light(scheme: FlexScheme.brandBlue);

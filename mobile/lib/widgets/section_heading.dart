@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shikanet/utils/utils.dart';
 
 class SectionHeading extends StatelessWidget {
   const SectionHeading({super.key, required this.heading});
@@ -17,7 +16,6 @@ class SectionHeading extends StatelessWidget {
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: black
           ),
         ),
       ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shikanet/utils/utils.dart';
 import 'package:shikanet/widgets/widgets.dart';
 
 class ShortcutButton extends StatefulWidget {
@@ -18,6 +17,8 @@ class _ShortcutButtonState extends State<ShortcutButton> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+
     return AnimatedCardButton(
       onTap: widget.onTap,
       child: Padding(
@@ -30,9 +31,8 @@ class _ShortcutButtonState extends State<ShortcutButton> {
             Text(
               widget.text,
               style: TextStyle(
-                fontFamily: 'Roboto',
                 fontSize: 20,
-                color: lightyellow,
+                color: theme.colorScheme.onSecondaryContainer,
               ),
             )
           ]
