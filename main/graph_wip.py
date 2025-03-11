@@ -69,33 +69,39 @@ Sub-queries:
 
 def original_query_agent(state: RetrievedDocState):
     res = [llm_with_tools.invoke([sys_msg] + state["messages"])]
-    return {"original_query_docs": res}
+    print(res.content)
+    return {"messages": res}
+
+def answer_agent(state: RetrievedDocState):
+    res = llm_with_tools.invoke([sys_msg] + state["messages"])
+    print(res.content)
+    return {"messages": res}
 
 def step_back_agent(state: RetrievedDocState):
-    structured_llm = llm.with_structured_output(SubQueries)
-    res = structured_llm.invoke([SystemMessage(content=step_back_template.format(original_query=state["question"]))])
-    return {"step_back_docs": res}
+    res = llm.invoke([SystemMessage(content=step_back_template.format(original_query=state["question"]))])
+    print(res.content)
+    return {"messages": res}   
 
 def sub_query_agent(state: RetrievedDocState):
-    structured_subquery_llm = llm.with_structured_output(SubQueries)
-    structured_subquery_llm.bind_tools(tools)
-    res = structured_subquery_llm.invoke()
-    return {"sub_query_docs": res}
+    structured_subquery_llm = llm_with_tools.with_structured_output(SubQueries)
+    res = structured_subquery_llm.invoke([SystemMessage(content=subquery_decomposition_template.format(original_query=state["question"]))])
+    print(res)
+    return {"messages": res}
 
 def final_agent(state: RetrievedDocState):
-    docs = state["sub_query_docs"] + state["step_back_docs"] + state["original_query_docs"]
     prompt = """
 You are an AI assistant tasked with generating a final query to retrieve relevant information from a RAG system.
 Given the retrieved documents from the original query, step-back query, and sub-queries, generate a final answer to the original query.
-
 """
+    res = llm.invoke([SystemMessage(content=prompt)] + state["original_query_docs"] + state["step_back_docs"] + state["sub_query_docs"])
+    return {"answer": res}
 
 def should_continue(state: MessagesState):
     messages = state["messages"]
     last_message = messages[-1]
     if last_message.tool_calls:
         return "tools"
-    return "evaluator"
+    return "final_agent"
 
 builder = StateGraph(RetrievedDocState)
 
@@ -105,7 +111,7 @@ builder.add_node("sub_query_agent", sub_query_agent)
 builder.add_node("final_agent", final_agent)
 builder.add_node("tools", ToolNode(tools))
 
-for node in ["original_query_agent", "step_back_agent", "sub_query_agent"]:
+for node in ["step_back_agent"]:
     builder.add_edge(START, node)
     builder.add_conditional_edges(node, should_continue, ["tools", "final_agent"])
     builder.add_edge("tools", node)
@@ -114,13 +120,13 @@ graph = builder.compile()
 
 print(graph.get_graph().print_ascii())
 
-# evaluations = []
+evaluations = []
 
-# messages = graph.invoke(RetrievedDocState)
+state = {
+    "question": "What did spidersnrhap plan to do on his birthday, according to the message from January 25, 2025?"
+    }
 
-# for e in messages['evaluation']:
-#     evaluations.append(e.model_dump())
+messages = graph.invoke(state)
 
-# print(evaluations)
-
-# json.dump(evaluations, open("/Users/kastenwelsh/Documents/cse481-p/newmain/answers.json", "w"), indent=2)
+print(messages)
+print(json.dumps(dict(messages), indent=2))

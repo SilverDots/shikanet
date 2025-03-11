@@ -1,0 +1,37 @@
+[
+  {
+    "question": "Who said 'Bruv group chat of group chat \ud83d\ude02\ud83d\ude02\ud83d\ude02'?",
+    "answer": "Arya GJ",
+    "messages": [
+      "SENDER: Arya GJ | MESSAGE: Bruv group chat of group chat \ud83d\ude02\ud83d\ude02\ud83d\ude02 | DATETIME: 2/24/24 5:30 PM"
+    ]
+  },
+  {
+    "question": "When did Arya GJ say 'Just woke up'?",
+    "answer": "3/9/24 at 12:30 PM",
+    "messages": [
+      "SENDER: Arya GJ | MESSAGE: Just woke up | DATETIME: 3/9/24 12:30 PM"
+    ]
+  },
+  {
+    "question": "Who requested approval for an 'andre request'?",
+    "answer": "Soham Raut",
+    "messages": [
+      "SENDER: Soham Raut | MESSAGE: Approve my andre request | DATETIME: 2/24/24 5:33 PM"
+    ]
+  },
+  {
+    "question": "What time was the court booked until on 2/24/24?",
+    "answer": "8 PM",
+    "messages": [
+      "SENDER: Krishna Saxena | MESSAGE: The court here is booked until 8 | DATETIME: 2/24/24 5:55 PM"
+    ]
+  },
+  {
+    "question": "Where did Zareef Amyeen plan to meet Arya GJ on 3/9/24 at 1:03 PM?",
+    "answer": "Right next to the standard",
+    "messages": [
+      "SENDER: Zareef Amyeen | MESSAGE: i\u2019m right next to the standard | DATETIME: 3/9/24 1:03 PM"
+    ]
+  }
+]

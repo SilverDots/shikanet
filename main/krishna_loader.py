@@ -73,10 +73,10 @@ if __name__ == '__main__':
   embed_model = OpenAIEmbeddings()
 
   # Create a Timescale Vector instance from the collection of documents
-  db = Chroma.from_documents(
-    embedding=embed_model,
-    ids=[doc.metadata["MSG_ID"] for doc in documents],
-    documents=documents,
-    collection_name=COLLECTION_NAME,
-    persist_directory=".data/vectorDB",
-  )
+  # db = Chroma.from_documents(
+  #   embedding=embed_model,
+  #   ids=[doc.metadata["MSG_ID"] for doc in documents],
+  #   documents=documents,
+  #   collection_name=COLLECTION_NAME,
+  #   persist_directory=".data/vectorDB",
+  # )
