@@ -25,7 +25,9 @@ class ChatDB:
         self.collection_name = collection_name
         self.other_metafields = other_metafields
         self.documents = []
+        # TODO don't double up on self.data -- just do it once
         self.data = data
+        self.data = self.add_datetime()
         self.vector_store = None
         self.retriever = None
         # check if any of the fields aren't in the data
@@ -105,6 +107,15 @@ class ChatDB:
             conversation_batches.append(concat_data.iloc[i:end_index].str.cat(sep=' \n '))
         return conversation_batches
     
+    def add_datetime(self):
+        self.data["datetime_formatted"] = pd.to_datetime(self.data[self.date_field], errors='coerce', utc=True)
+        return self.data
+        # # Drop rows with invalid dates
+        # self.data.dropna(subset=[self.date_field], inplace=True)
+        # start_time = pd.to_datetime(start_time, errors='coerce', utc=True)
+        # end_time = pd.to_datetime(end_time, errors='coerce', utc=True)
+        
+        # return db.data[(db.data[db.date_field] >= start_time) & (db.data[db.date_field] <= end_time)]
 
 def discord_loader():
     df_list = []
@@ -128,17 +139,17 @@ def discord_loader():
 
 def krishna_loader():
     DATA_FILE = "data/WhatsAppCleaned/WhatsAppCombined.tsv"
-    COLLECTION_NAME = 'timescale_WA_v3'
+    COLLECTION_NAME = 'timescale_WA_v4'
 
     df = pd.read_csv(DATA_FILE, sep='\t')
     df.dropna(inplace=True)
     vector_db = ChatDB(COLLECTION_NAME, df, 'SENDER', 'MESSAGE', 'DATETIME', other_metafields=['PLATFORM', 'CHAT'])
-    vector_db.create_documents(context_length=3)
+    # vector_db.create_documents(context_length=3)
     # vector_db.upload_to_chroma()
     vector_db.get_chroma()
     vector_db.create_retriever()
     vector_store = vector_db.vector_store
-    print([mes for mes in vector_db.create_message_chunks(chunk_size=5, overlap=2)[:2]])
-    docs = vector_db.retriever.invoke("hello")
-    print(docs)
+    # print([mes for mes in vector_db.create_message_chunks(chunk_size=5, overlap=2)[:2]])
+    # docs = vector_db.retriever.invoke("hello")
+    # print(docs)
     return vector_db
