@@ -1,4 +1,4 @@
-from timescale_db_utils import answer_user_question_timescale, answer_user_question_ts_self_query
+from timescale_db_utils import answer_user_question_timescale, answer_user_question_ts_self_query, answer_user_question_sem_chunk
 
 from flask import Flask, request, jsonify
 
@@ -25,6 +25,18 @@ def generate_text_timescale_self_query():
 
     # Generate text using the language model
     generated_text = answer_user_question_ts_self_query(query)
+
+    # Return the generated text as a JSON response
+    return jsonify(generated_text)
+
+@app.route('/generateTSSemChunk', methods=['POST'])
+def generate_text_timescale_self_query():
+    # Get the input data from the request
+    data = request.json
+    query = data.get('query', None)
+
+    # Generate text using the language model
+    generated_text = answer_user_question_sem_chunk(query)
 
     # Return the generated text as a JSON response
     return jsonify(generated_text)
