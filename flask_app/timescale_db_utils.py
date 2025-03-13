@@ -245,10 +245,29 @@ highlight_prompt = PromptTemplate(
   partial_variables={"format_instructions": highlight_parser.get_format_instructions()},
 )
 
+#   Usefulness Grader
+class GradeUsefulness(BaseModel):
+  binary_score: str = Field(
+    ...,
+    description="This is a helpful answer for the question, 'yes' or 'no'"
+  )
+
+usefulness_llm_grader = big_llm.with_structured_output(GradeUsefulness)
+
+usefulness_system = """You are a grader assessing whether an LLM generation is a helpful answer to a user's question.
+Give a binary score 'yes' or 'no'. 'Yes' means that whoever asked the question would consider the generation to be a specific, helpful answer to their question."""
+usefulness_prompt = ChatPromptTemplate.from_messages(
+  [
+    ("system", usefulness_system),
+    ("human", "Question: <question>{question}</question> \n\n LLM generation: <generation>{generation}</generation>"),
+  ]
+)
+
 # Chains
 res_rag_chain = result_prompt | big_llm | StrOutputParser()
 hallucination_grader = hallucination_prompt | big_llm.with_structured_output(GradeHallucinations)
 doc_lookup = highlight_prompt | big_llm | highlight_parser
+usefulness_grader = usefulness_prompt | usefulness_llm_grader
 
 # Retriever models
 def my_get_relevant_documents(self, query: str, *, run_manager: CallbackManagerForRetrieverRun) -> List[Document]:
@@ -281,7 +300,7 @@ def my_get_relevant_documents(self, query: str, *, run_manager: CallbackManagerF
 METADATA_FIELD_INFO = [
   AttributeInfo(
     name="DATETIME",
-    description="The time the message was sent. **A high priority filter**",
+    description="The time the message was sent. Formatted as %Y-%m-%d %H:%M:%S-0800 **A high priority filter**",
     type="timestamp",
   ),
   AttributeInfo(
@@ -301,14 +320,14 @@ METADATA_FIELD_INFO = [
   ),
   AttributeInfo(
     name="CHAT",
-    description=f"The name of the chat room where the message was sent, will be invoked as 'the chat' or 'the chats'. Valid values are [{[f'\'{name}\'' for name in sorted(data.CHAT.unique())]}]",
+    description=f"The name of the chat room where the message was sent, will be invoked when keywords 'the chat' or 'the chats' are in the query. Valid values are [{[f'\'{name}\'' for name in sorted(data.CHAT.unique())]}]",
     type="string",
   ),
 ]
 METADATA_FIELD_INFO_SUMM = [
   AttributeInfo(
     name="DATETIME",
-    description="The time the message was sent. **A high priority filter**",
+    description="The time the message was sent. Formatted as %Y-%m-%d %H:%M:%S-0800 **A high priority filter**",
     type="timestamp",
   ),
   AttributeInfo(
@@ -323,23 +342,21 @@ METADATA_FIELD_INFO_SUMM = [
   ),
   AttributeInfo(
     name="CHAT",
-    description=f"The name of the chat room where the message was sent, will be invoked using keywords 'the chat' or 'the chats'. Valid values are [{[f'\'{name}\'' for name in sorted(data.CHAT.unique())]}]",
+    description=f"The name of the chat room where the message was sent, will be invoked when keywords 'the chat' or 'the chats' are in the query. Valid values are [{[f'\'{name}\'' for name in sorted(data.CHAT.unique())]}]",
     type="string",
   ),
 ]
 document_content_description_summ = "Information about message chains"
 
-retriever_summ = SelfQueryRetriever.from_llm(
-  ret_llm,
-  vector_db_summ,
-  document_content_description_summ,
-  METADATA_FIELD_INFO_SUMM,
-  structured_query_translator=TimescaleVectorTranslator(),
-  enable_limit=True,
-  use_original_query=True,
-  verbose=True
-)
-retriever_summ._get_relevant_documents = MethodType(my_get_relevant_documents, retriever_summ)
+def check_for_hallucination(docs_to_use, generation):
+  hallucination_response = hallucination_grader.invoke(
+    {"documents": format_docs(docs_to_use), "generation": generation})
+  return hallucination_response.binary_score if hallucination_response else 'UNK'
+
+def check_usefulness(question, generation):
+  usefulness_response = usefulness_grader.invoke(
+    {"question": question, "generation": generation})
+  return usefulness_response.binary_score if usefulness_response else 'UNK'
 
 def format_retrieved_docs(question, docs, retrieve_more_context_fn):
   # ******************* STEP 2: Add more Context *******************
@@ -370,10 +387,7 @@ def format_retrieved_docs(question, docs, retrieve_more_context_fn):
   generation = res_rag_chain.invoke({"conversations":format_docs(docs_to_use), "question": question})
 
   # ******************* STEP 5: Check for hallucination *******************
-  hallucination_response = hallucination_grader.invoke({"documents": format_docs(docs_to_use), "generation": generation})
-  hallucination_code = 'UNK'
-  if hallucination_response:
-    hallucination_code = hallucination_response.binary_score
+  hallucination_code = check_for_hallucination(docs_to_use, generation)
 
   # ******************* STEP 6: Highlight quotes *******************
   lookup_response = doc_lookup.invoke(
@@ -396,20 +410,19 @@ def format_retrieved_docs(question, docs, retrieve_more_context_fn):
 
   return generation, hallucination_code, [doc['METADATA'] for doc in docs_to_use]
 
-def answer_user_question_timescale(question):
+def answer_user_question_timescale(question, start_dt, end_dt):
   # ******************* STEP 1: Retrieve Documents *******************
   # start_dt = datetime(2025, 1, 1)  # Start date = Jan 1, 2025
   # end_dt = datetime.now()  # End date = today
   retriever = vector_db.as_retriever(
     search_type="similarity",
-    search_kwargs={'k': 10}
-    # search_kwargs={"start_date": start_dt, "end_date": end_dt, 'k': 10}
+    search_kwargs={"start_date": start_dt, "end_date": end_dt, 'k': 10}
   )
 
   docs = retriever.invoke(question)
   return format_retrieved_docs(question, docs, retrieve_more_context)
 
-def answer_user_question_ts_self_query(question):
+def answer_user_question_ts_self_query(question, start_dt, end_dt):
   # ******************* STEP 1: Retrieve Documents *******************
   document_content_description = "A conversation with a sequence of messages and their authors"
 
@@ -423,21 +436,35 @@ def answer_user_question_ts_self_query(question):
     structured_query_translator=TimescaleVectorTranslator(),
     enable_limit=True,
     use_original_query=True,
-    verbose=True
+    verbose=True,
+    search_kwargs={"start_date": start_dt, "end_date": end_dt, 'k': 10}
   )
   sq_retriever._get_relevant_documents = MethodType(my_get_relevant_documents, sq_retriever)
 
   docs = sq_retriever.invoke(question)
   return format_retrieved_docs(question, docs, retrieve_more_context)
 
-def answer_user_question_sem_chunk_sq(question):
+def answer_user_question_sem_chunk_sq(question, start_dt, end_dt):
+  retriever_summ = SelfQueryRetriever.from_llm(
+    ret_llm,
+    vector_db_summ,
+    document_content_description_summ,
+    METADATA_FIELD_INFO_SUMM,
+    structured_query_translator=TimescaleVectorTranslator(),
+    enable_limit=True,
+    use_original_query=True,
+    verbose=True,
+    search_kwargs={"start_date": start_dt, "end_date": end_dt, 'k': 10}
+  )
+  retriever_summ._get_relevant_documents = MethodType(my_get_relevant_documents, retriever_summ)
+
   docs = retriever_summ.invoke(question)
   return format_retrieved_docs(question, docs, retrieve_more_context_summ)
 
-def answer_user_question_sem_chunk(question):
+def answer_user_question_sem_chunk(question, start_dt, end_dt):
   retriever = vector_db_summ.as_retriever(
     search_type="similarity",
-    search_kwargs={'k': 10}
+    search_kwargs = {"start_date": start_dt, "end_date": end_dt, 'k': 10}
   )
   docs = retriever.invoke(question)
   return format_retrieved_docs(question, docs, retrieve_more_context_summ)
