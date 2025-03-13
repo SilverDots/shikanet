@@ -77,4 +77,23 @@ class User {
     }
     return false;
   }
+
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> res = {
+      'firstName': firstName,
+      'lastName': lastName,
+      'email': email
+    };
+    if (phoneNumber != null) {
+      res['phone'] = phoneNumber;
+    }
+    if (discordID != null) {
+      res['discordID'] = discordID;
+    }
+    if (whatsAppID != null) {
+      res['whatsAppID'] = whatsAppID;
+    }
+    // res['preferences'] = appPreferences;
+    return res;
+  }
 }

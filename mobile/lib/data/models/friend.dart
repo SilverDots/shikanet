@@ -74,4 +74,25 @@ class Friend {
     }
     return false;
   }
+
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> res = {'firstName': firstName};
+    if (lastName != null) {
+      res['lastName'] = lastName;
+    }
+    if (email != null) {
+      res['email'] = email;
+    }
+    if (phoneNumber != null) {
+      res['phone'] = phoneNumber;
+    }
+    if (discordID != null) {
+      res['discordID'] = discordID;
+    }
+    if (whatsAppID != null) {
+      res['whatsAppID'] = whatsAppID;
+    }
+    res['notes'] = notes;
+    return res;
+  }
 }
