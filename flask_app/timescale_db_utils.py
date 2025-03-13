@@ -56,7 +56,7 @@ vector_db = TimescaleVector(
 )
 
 vector_db_summ = TimescaleVector(
-    COLLECTION_NAME_SUMM=COLLECTION_NAME_SUMM,
+    collection_name=COLLECTION_NAME_SUMM,
     service_url=os.environ['TIMESCALE_SERVICE_URL'],
     embedding=embed_model,
 )
@@ -337,7 +337,7 @@ def answer_user_question_ts_self_query(question):
     print(msg_context, '\n', '-' * 50)
     res = retrieval_grader.invoke({"question": question, "document": msg_context})
     print(res, '\n\n\n')
-    if res.binary_score and res.binary_score == 'yes':
+    if res and res.binary_score == 'yes':
       docs_to_use.append({'MSG_ID': msg_id, 'FULL_CONTEXT': msg_context})
 
   # ******************* STEP 4: Generate Result *******************
@@ -373,7 +373,7 @@ def answer_user_question_sem_chunk(question):
     print(msg_context, '\n', '-' * 50)
     res = retrieval_grader.invoke({"question": question, "document": msg_context})
     print(res, '\n\n\n')
-    if res.binary_score and res.binary_score == 'yes':
+    if res and res.binary_score == 'yes':
       docs_to_use.append({'MSG_ID': msg_id, 'FULL_CONTEXT': msg_context})
 
   # ******************* STEP 4: Generate Result *******************
