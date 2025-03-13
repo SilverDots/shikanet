@@ -169,7 +169,8 @@ def answer_user_question_timescale(question):
     print(msg_context, '\n', '-' * 50)
     res = retrieval_grader.invoke({"question": question, "document": msg_context})
     print(res, '\n\n\n')
-    if res.binary_score == 'yes':
+    # TODO: find out why res is None
+    if res and res.binary_score == 'yes':
       docs_to_use.append({'MSG_ID': msg_id, 'FULL_CONTEXT': msg_context})
 
   # ******************* STEP 4: Generate Result *******************
