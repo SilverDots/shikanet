@@ -4,13 +4,14 @@ import os
 from datetime import datetime
 from logging import getLogger
 
+from dotenv import load_dotenv
+load_dotenv()
+
 os.environ["GOOGLE_API_KEY"] = os.environ["API_KEY"]
 logger = getLogger(__name__)
 
 import pandas as pd
 import numpy as np
-from dotenv import load_dotenv
-load_dotenv()
 
 DATA_FILE = os.environ['LOCAL_DATA_FILE']
 COLLECTION_NAME = os.environ['TIMESCALE_COLLECTION_NAME']
@@ -61,6 +62,19 @@ vector_db_summ = TimescaleVector(
     embedding=embed_model,
 )
 
+def get_metadate_dict(within_context_df):
+  meta_dicts = []
+  for _, row in within_context_df.iterrows():
+    meta_dicts.append(
+      {
+        'SENDER': row['SENDER'],
+        'DATETIME': row['DATETIME'],
+        'MESSAGE': row['MESSAGE'],
+        'PLATFORM': row['PLATFORM'],
+        'CHAT': row['CHAT']
+      }
+    )
+  return meta_dicts
 
 def retrieve_more_context(data, msg_id, platform, chat, n_addl_msgs=10):
   """
@@ -71,14 +85,14 @@ def retrieve_more_context(data, msg_id, platform, chat, n_addl_msgs=10):
   :param platform: the platform of the retrieved message
   :param chat: the chat of the retrieved message
   :param n_addl_msgs: number of additional messages before and after msg `msg_id` to retrieve
-  :return: a string
+  :return: a string of concatenated messages, a list of metadata dicts for each message in `msg_id`'s context
   """
   msg_info = data[data['MSG_ID'] == msg_id]
 
   chat_hist = data[
     (data['PLATFORM'] == platform) &
     (data['CHAT'] == chat)
-    ]
+  ]
 
   context_lo = max(chat_hist.index[0], msg_info.index[0] - n_addl_msgs)
   context_hi = min(chat_hist.index[-1], msg_info.index[0] + n_addl_msgs)
@@ -87,9 +101,9 @@ def retrieve_more_context(data, msg_id, platform, chat, n_addl_msgs=10):
   within_context_df['VERBOSE'] = within_context_df['DATETIME'].dt.strftime('%A %B %d, %Y %H:%M') + '\t' + \
                                  within_context_df['SENDER'] + ' ~ ' + within_context_df['MESSAGE']
 
-  return within_context_df['VERBOSE'].str.cat(sep='\n')
+  return within_context_df['VERBOSE'].str.cat(sep='\n'), get_metadate_dict(within_context_df)
 
-def retrieve_more_context_summ(msg_id, platform, chat, context_len=5):
+def retrieve_more_context_summ(data, msg_id, platform, chat, context_len=5):
   """
   Given a message with ID `msg_id`, get the `addl_msgs` preceding and following messages for context
 
@@ -98,7 +112,7 @@ def retrieve_more_context_summ(msg_id, platform, chat, context_len=5):
   :param chat: the chat of the retrieved message
   :param n_addl_msgs: number of additional messages before and after msg `msg_id` to retrieve
   :param context_len: the number of messages after `msg_id` in the LLM determined context
-  :return: a string
+  :return: a string of concatenated messages, a list of metadata dicts for each message in `msg_id`'s context
   """
   msg_info = data[data['MSG_ID'] == msg_id]
 
@@ -120,7 +134,7 @@ def retrieve_more_context_summ(msg_id, platform, chat, context_len=5):
   within_context_df = data[(data.index >= context_lo)&(data.index <= context_hi)].copy()
   within_context_df['VERBOSE'] = within_context_df['DATETIME'].dt.strftime('%A %B %d, %Y %H:%M') + '\t' + within_context_df['SENDER'] + ' ~ ' + within_context_df['MESSAGE']
 
-  return within_context_df['VERBOSE'].str.cat(sep='\n')
+  return within_context_df['VERBOSE'].str.cat(sep='\n'), get_metadate_dict(within_context_df)
 
 def format_docs(docs):
   return "\n".join(
@@ -241,7 +255,7 @@ def answer_user_question_timescale(question):
   fuller_context = [
     (
       doc.metadata['MSG_ID'],
-      retrieve_more_context(data, doc.metadata['MSG_ID'], doc.metadata['PLATFORM'], doc.metadata['CHAT'])
+      *retrieve_more_context(data, doc.metadata['MSG_ID'], doc.metadata['PLATFORM'], doc.metadata['CHAT'])
     )
     for doc in docs
   ]
@@ -254,17 +268,16 @@ def answer_user_question_timescale(question):
 
   docs_to_use = []
 
-  for (msg_id, msg_context) in fuller_context:
+  for (msg_id, msg_context, metadata) in fuller_context:
     print(msg_context, '\n', '-' * 50)
     res = retrieval_grader.invoke({"question": question, "document": msg_context})
     print(res, '\n\n\n')
-    # TODO: find out why res is None
     if res and res.binary_score == 'yes':
-      docs_to_use.append({'MSG_ID': msg_id, 'FULL_CONTEXT': msg_context})
+      docs_to_use.append({'MSG_ID': msg_id, 'FULL_CONTEXT': msg_context, 'METADATA': metadata})
 
   # ******************* STEP 4: Generate Result *******************
   generation = res_rag_chain.invoke({"conversations":format_docs(docs_to_use), "question": question})
-  return generation
+  return generation, [doc['METADATA'] for doc in docs_to_use]
 
 def answer_user_question_ts_self_query(question):
   # ******************* STEP 1: Retrieve Documents *******************
@@ -320,7 +333,7 @@ def answer_user_question_ts_self_query(question):
   fuller_context = [
     (
       doc.metadata['MSG_ID'],
-      retrieve_more_context(data, doc.metadata['MSG_ID'], doc.metadata['PLATFORM'], doc.metadata['CHAT'])
+      *retrieve_more_context(data, doc.metadata['MSG_ID'], doc.metadata['PLATFORM'], doc.metadata['CHAT'])
     )
     for doc in docs
   ]
@@ -333,18 +346,18 @@ def answer_user_question_ts_self_query(question):
 
   docs_to_use = []
 
-  for (msg_id, msg_context) in fuller_context:
+  for (msg_id, msg_context, metadata) in fuller_context:
     print(msg_context, '\n', '-' * 50)
     res = retrieval_grader.invoke({"question": question, "document": msg_context})
     print(res, '\n\n\n')
     if res and res.binary_score == 'yes':
-      docs_to_use.append({'MSG_ID': msg_id, 'FULL_CONTEXT': msg_context})
+      docs_to_use.append({'MSG_ID': msg_id, 'FULL_CONTEXT': msg_context, 'METADATA': metadata})
 
   # ******************* STEP 4: Generate Result *******************
 
   # Run
   generation = res_rag_chain.invoke({"conversations":format_docs(docs_to_use), "question": question})
-  return generation
+  return generation, [doc['METADATA'] for doc in docs_to_use]
 
 def answer_user_question_sem_chunk(question):
   # ******************* STEP 1: Retrieve Documents *******************
@@ -354,11 +367,10 @@ def answer_user_question_sem_chunk(question):
 
   # ******************* STEP 2: Add more Context *******************
   fuller_context = [
-    (
-      doc.metadata['MSG_ID'],
-      retrieve_more_context(data, doc.metadata['MSG_ID'], doc.metadata['PLATFORM'], doc.metadata['CHAT'])
-    )
-    for doc in docs
+    (doc.metadata['MSG_ID'],
+     retrieve_more_context_summ(doc.metadata['MSG_ID'], doc.metadata['PLATFORM'], doc.metadata['CHAT'],
+                                doc.metadata['CONTEXT_LEN'])
+    ) for doc in docs
   ]
 
   # ******************* STEP 3: Grade Document Relevancy *******************
@@ -369,15 +381,15 @@ def answer_user_question_sem_chunk(question):
 
   docs_to_use = []
 
-  for (msg_id, msg_context) in fuller_context:
+  for (msg_id, msg_context, metadata) in fuller_context:
     print(msg_context, '\n', '-' * 50)
     res = retrieval_grader.invoke({"question": question, "document": msg_context})
     print(res, '\n\n\n')
     if res and res.binary_score == 'yes':
-      docs_to_use.append({'MSG_ID': msg_id, 'FULL_CONTEXT': msg_context})
+      docs_to_use.append({'MSG_ID': msg_id, 'FULL_CONTEXT': msg_context, 'METADATA': metadata})
 
   # ******************* STEP 4: Generate Result *******************
 
   # Chain
   generation = res_rag_chain.invoke({"conversations":format_docs(docs_to_use), "question": question})
-  return generation
+  return generation, [doc['METADATA'] for doc in docs_to_use]

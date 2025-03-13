@@ -12,10 +12,15 @@ def generate_text_timescale():
     query = data.get('query', None)
 
     # Generate text using the language model
-    generated_text = answer_user_question_timescale(query)
+    generated_text, metadata = answer_user_question_timescale(query)
 
     # Return the generated text as a JSON response
-    return jsonify(generated_text)
+    return jsonify(
+        {
+            'response':generated_text,
+            'snippets':metadata
+        }
+    )
 
 @app.route('/generateTSSelfQuery', methods=['POST'])
 def generate_text_timescale_self_query():
@@ -24,22 +29,32 @@ def generate_text_timescale_self_query():
     query = data.get('query', None)
 
     # Generate text using the language model
-    generated_text = answer_user_question_ts_self_query(query)
+    generated_text, metadata = answer_user_question_ts_self_query(query)
 
     # Return the generated text as a JSON response
-    return jsonify(generated_text)
+    return jsonify(
+        {
+            'response':generated_text,
+            'snippets':metadata
+        }
+    )
 
 @app.route('/generateTSSemChunk', methods=['POST'])
-def generate_text_timescale_self_query():
+def generate_text_timescale_sem_chunk():
     # Get the input data from the request
     data = request.json
     query = data.get('query', None)
 
     # Generate text using the language model
-    generated_text = answer_user_question_sem_chunk(query)
+    generated_text, metadata = answer_user_question_sem_chunk(query)
 
     # Return the generated text as a JSON response
-    return jsonify(generated_text)
+    return jsonify(
+        {
+            'response':generated_text,
+            'snippets':metadata
+        }
+    )
 
 if __name__ == '__main__':
     app.run(debug=True)
