@@ -16,8 +16,8 @@ def get_filter_dates(today):
     ]
 
 def try_date_ranges(query, today, answer_fn):
-    start_dt = today
-    for end_dt in get_filter_dates(today):
+    end_dt = today
+    for start_dt in get_filter_dates(today):
         generated_text, grounded_flag, metadata = answer_fn(query, start_dt, end_dt)
         usefulness_flag = check_usefulness(generated_text, grounded_flag)
         if usefulness_flag == 'yes':

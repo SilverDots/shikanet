@@ -433,10 +433,7 @@ def answer_user_question_timescale(question, start_dt, end_dt):
   return format_retrieved_docs(question, docs, retrieve_more_context)
 
 def answer_user_question_ts_self_query(question, start_dt, end_dt):
-  # ******************* STEP 1: Retrieve Documents *******************
   document_content_description = "A conversation with a sequence of messages and their authors"
-
-  # Instantiate the self-query retriever from an LLM
 
   sq_retriever = SelfQueryRetriever.from_llm(
     ret_llm,
@@ -454,6 +451,14 @@ def answer_user_question_ts_self_query(question, start_dt, end_dt):
   docs = sq_retriever.invoke(question)
   return format_retrieved_docs(question, docs, retrieve_more_context)
 
+def answer_user_question_sem_chunk(question, start_dt, end_dt):
+  retriever = vector_db_summ.as_retriever(
+    search_type="similarity",
+    search_kwargs = {"start_date": start_dt, "end_date": end_dt, 'k': 10}
+  )
+  docs = retriever.invoke(question)
+  return format_retrieved_docs(question, docs, retrieve_more_context_summ)
+
 def answer_user_question_sem_chunk_sq(question, start_dt, end_dt):
   retriever_summ = SelfQueryRetriever.from_llm(
     ret_llm,
@@ -469,12 +474,4 @@ def answer_user_question_sem_chunk_sq(question, start_dt, end_dt):
   retriever_summ._get_relevant_documents = MethodType(my_get_relevant_documents, retriever_summ)
 
   docs = retriever_summ.invoke(question)
-  return format_retrieved_docs(question, docs, retrieve_more_context_summ)
-
-def answer_user_question_sem_chunk(question, start_dt, end_dt):
-  retriever = vector_db_summ.as_retriever(
-    search_type="similarity",
-    search_kwargs = {"start_date": start_dt, "end_date": end_dt, 'k': 10}
-  )
-  docs = retriever.invoke(question)
   return format_retrieved_docs(question, docs, retrieve_more_context_summ)
