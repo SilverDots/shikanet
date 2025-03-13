@@ -5,6 +5,7 @@ from datetime import datetime
 from logging import getLogger
 
 from dotenv import load_dotenv
+from functools import partial
 load_dotenv()
 
 os.environ["GOOGLE_API_KEY"] = os.environ["API_KEY"]
@@ -91,8 +92,15 @@ def highlight_segment(source, segment, hl_start_symbol='**', hl_end_symbol='**')
   highlight_index = source.find(segment)
   return source[:highlight_index] + hl_start_symbol + source[highlight_index:highlight_index + len(segment)] + hl_end_symbol + source[highlight_index + len(segment):] if highlight_index >= 0 else source
 
+def replace_aliases(str_val, user_aliases, friend_aliases):
+  for alias, name in user_aliases.items():
+    str_val = str_val.replace(alias, name)
+  for alias, name in friend_aliases.items():
+    str_val = str_val.replace(alias, name)
+  return str_val
+
 ### Context retrieval functions
-def retrieve_more_context(data, msg_id, platform, chat, n_addl_msgs=10):
+def retrieve_more_context(data, msg_id, platform, chat, user_aliases, friend_aliases, n_addl_msgs=10):
   """
   Given a message with ID `msg_id`, get the `addl_msgs` preceding and following messages for context
 
@@ -114,12 +122,13 @@ def retrieve_more_context(data, msg_id, platform, chat, n_addl_msgs=10):
   context_hi = min(chat_hist.index[-1], msg_info.index[0] + n_addl_msgs)
 
   within_context_df = data[(data.index >= context_lo)&(data.index <= context_hi)].copy()
+  within_context_df['MESSAGE'].apply(partial(replace_aliases, user_aliases=user_aliases, friend_aliases=friend_aliases))
   within_context_df['VERBOSE'] = within_context_df['DATETIME'].dt.strftime('%A %B %d, %Y %H:%M') + '\t' + \
                                  within_context_df['SENDER'] + ' ~ ' + within_context_df['MESSAGE']
 
   return within_context_df['VERBOSE'].str.cat(sep='\n'), get_metadata_dict(within_context_df)
 
-def retrieve_more_context_summ(data, msg_id, platform, chat, context_len=5):
+def retrieve_more_context_summ(data, msg_id, platform, chat, user_aliases, friend_aliases, context_len=5):
   """
   Given a message with ID `msg_id`, get the `addl_msgs` preceding and following messages for context
 
@@ -148,6 +157,7 @@ def retrieve_more_context_summ(data, msg_id, platform, chat, context_len=5):
   context_hi = min(chat_hist.index[-1], msg_info.index[0] + context_len + n_addl_msgs)
 
   within_context_df = data[(data.index >= context_lo)&(data.index <= context_hi)].copy()
+  within_context_df['MESSAGE'].apply(partial(replace_aliases, user_aliases=user_aliases, friend_aliases=friend_aliases))
   within_context_df['VERBOSE'] = within_context_df['DATETIME'].dt.strftime('%A %B %d, %Y %H:%M') + '\t' + within_context_df['SENDER'] + ' ~ ' + within_context_df['MESSAGE']
 
   return within_context_df['VERBOSE'].str.cat(sep='\n'), get_metadata_dict(within_context_df)
@@ -365,7 +375,7 @@ def no_docs_output():
   """
   return '', 'yes', []
 
-def format_retrieved_docs(question, docs, retrieve_more_context_fn):
+def format_retrieved_docs(question, docs, retrieve_more_context_fn, user_aliases, friend_aliases):
   if len(docs) == 0:
     return no_docs_output()
 
@@ -420,7 +430,7 @@ def format_retrieved_docs(question, docs, retrieve_more_context_fn):
 
   return generation, hallucination_code, [doc['METADATA'] for doc in docs_to_use]
 
-def answer_user_question_timescale(question, start_dt, end_dt):
+def answer_user_question_timescale(question, start_dt, end_dt, user_aliases, friend_aliases):
   # ******************* STEP 1: Retrieve Documents *******************
   # start_dt = datetime(2025, 1, 1)  # Start date = Jan 1, 2025
   # end_dt = datetime.now()  # End date = today
@@ -430,9 +440,9 @@ def answer_user_question_timescale(question, start_dt, end_dt):
   )
 
   docs = retriever.invoke(question)
-  return format_retrieved_docs(question, docs, retrieve_more_context)
+  return format_retrieved_docs(question, docs, retrieve_more_context, user_aliases, friend_aliases)
 
-def answer_user_question_ts_self_query(question, start_dt, end_dt):
+def answer_user_question_ts_self_query(question, start_dt, end_dt, user_aliases, friend_aliases):
   document_content_description = "A conversation with a sequence of messages and their authors"
 
   sq_retriever = SelfQueryRetriever.from_llm(
@@ -449,17 +459,17 @@ def answer_user_question_ts_self_query(question, start_dt, end_dt):
   sq_retriever._get_relevant_documents = MethodType(my_get_relevant_documents, sq_retriever)
 
   docs = sq_retriever.invoke(question)
-  return format_retrieved_docs(question, docs, retrieve_more_context)
+  return format_retrieved_docs(question, docs, retrieve_more_context, user_aliases, friend_aliases)
 
-def answer_user_question_sem_chunk(question, start_dt, end_dt):
+def answer_user_question_sem_chunk(question, start_dt, end_dt, user_aliases, friend_aliases):
   retriever = vector_db_summ.as_retriever(
     search_type="similarity",
     search_kwargs = {"start_date": start_dt, "end_date": end_dt, 'k': 10}
   )
   docs = retriever.invoke(question)
-  return format_retrieved_docs(question, docs, retrieve_more_context_summ)
+  return format_retrieved_docs(question, docs, retrieve_more_context_summ, user_aliases, friend_aliases)
 
-def answer_user_question_sem_chunk_sq(question, start_dt, end_dt):
+def answer_user_question_sem_chunk_sq(question, start_dt, end_dt, user_aliases, friend_aliases):
   retriever_summ = SelfQueryRetriever.from_llm(
     ret_llm,
     vector_db_summ,
@@ -474,4 +484,4 @@ def answer_user_question_sem_chunk_sq(question, start_dt, end_dt):
   retriever_summ._get_relevant_documents = MethodType(my_get_relevant_documents, retriever_summ)
 
   docs = retriever_summ.invoke(question)
-  return format_retrieved_docs(question, docs, retrieve_more_context_summ)
+  return format_retrieved_docs(question, docs, retrieve_more_context_summ, user_aliases, friend_aliases)
