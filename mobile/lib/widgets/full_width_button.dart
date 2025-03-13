@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shikanet/widgets/widgets.dart';
 
-class SettingMenuButton extends StatelessWidget {
-  const SettingMenuButton({
+class FullWidthButton extends StatelessWidget {
+  const FullWidthButton({
     super.key,
     required this.title,
     required this.onTap,

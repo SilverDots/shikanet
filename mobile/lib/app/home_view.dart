@@ -22,6 +22,8 @@ class HomeViewState extends ConsumerState<HomeView> {
       page = HomePage();
     } else if (selectedIndex == 1) {
       page = ChatPage();
+    } else if (selectedIndex == 2) {
+      page = FriendsPage();
     } else {
       page = SettingsPage();
     }
@@ -73,9 +75,14 @@ class HomeViewState extends ConsumerState<HomeView> {
                   label: 'Chat'
                 ),
                 NavigationDestination(
+                  icon: Icon(Icons.person_outlined),
+                  selectedIcon: Icon(Icons.person),
+                  label: "Friends"
+                ),
+                NavigationDestination(
                   icon: Icon(Icons.settings_outlined),
                   selectedIcon: Icon(Icons.settings),
-                  label: "Profile"
+                  label: "Settings"
                 )
               ] 
             ),

@@ -8,7 +8,7 @@ import 'package:shikanet/widgets/widgets.dart';
 var resetExplanation =
 """
 Erasing all content will clear your search and chat history.
-Resetting all settings will restore app preferences to default settings.'
+Resetting all settings will restore app preferences to default settings.
 """.trim().replaceAll("\n", " ");
 
 class ManageHistoryPage extends ConsumerStatefulWidget {
@@ -84,7 +84,7 @@ class _ManageHistoryPageState extends ConsumerState<ManageHistoryPage> {
             )
           ),
           divider,
-          SettingMenuButton(
+          FullWidthButton(
             title: 'Clear search history',
             borderRadius: BorderRadius.only(
               bottomLeft: const Radius.circular(12),
@@ -118,19 +118,41 @@ class _ManageHistoryPageState extends ConsumerState<ManageHistoryPage> {
           ),
           SizedBox(height: 10),
           SettingsHeading(title: "General"),
-          SettingMenuButton(
+          FullWidthButton(
             title: 'Clear chat history',
             borderRadius: BorderRadius.only(
               topLeft: const Radius.circular(12),
               topRight: const Radius.circular(12)
             ),
+            textColor: Colors.blue,
             contentPadding: EdgeInsets.symmetric(horizontal: 12),
             onTap: () {
-              ref.read(chatLogProvider.notifier).reset();
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: Text('Clear chat history?'),
+                  content: Text(
+                    'Are you sure you want to clear your chat history? This action cannot be undone.'
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context, 'Cancel'),
+                      child: const Text('Cancel'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        ref.read(chatLogProvider.notifier).reset();
+                        Navigator.pop(context, 'Proceed');
+                      },
+                      child: const Text('Proceed', style: TextStyle(color: Colors.red)),
+                    ),
+                  ]
+                )
+              );
             }
           ),
           divider,
-          SettingMenuButton(
+          FullWidthButton(
             title: 'Erase all content and reset settings',
             borderRadius: BorderRadius.only(
               bottomLeft: const Radius.circular(12),

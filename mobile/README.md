@@ -1,3 +1,3 @@
-# shikanet
+# Shikanet/Message Summarization
 
-A new Flutter project.
+Frontend app code for our message summarization app.

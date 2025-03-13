@@ -19,8 +19,10 @@ class ColorGridSample extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     User user = ref.watch(userInfoProvider);
     var currTheme = Theme.of(context);
-    var sampleTheme = currTheme.brightness == Brightness.light ? lightTheme : darkTheme;
-    bool selected = currTheme == sampleTheme; 
+    var brightness = currTheme.brightness;
+    var sampleTheme = brightness == Brightness.light ? lightTheme : darkTheme;
+    bool selected = user.appPreferences['lightTheme'] == sampleTheme
+      || user.appPreferences['darkTheme'] == sampleTheme;
 
     return Padding(
       padding: const EdgeInsets.only(

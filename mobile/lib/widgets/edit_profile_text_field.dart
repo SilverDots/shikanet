@@ -12,7 +12,9 @@ class EditProfileTextField extends StatefulWidget {
     this.keyboardType = TextInputType.text,
     this.inputFormatters = const [],
     this.prefix = "",
-    this.onChange
+    this.onChange,
+    this.maxLines = 1,
+    this.hintText
   });
 
   final String name;
@@ -23,6 +25,8 @@ class EditProfileTextField extends StatefulWidget {
   final List<TextInputFormatter> inputFormatters;
   final String prefix;
   final Function(String)? onChange;
+  final int maxLines;
+  final String? hintText;
 
   @override
   State<EditProfileTextField> createState() => _EditProfilePageTextFieldState();
@@ -36,6 +40,7 @@ class _EditProfilePageTextFieldState extends State<EditProfileTextField> {
     if (value.isEmpty && !widget.optional) {
       return "This field cannot be empty.";
     } else if (widget.keyboardType == TextInputType.emailAddress
+        && widget.controller.text.isNotEmpty
         && !EmailValidator.validate(value)) {
       return 'Please enter a valid email.';
     }
@@ -47,6 +52,7 @@ class _EditProfilePageTextFieldState extends State<EditProfileTextField> {
     return TextFormField(
       autocorrect: false,
       maxLength: 64,
+      maxLines: widget.maxLines,
       controller: widget.controller,
       keyboardType: widget.keyboardType,
       inputFormatters: widget.inputFormatters,
@@ -64,6 +70,7 @@ class _EditProfilePageTextFieldState extends State<EditProfileTextField> {
         errorText: errorText,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         counterText: "",
+        hintText: widget.hintText,
       )
     );
   }

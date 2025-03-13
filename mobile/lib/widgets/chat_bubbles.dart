@@ -155,15 +155,20 @@ class ChatBubbles extends ConsumerWidget {
       return bubbles;
     }
 
+    var bubbles = generateChatBubbles(chatLog);
+
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Align(
           alignment: Alignment.topCenter,
-          child: ListView(
+          child: ListView.builder(
             reverse: true,
             shrinkWrap: true,
-            children: generateChatBubbles(chatLog)
+            itemBuilder: (context, index) {
+              return bubbles[index];
+            },
+            itemCount: bubbles.length,
           )
         ),
       )

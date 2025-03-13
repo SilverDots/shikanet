@@ -98,7 +98,7 @@ class SettingsPageState extends ConsumerState<SettingsPage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SettingMenuButton(
+                        FullWidthButton(
                           title: 'Edit Profile',
                           leading: Icon(Icons.person),
                           trailing: Icon(Icons.arrow_forward),
@@ -111,7 +111,7 @@ class SettingsPageState extends ConsumerState<SettingsPage> {
                           }
                         ),
                         divider,
-                        SettingMenuButton(
+                        FullWidthButton(
                           title: 'Appearance',
                           leading: Icon(Icons.palette),
                           trailing: Icon(Icons.arrow_forward),
@@ -124,7 +124,7 @@ class SettingsPageState extends ConsumerState<SettingsPage> {
                           }
                         ),
                         divider,
-                        SettingMenuButton(
+                        FullWidthButton(
                           title: 'Manage History',
                           leading: Icon(Icons.history),
                           trailing: Icon(Icons.arrow_forward),
@@ -137,7 +137,7 @@ class SettingsPageState extends ConsumerState<SettingsPage> {
                           }
                         ),
                         divider,
-                        SettingMenuButton(
+                        FullWidthButton(
                           title: 'About',
                           leading: Icon(Icons.info),
                           trailing: Icon(Icons.arrow_forward),

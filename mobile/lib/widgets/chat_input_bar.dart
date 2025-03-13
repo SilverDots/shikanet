@@ -38,7 +38,6 @@ class _ChatInputBarState extends ConsumerState<ChatInputBar> {
             onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
             decoration: InputDecoration(
               filled: true,
-              // fillColor: theme.colorScheme.,
               hintText: 'Search for answers',
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(30),
