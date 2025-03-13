@@ -34,6 +34,7 @@ from pydantic import BaseModel, Field
 
 ### Data
 data = pd.read_csv(DATA_FILE, sep='\t', parse_dates=['DATETIME'])
+data.dropna(inplace=True)
 
 ### LLMs
 small_llm = ChatOllama(model=LLAMA_3B_NAME, temperature=0.)
