@@ -62,7 +62,8 @@ vector_db_summ = TimescaleVector(
     embedding=embed_model,
 )
 
-def get_metadate_dict(within_context_df):
+### Helper functions
+def get_metadata_dict(within_context_df):
   meta_dicts = []
   for _, row in within_context_df.iterrows():
     meta_dicts.append(
@@ -76,6 +77,21 @@ def get_metadate_dict(within_context_df):
     )
   return meta_dicts
 
+def format_docs(docs):
+  return "\n".join(
+    f"<conv{i + 1}>:\nSource:{doc['MSG_ID']}\nContent:{doc['FULL_CONTEXT']}\n</conv{i + 1}>\n" for i, doc in
+    enumerate(docs)
+  )
+
+def highlight_segment(source, segment, hl_start_symbol='**', hl_end_symbol='**'):
+  """
+  :param hl_start_symbol: '<mark>' recommended, '**' default
+  :param hl_end_symbol: '</mark>' recommended, '**' default
+  """
+  highlight_index = source.find(segment)
+  return source[:highlight_index] + hl_start_symbol + source[highlight_index:highlight_index + len(segment)] + hl_end_symbol + source[highlight_index + len(segment):] if highlight_index >= 0 else source
+
+### Context retrieval functions
 def retrieve_more_context(data, msg_id, platform, chat, n_addl_msgs=10):
   """
   Given a message with ID `msg_id`, get the `addl_msgs` preceding and following messages for context
@@ -101,7 +117,7 @@ def retrieve_more_context(data, msg_id, platform, chat, n_addl_msgs=10):
   within_context_df['VERBOSE'] = within_context_df['DATETIME'].dt.strftime('%A %B %d, %Y %H:%M') + '\t' + \
                                  within_context_df['SENDER'] + ' ~ ' + within_context_df['MESSAGE']
 
-  return within_context_df['VERBOSE'].str.cat(sep='\n'), get_metadate_dict(within_context_df)
+  return within_context_df['VERBOSE'].str.cat(sep='\n'), get_metadata_dict(within_context_df)
 
 def retrieve_more_context_summ(data, msg_id, platform, chat, context_len=5):
   """
@@ -134,21 +150,7 @@ def retrieve_more_context_summ(data, msg_id, platform, chat, context_len=5):
   within_context_df = data[(data.index >= context_lo)&(data.index <= context_hi)].copy()
   within_context_df['VERBOSE'] = within_context_df['DATETIME'].dt.strftime('%A %B %d, %Y %H:%M') + '\t' + within_context_df['SENDER'] + ' ~ ' + within_context_df['MESSAGE']
 
-  return within_context_df['VERBOSE'].str.cat(sep='\n'), get_metadate_dict(within_context_df)
-
-def format_docs(docs):
-  return "\n".join(
-    f"<conv{i + 1}>:\nSource:{doc['MSG_ID']}\nContent:{doc['FULL_CONTEXT']}\n</conv{i + 1}>\n" for i, doc in
-    enumerate(docs)
-  )
-
-def highlight_segment(source, segment, hl_start_symbol='**', hl_end_symbol='**'):
-  """
-  :param hl_start_symbol: '<mark>' recommended, '**' default
-  :param hl_end_symbol: '</mark>' recommended, '**' default
-  """
-  highlight_index = source.find(segment)
-  return source[:highlight_index] + hl_start_symbol + source[highlight_index:highlight_index + len(segment)] + hl_end_symbol + source[highlight_index + len(segment):] if highlight_index >= 0 else source
+  return within_context_df['VERBOSE'].str.cat(sep='\n'), get_metadata_dict(within_context_df)
 
 ### Prompts
 #   Relevance Grader
@@ -276,7 +278,34 @@ def my_get_relevant_documents(self, query: str, *, run_manager: CallbackManagerF
   docs = self._get_docs_with_query(new_query, search_kwargs)
   return docs
 
-metadata_field_info_summ = [
+METADATA_FIELD_INFO = [
+  AttributeInfo(
+    name="DATETIME",
+    description="The time the message was sent. **A high priority filter**",
+    type="timestamp",
+  ),
+  AttributeInfo(
+    name="SENDER",
+    description="The *case sensitive* name or ID of the message's author. **A high priority filter**",
+    type="string",
+  ),
+  AttributeInfo(
+    name="ID",
+    description="A UUID v1 generated from the timestamp of the message",
+    type="uuid",
+  ),
+  AttributeInfo(
+    name="PLATFORM",
+    description="The app where the message was sent. Valid values are ['Discord', 'WhatsApp']",
+    type="string",
+  ),
+  AttributeInfo(
+    name="CHAT",
+    description=f"The name of the chat room where the message was sent, will be invoked as 'the chat' or 'the chats'. Valid values are [{[f'\'{name}\'' for name in sorted(data.CHAT.unique())]}]",
+    type="string",
+  ),
+]
+METADATA_FIELD_INFO_SUMM = [
   AttributeInfo(
     name="DATETIME",
     description="The time the message was sent. **A high priority filter**",
@@ -304,7 +333,7 @@ retriever_summ = SelfQueryRetriever.from_llm(
   ret_llm,
   vector_db_summ,
   document_content_description_summ,
-  metadata_field_info_summ,
+  METADATA_FIELD_INFO_SUMM,
   structured_query_translator=TimescaleVectorTranslator(),
   enable_limit=True,
   use_original_query=True,
@@ -312,6 +341,60 @@ retriever_summ = SelfQueryRetriever.from_llm(
 )
 retriever_summ._get_relevant_documents = MethodType(my_get_relevant_documents, retriever_summ)
 
+def format_retrieved_docs(question, docs, retrieve_more_context_fn):
+  # ******************* STEP 2: Add more Context *******************
+  fuller_context = [
+    (
+      doc.metadata['MSG_ID'],
+      *retrieve_more_context_fn(data, doc.metadata['MSG_ID'], doc.metadata['PLATFORM'], doc.metadata['CHAT'])
+    )
+    for doc in docs
+  ]
+
+  # ******************* STEP 3: Grade Document Relevancy *******************
+  # LLM with function call
+  structured_llm_grader = big_llm.with_structured_output(GradeDocuments)
+
+  retrieval_grader = grade_prompt | structured_llm_grader
+
+  docs_to_use = []
+
+  for (msg_id, msg_context, metadata) in fuller_context:
+    print(msg_context, '\n', '-' * 50)
+    res = retrieval_grader.invoke({"question": question, "document": msg_context})
+    print(res, '\n\n\n')
+    if res and res.binary_score == 'yes':
+      docs_to_use.append({'MSG_ID': msg_id, 'FULL_CONTEXT': msg_context, 'METADATA': metadata})
+
+  # ******************* STEP 4: Generate Result *******************
+  generation = res_rag_chain.invoke({"conversations":format_docs(docs_to_use), "question": question})
+
+  # ******************* STEP 5: Check for hallucination *******************
+  hallucination_response = hallucination_grader.invoke({"documents": format_docs(docs_to_use), "generation": generation})
+  hallucination_code = 'UNK'
+  if hallucination_response:
+    hallucination_code = hallucination_response.binary_score
+
+  # ******************* STEP 6: Highlight quotes *******************
+  lookup_response = doc_lookup.invoke(
+    {"conversations": format_docs(docs_to_use), "question": question, "generation": generation}
+  )
+
+  if lookup_response:
+    for id, source, segment in zip(lookup_response.Source, lookup_response.Content, lookup_response.Segment):
+      id_match = -1
+      for i in range(len(docs_to_use)):
+        if docs_to_use[i]['MSG_ID'] == id:
+          id_match = i
+          break
+      if id_match == -1:
+        continue
+
+      docs_to_use[id_match]['FULL_CONTEXT'] = highlight_segment(source, segment)
+      for doc_i_md in docs_to_use[id_match]['METADATA']:
+        doc_i_md['MESSAGE'] = highlight_segment(doc_i_md['MESSAGE'], segment)
+
+  return generation, hallucination_code, [doc['METADATA'] for doc in docs_to_use]
 
 def answer_user_question_timescale(question):
   # ******************* STEP 1: Retrieve Documents *******************
@@ -324,220 +407,37 @@ def answer_user_question_timescale(question):
   )
 
   docs = retriever.invoke(question)
-
-  # ******************* STEP 2: Add more Context *******************
-  fuller_context = [
-    (
-      doc.metadata['MSG_ID'],
-      *retrieve_more_context(data, doc.metadata['MSG_ID'], doc.metadata['PLATFORM'], doc.metadata['CHAT'])
-    )
-    for doc in docs
-  ]
-
-  # ******************* STEP 3: Grade Document Relevancy *******************
-  # LLM with function call
-  structured_llm_grader = big_llm.with_structured_output(GradeDocuments)
-
-  retrieval_grader = grade_prompt | structured_llm_grader
-
-  docs_to_use = []
-
-  for (msg_id, msg_context, metadata) in fuller_context:
-    print(msg_context, '\n', '-' * 50)
-    res = retrieval_grader.invoke({"question": question, "document": msg_context})
-    print(res, '\n\n\n')
-    if res and res.binary_score == 'yes':
-      docs_to_use.append({'MSG_ID': msg_id, 'FULL_CONTEXT': msg_context, 'METADATA': metadata})
-
-  # ******************* STEP 4: Generate Result *******************
-  generation = res_rag_chain.invoke({"conversations":format_docs(docs_to_use), "question": question})
-
-  # ******************* STEP 5: Check for hallucination *******************
-  hallucination_response = hallucination_grader.invoke({"documents": format_docs(docs_to_use), "generation": generation})
-  hallucination_code = 'UNK'
-  if hallucination_response:
-    hallucination_code = hallucination_response.binary_score
-
-  # ******************* STEP 6: Highlight quotes *******************
-  lookup_response = doc_lookup.invoke(
-    {"conversations": format_docs(docs_to_use), "question": question, "generation": generation}
-  )
-
-  if lookup_response:
-    for id, source, segment in zip(lookup_response.Source, lookup_response.Content, lookup_response.Segment):
-      id_match = -1
-      for i in range(len(docs_to_use)):
-        if docs_to_use[i]['MSG_ID'] == id:
-          id_match = i
-          break
-      if id_match == -1:
-        continue
-
-      docs_to_use[id_match]['FULL_CONTEXT'] = highlight_segment(source, segment)
-      for doc_i_md in docs_to_use[id_match]['METADATA']:
-        doc_i_md['MESSAGE'] = highlight_segment(doc_i_md['MESSAGE'], segment)
-
-  return generation, hallucination_code, [doc['METADATA'] for doc in docs_to_use]
+  return format_retrieved_docs(question, docs, retrieve_more_context)
 
 def answer_user_question_ts_self_query(question):
   # ******************* STEP 1: Retrieve Documents *******************
-  # start_dt = datetime(2025, 1, 1)  # Start date = Jan 1, 2025
-  # end_dt = datetime.now()  # End date = today
-  # Give LLM info about the metadata fields
-  metadata_field_info = [
-    AttributeInfo(
-      name="DATETIME",
-      description="The time the message was sent. **A high priority filter**",
-      type="timestamp",
-    ),
-    AttributeInfo(
-      name="SENDER",
-      description="The *case sensitive* name or ID of the message's author. **A high priority filter**",
-      type="string",
-    ),
-    AttributeInfo(
-      name="ID",
-      description="A UUID v1 generated from the timestamp of the message",
-      type="uuid",
-    ),
-    AttributeInfo(
-      name="PLATFORM",
-      description="The app where the message was sent. Valid values are ['Discord', 'WhatsApp']",
-      type="string",
-    ),
-    AttributeInfo(
-      name="CHAT",
-      description=f"The name of the chat room where the message was sent, will be invoked as 'the chat' or 'the chats'. Valid values are [{[f'\'{name}\'' for name in sorted(data.CHAT.unique())]}]",
-      type="string",
-    ),
-  ]
   document_content_description = "A conversation with a sequence of messages and their authors"
 
   # Instantiate the self-query retriever from an LLM
 
-  retriever = SelfQueryRetriever.from_llm(
+  sq_retriever = SelfQueryRetriever.from_llm(
     ret_llm,
     vector_db,
     document_content_description,
-    metadata_field_info,
+    METADATA_FIELD_INFO,
     structured_query_translator=TimescaleVectorTranslator(),
     enable_limit=True,
     use_original_query=True,
     verbose=True
   )
-  retriever._get_relevant_documents = MethodType(my_get_relevant_documents, retriever)
+  sq_retriever._get_relevant_documents = MethodType(my_get_relevant_documents, sq_retriever)
 
-  docs = retriever.invoke(question)
+  docs = sq_retriever.invoke(question)
+  return format_retrieved_docs(question, docs, retrieve_more_context)
 
-  # ******************* STEP 2: Add more Context *******************
-  fuller_context = [
-    (
-      doc.metadata['MSG_ID'],
-      *retrieve_more_context(data, doc.metadata['MSG_ID'], doc.metadata['PLATFORM'], doc.metadata['CHAT'])
-    )
-    for doc in docs
-  ]
-
-  # ******************* STEP 3: Grade Document Relevancy *******************
-  # LLM with function call
-  structured_llm_grader = big_llm.with_structured_output(GradeDocuments)
-
-  retrieval_grader = grade_prompt | structured_llm_grader
-
-  docs_to_use = []
-
-  for (msg_id, msg_context, metadata) in fuller_context:
-    print(msg_context, '\n', '-' * 50)
-    res = retrieval_grader.invoke({"question": question, "document": msg_context})
-    print(res, '\n\n\n')
-    if res and res.binary_score == 'yes':
-      docs_to_use.append({'MSG_ID': msg_id, 'FULL_CONTEXT': msg_context, 'METADATA': metadata})
-
-  # ******************* STEP 4: Generate Result *******************
-  generation = res_rag_chain.invoke({"conversations":format_docs(docs_to_use), "question": question})
-
-  # ******************* STEP 5: Check for hallucination *******************
-  hallucination_response = hallucination_grader.invoke({"documents": format_docs(docs_to_use), "generation": generation})
-  hallucination_code = 'UNK'
-  if hallucination_response:
-    hallucination_code = hallucination_response.binary_score
-
-  # ******************* STEP 6: Highlight quotes *******************
-  lookup_response = doc_lookup.invoke(
-    {"conversations": format_docs(docs_to_use), "question": question, "generation": generation}
-  )
-
-  if lookup_response:
-    for id, source, segment in zip(lookup_response.Source, lookup_response.Content, lookup_response.Segment):
-      id_match = -1
-      for i in range(len(docs_to_use)):
-        if docs_to_use[i]['MSG_ID'] == id:
-          id_match = i
-          break
-      if id_match == -1:
-        continue
-
-      docs_to_use[id_match]['FULL_CONTEXT'] = highlight_segment(source, segment)
-      for doc_i_md in docs_to_use[id_match]['METADATA']:
-        doc_i_md['MESSAGE'] = highlight_segment(doc_i_md['MESSAGE'], segment)
-
-  return generation, hallucination_code, [doc['METADATA'] for doc in docs_to_use]
+def answer_user_question_sem_chunk_sq(question):
+  docs = retriever_summ.invoke(question)
+  return format_retrieved_docs(question, docs, retrieve_more_context_summ)
 
 def answer_user_question_sem_chunk(question):
-  # ******************* STEP 1: Retrieve Documents *******************
-  # Give LLM info about the metadata fields
-
-  docs = retriever_summ.invoke(question)
-
-  # ******************* STEP 2: Add more Context *******************
-  fuller_context = [
-    (doc.metadata['MSG_ID'],
-     retrieve_more_context_summ(doc.metadata['MSG_ID'], doc.metadata['PLATFORM'], doc.metadata['CHAT'],
-                                doc.metadata['CONTEXT_LEN'])
-    ) for doc in docs
-  ]
-
-  # ******************* STEP 3: Grade Document Relevancy *******************
-  # LLM with function call
-  structured_llm_grader = big_llm.with_structured_output(GradeDocuments)
-
-  retrieval_grader = grade_prompt | structured_llm_grader
-
-  docs_to_use = []
-
-  for (msg_id, msg_context, metadata) in fuller_context:
-    print(msg_context, '\n', '-' * 50)
-    res = retrieval_grader.invoke({"question": question, "document": msg_context})
-    print(res, '\n\n\n')
-    if res and res.binary_score == 'yes':
-      docs_to_use.append({'MSG_ID': msg_id, 'FULL_CONTEXT': msg_context, 'METADATA': metadata})
-
-  # ******************* STEP 4: Generate Result *******************
-  generation = res_rag_chain.invoke({"conversations":format_docs(docs_to_use), "question": question})
-
-  # ******************* STEP 5: Check for hallucination *******************
-  hallucination_response = hallucination_grader.invoke({"documents": format_docs(docs_to_use), "generation": generation})
-  hallucination_code = 'UNK'
-  if hallucination_response:
-    hallucination_code = hallucination_response.binary_score
-
-  # ******************* STEP 6: Highlight quotes *******************
-  lookup_response = doc_lookup.invoke(
-    {"conversations": format_docs(docs_to_use), "question": question, "generation": generation}
+  retriever = vector_db_summ.as_retriever(
+    search_type="similarity",
+    search_kwargs={'k': 10}
   )
-
-  if lookup_response:
-    for id, source, segment in zip(lookup_response.Source, lookup_response.Content, lookup_response.Segment):
-      id_match = -1
-      for i in range(len(docs_to_use)):
-        if docs_to_use[i]['MSG_ID'] == id:
-          id_match = i
-          break
-      if id_match == -1:
-        continue
-
-      docs_to_use[id_match]['FULL_CONTEXT'] = highlight_segment(source, segment)
-      for doc_i_md in docs_to_use[id_match]['METADATA']:
-        doc_i_md['MESSAGE'] = highlight_segment(doc_i_md['MESSAGE'], segment)
-
-  return generation, hallucination_code, [doc['METADATA'] for doc in docs_to_use]
+  docs = retriever.invoke(question)
+  return format_retrieved_docs(question, docs, retrieve_more_context_summ)
