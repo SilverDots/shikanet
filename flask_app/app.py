@@ -19,7 +19,7 @@ def try_date_ranges(query, today, answer_fn):
     end_dt = today
     for start_dt in get_filter_dates(today):
         generated_text, grounded_flag, metadata = answer_fn(query, start_dt, end_dt)
-        usefulness_flag = check_usefulness(generated_text, grounded_flag)
+        usefulness_flag = check_usefulness(query, generated_text)
         if usefulness_flag == 'yes':
             return generated_text, grounded_flag, metadata
     return "No messages match your query", "No", []
