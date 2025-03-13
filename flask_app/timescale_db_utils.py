@@ -18,10 +18,10 @@ COLLECTION_NAME = os.environ['TIMESCALE_COLLECTION_NAME']
 COLLECTION_NAME_SUMM = os.environ['TIMESCALE_COLLECTION_NAME_SUMM']
 
 from langchain_community.vectorstores.timescalevector import TimescaleVector
-from langchain_core.output_parsers import StrOutputParser
+from langchain_core.output_parsers import StrOutputParser, PydanticOutputParser
 from langchain_ollama import OllamaEmbeddings, ChatOllama
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
-from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
 from langchain_core.callbacks.manager import CallbackManagerForRetrieverRun
 from langchain_core.documents import Document
 from langchain.chains.query_constructor.base import AttributeInfo
@@ -142,8 +142,16 @@ def format_docs(docs):
     enumerate(docs)
   )
 
-# Prompts
-#   Grader
+def highlight_segment(source, segment, hl_start_symbol='**', hl_end_symbol='**'):
+  """
+  :param hl_start_symbol: '<mark>' recommended, '**' default
+  :param hl_end_symbol: '</mark>' recommended, '**' default
+  """
+  highlight_index = source.find(segment)
+  return source[:highlight_index] + hl_start_symbol + source[highlight_index:highlight_index + len(segment)] + hl_end_symbol + source[highlight_index + len(segment):] if highlight_index >= 0 else source
+
+### Prompts
+#   Relevance Grader
 class GradeDocuments(BaseModel):
   """Binary score for relevance check on retrieved documents."""
 
@@ -161,7 +169,7 @@ grade_prompt = ChatPromptTemplate.from_messages(
     ("human", "Retrieved document: \n\n {document} \n\n User question: {question}"),
   ]
 )
-#   Result
+#   Result Summarize
 result_system = """You are an assistant for question-answering tasks. Answer the question based upon the given conversation snippets.
 Use three-to-five sentences maximum and keep the answer concise."""
 result_prompt = ChatPromptTemplate.from_messages(
@@ -171,8 +179,74 @@ result_prompt = ChatPromptTemplate.from_messages(
     ]
 )
 
+#   Hallucination Checker
+class GradeHallucinations(BaseModel):
+  """Binary score for hallucination present in 'generation' answer."""
+
+  binary_score: str = Field(
+    ...,
+    description="Answer is grounded in the facts, 'yes' or 'no'"
+  )
+
+hallucination_system = """You are a grader assessing whether an LLM generation is grounded in / supported by a set of retrieved facts. \n
+Give a binary score 'yes' or 'no'. 'Yes' means that the answer is grounded in / supported by the set of facts."""
+hallucination_prompt = ChatPromptTemplate.from_messages(
+  [
+    ("system", hallucination_system),
+    ("human",
+     "Set of facts: \n\n <facts>{documents}</facts> \n\n LLM generation: <generation>{generation}</generation>"),
+  ]
+)
+
+#   Highlighter
+class HighlightDocuments(BaseModel):
+  """Return the specific part of a document used for answering the question."""
+
+  Source: List[str] = Field(
+    ...,
+    description="List of alphanumeric ID of docs used to answers the question"
+  )
+  Content: List[str] = Field(
+    ...,
+    description="List of complete conversation contexts that answers the question"
+  )
+  Segment: List[str] = Field(
+    ...,
+    description="List of pointed, direct segments from used documents that answer the question"
+  )
+
+highlight_parser = PydanticOutputParser(pydantic_object=HighlightDocuments)
+highlight_system = """You are an advanced assistant for document search and retrieval. You are provided with the following:
+1. A question.
+2. A generated answer based on the question.
+3. A set of conversation snippets that were referenced in generating the answer.
+
+Your task is to identify and extract the exact inline segments from the provided conversations snippets that directly correspond to the content used to
+generate the given answer. The extracted segments must be verbatim snippets from the conversations, ensuring a word-for-word match with the text
+in the provided conversations.
+
+Ensure that:
+- (Important) Each conversation is an exact match to a part of the document and is fully contained within the document text.
+- The relevance of each conversation to the generated answer is clear and directly supports the answer provided.
+- (Important) If you didn't used the specific conversation don't mention it.
+
+Used conversation snippets: <conv>{conversations}</conv> \n\n User question: <question>{question}</question> \n\n Generated answer: <answer>{generation}</answer>
+
+<format_instruction>
+{format_instructions}
+</format_instruction>
+"""
+
+highlight_prompt = PromptTemplate(
+  template=highlight_system,
+  input_variables=["conversations", "question", "generation"],
+  partial_variables={"format_instructions": highlight_parser.get_format_instructions()},
+)
+
 # Chains
 res_rag_chain = result_prompt | big_llm | StrOutputParser()
+hallucination_grader = hallucination_prompt | big_llm.with_structured_output(GradeHallucinations)
+doc_lookup = highlight_prompt | big_llm | highlight_parser
 
 # Retriever models
 def my_get_relevant_documents(self, query: str, *, run_manager: CallbackManagerForRetrieverRun) -> List[Document]:
@@ -277,7 +351,33 @@ def answer_user_question_timescale(question):
 
   # ******************* STEP 4: Generate Result *******************
   generation = res_rag_chain.invoke({"conversations":format_docs(docs_to_use), "question": question})
-  return generation, [doc['METADATA'] for doc in docs_to_use]
+
+  # ******************* STEP 5: Check for hallucination *******************
+  hallucination_response = hallucination_grader.invoke({"documents": format_docs(docs_to_use), "generation": generation})
+  hallucination_code = 'UNK'
+  if hallucination_response:
+    hallucination_code = hallucination_response.binary_score
+
+  # ******************* STEP 6: Highlight quotes *******************
+  lookup_response = doc_lookup.invoke(
+    {"conversations": format_docs(docs_to_use), "question": question, "generation": generation}
+  )
+
+  if lookup_response:
+    for id, source, segment in zip(lookup_response.Source, lookup_response.Content, lookup_response.Segment):
+      id_match = -1
+      for i in range(len(docs_to_use)):
+        if docs_to_use[i]['MSG_ID'] == id:
+          id_match = i
+          break
+      if id_match == -1:
+        continue
+
+      docs_to_use[id_match]['FULL_CONTEXT'] = highlight_segment(source, segment)
+      for doc_i_md in docs_to_use[id_match]['METADATA']:
+        doc_i_md['MESSAGE'] = highlight_segment(doc_i_md['MESSAGE'], segment)
+
+  return generation, hallucination_code, [doc['METADATA'] for doc in docs_to_use]
 
 def answer_user_question_ts_self_query(question):
   # ******************* STEP 1: Retrieve Documents *******************
@@ -354,10 +454,34 @@ def answer_user_question_ts_self_query(question):
       docs_to_use.append({'MSG_ID': msg_id, 'FULL_CONTEXT': msg_context, 'METADATA': metadata})
 
   # ******************* STEP 4: Generate Result *******************
-
-  # Run
   generation = res_rag_chain.invoke({"conversations":format_docs(docs_to_use), "question": question})
-  return generation, [doc['METADATA'] for doc in docs_to_use]
+
+  # ******************* STEP 5: Check for hallucination *******************
+  hallucination_response = hallucination_grader.invoke({"documents": format_docs(docs_to_use), "generation": generation})
+  hallucination_code = 'UNK'
+  if hallucination_response:
+    hallucination_code = hallucination_response.binary_score
+
+  # ******************* STEP 6: Highlight quotes *******************
+  lookup_response = doc_lookup.invoke(
+    {"conversations": format_docs(docs_to_use), "question": question, "generation": generation}
+  )
+
+  if lookup_response:
+    for id, source, segment in zip(lookup_response.Source, lookup_response.Content, lookup_response.Segment):
+      id_match = -1
+      for i in range(len(docs_to_use)):
+        if docs_to_use[i]['MSG_ID'] == id:
+          id_match = i
+          break
+      if id_match == -1:
+        continue
+
+      docs_to_use[id_match]['FULL_CONTEXT'] = highlight_segment(source, segment)
+      for doc_i_md in docs_to_use[id_match]['METADATA']:
+        doc_i_md['MESSAGE'] = highlight_segment(doc_i_md['MESSAGE'], segment)
+
+  return generation, hallucination_code, [doc['METADATA'] for doc in docs_to_use]
 
 def answer_user_question_sem_chunk(question):
   # ******************* STEP 1: Retrieve Documents *******************
@@ -389,7 +513,31 @@ def answer_user_question_sem_chunk(question):
       docs_to_use.append({'MSG_ID': msg_id, 'FULL_CONTEXT': msg_context, 'METADATA': metadata})
 
   # ******************* STEP 4: Generate Result *******************
-
-  # Chain
   generation = res_rag_chain.invoke({"conversations":format_docs(docs_to_use), "question": question})
-  return generation, [doc['METADATA'] for doc in docs_to_use]
+
+  # ******************* STEP 5: Check for hallucination *******************
+  hallucination_response = hallucination_grader.invoke({"documents": format_docs(docs_to_use), "generation": generation})
+  hallucination_code = 'UNK'
+  if hallucination_response:
+    hallucination_code = hallucination_response.binary_score
+
+  # ******************* STEP 6: Highlight quotes *******************
+  lookup_response = doc_lookup.invoke(
+    {"conversations": format_docs(docs_to_use), "question": question, "generation": generation}
+  )
+
+  if lookup_response:
+    for id, source, segment in zip(lookup_response.Source, lookup_response.Content, lookup_response.Segment):
+      id_match = -1
+      for i in range(len(docs_to_use)):
+        if docs_to_use[i]['MSG_ID'] == id:
+          id_match = i
+          break
+      if id_match == -1:
+        continue
+
+      docs_to_use[id_match]['FULL_CONTEXT'] = highlight_segment(source, segment)
+      for doc_i_md in docs_to_use[id_match]['METADATA']:
+        doc_i_md['MESSAGE'] = highlight_segment(doc_i_md['MESSAGE'], segment)
+
+  return generation, hallucination_code, [doc['METADATA'] for doc in docs_to_use]

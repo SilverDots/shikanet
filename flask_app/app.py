@@ -12,12 +12,13 @@ def generate_text_timescale():
     query = data.get('query', None)
 
     # Generate text using the language model
-    generated_text, metadata = answer_user_question_timescale(query)
+    generated_text, grounded_flag, metadata = answer_user_question_timescale(query)
 
     # Return the generated text as a JSON response
     return jsonify(
         {
             'response':generated_text,
+            'grounded': grounded_flag,
             'snippets':metadata
         }
     )
@@ -29,12 +30,13 @@ def generate_text_timescale_self_query():
     query = data.get('query', None)
 
     # Generate text using the language model
-    generated_text, metadata = answer_user_question_ts_self_query(query)
+    generated_text, grounded_flag, metadata = answer_user_question_ts_self_query(query)
 
     # Return the generated text as a JSON response
     return jsonify(
         {
             'response':generated_text,
+            'grounded': grounded_flag,
             'snippets':metadata
         }
     )
@@ -46,12 +48,13 @@ def generate_text_timescale_sem_chunk():
     query = data.get('query', None)
 
     # Generate text using the language model
-    generated_text, metadata = answer_user_question_sem_chunk(query)
+    generated_text, grounded_flag, metadata = answer_user_question_sem_chunk(query)
 
     # Return the generated text as a JSON response
     return jsonify(
         {
             'response':generated_text,
+            'grounded': grounded_flag,
             'snippets':metadata
         }
     )
