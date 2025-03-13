@@ -358,7 +358,17 @@ def check_usefulness(question, generation):
     {"question": question, "generation": generation})
   return usefulness_response.binary_score if usefulness_response else 'UNK'
 
+def no_docs_output():
+  """
+  What to return when no docs were found
+  :return:
+  """
+  return '', 'yes', []
+
 def format_retrieved_docs(question, docs, retrieve_more_context_fn):
+  if len(docs) == 0:
+    return no_docs_output()
+
   # ******************* STEP 2: Add more Context *******************
   fuller_context = [
     (
