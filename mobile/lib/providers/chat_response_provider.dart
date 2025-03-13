@@ -20,7 +20,7 @@ Future<String> chatResponse(Ref ref, String query) async {
   });
   // debug.log(body);
   var response = await http.post(
-    Uri.http('10.0.2.2:5000', '/generate'),
+    Uri.http('10.0.2.2:5000', '/generateTSSemChunk'),
     headers: {'Content-Type': 'application/json'},
     body: body
   );
