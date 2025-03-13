@@ -21,12 +21,36 @@ class ChatLog extends _$ChatLog {
 
   void addMessage(String msg, bool fromUser, DateTime requestTimestamp) async {
     state = [...state, Message(fromUser: fromUser, msg: msg, timestamp: requestTimestamp)];
-    String response = await ref.read(chatResponseProvider(msg).future);
+    Map<String, dynamic> response = await ref.read(chatResponseProvider(msg).future);
     Message lastMsg = state[state.length - 1];
     if (lastMsg.fromUser && lastMsg.msg == msg && lastMsg.timestamp == requestTimestamp) {
+      String answer = response['response'] as String;
+      answer = answer.trim();
+      if (answer[0] == '"' && answer[answer.length - 1] == '"') {
+        answer = answer.substring(1, answer.length - 1);
+      }
+      answer = answer
+        .replaceAll('\\"', '"')
+        .replaceAll('\\n', '\n');
+      
+      List<List<ResponseMessage>> responseSnippets = [];
+      var snippets = response['snippets'];
+      for (List<dynamic> snippet in snippets) {
+        List<ResponseMessage> snippetMessages = [];
+        for (Map<String, dynamic> rspMsg in snippet) {
+          snippetMessages.add(ResponseMessage.fromJson(rspMsg));
+        }
+        if (snippetMessages.isEmpty) {
+          continue;
+        }
+        responseSnippets.add(snippetMessages);
+      }
+
       state = [...state, Message(
         fromUser: false,
-        msg: response,
+        msg: answer,
+        respQuality: response['grounded'],
+        responseSnippets: responseSnippets,
         timestamp: DateTime.now(),
         rendered: lastMsg.rendered
       )];

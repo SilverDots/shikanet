@@ -232,7 +232,7 @@ class _FriendsEditPage extends ConsumerState<FriendsEditPage> {
           ),
         ],
         title: Text(
-          'Edit Friend Profile',
+          widget.friend == null ? 'Add Friend' : 'Edit Friend Profile',
           style: TextStyle(color: theme.colorScheme.onPrimaryContainer, fontWeight: FontWeight.bold))
       ),
       body: Padding(

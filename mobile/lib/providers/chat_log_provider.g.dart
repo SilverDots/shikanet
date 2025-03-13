@@ -6,7 +6,7 @@ part of 'chat_log_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$chatLogHash() => r'ff9a9900935b4666674c4dd2206d8d832786ddfa';
+String _$chatLogHash() => r'785ab6f1e597abd381221aa02a74bd2e8028232c';
 
 /// See also [ChatLog].
 @ProviderFor(ChatLog)

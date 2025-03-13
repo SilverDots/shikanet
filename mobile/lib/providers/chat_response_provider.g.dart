@@ -6,7 +6,7 @@ part of 'chat_response_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$chatResponseHash() => r'7e02972add7b82f2e67d6a9af9cc306eec93b611';
+String _$chatResponseHash() => r'f9226336b017fcabba42e5e2989dd2b727864e42';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -34,7 +34,7 @@ class _SystemHash {
 const chatResponseProvider = ChatResponseFamily();
 
 /// See also [chatResponse].
-class ChatResponseFamily extends Family<AsyncValue<String>> {
+class ChatResponseFamily extends Family<AsyncValue<Map<String, dynamic>>> {
   /// See also [chatResponse].
   const ChatResponseFamily();
 
@@ -72,7 +72,8 @@ class ChatResponseFamily extends Family<AsyncValue<String>> {
 }
 
 /// See also [chatResponse].
-class ChatResponseProvider extends AutoDisposeFutureProvider<String> {
+class ChatResponseProvider
+    extends AutoDisposeFutureProvider<Map<String, dynamic>> {
   /// See also [chatResponse].
   ChatResponseProvider(
     String query,
@@ -107,7 +108,7 @@ class ChatResponseProvider extends AutoDisposeFutureProvider<String> {
 
   @override
   Override overrideWith(
-    FutureOr<String> Function(ChatResponseRef provider) create,
+    FutureOr<Map<String, dynamic>> Function(ChatResponseRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -124,7 +125,7 @@ class ChatResponseProvider extends AutoDisposeFutureProvider<String> {
   }
 
   @override
-  AutoDisposeFutureProviderElement<String> createElement() {
+  AutoDisposeFutureProviderElement<Map<String, dynamic>> createElement() {
     return _ChatResponseProviderElement(this);
   }
 
@@ -144,13 +145,14 @@ class ChatResponseProvider extends AutoDisposeFutureProvider<String> {
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin ChatResponseRef on AutoDisposeFutureProviderRef<String> {
+mixin ChatResponseRef on AutoDisposeFutureProviderRef<Map<String, dynamic>> {
   /// The parameter `query` of this provider.
   String get query;
 }
 
 class _ChatResponseProviderElement
-    extends AutoDisposeFutureProviderElement<String> with ChatResponseRef {
+    extends AutoDisposeFutureProviderElement<Map<String, dynamic>>
+    with ChatResponseRef {
   _ChatResponseProviderElement(super.provider);
 
   @override

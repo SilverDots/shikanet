@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:shikanet/data/data.dart';
+import 'package:shikanet/pages/pages.dart';
 import 'package:shikanet/providers/providers.dart';
 import 'package:shikanet/widgets/widgets.dart';
 
@@ -13,30 +14,61 @@ class ChatBubbles extends ConsumerWidget {
     List<Message> chatLog = ref.watch(chatLogProvider);
     var theme = Theme.of(context);
 
-    Widget generateBubble(Message msg, BorderRadius br, Color bgColor, Color textColor) {
+    Widget generateBubble(Message msg, String? query, BorderRadius br, Color bgColor, Color textColor) {
       return Flexible(
         flex: 3,
-        child: Container(
-          decoration: BoxDecoration(
-            color: bgColor,
-            borderRadius: br
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: msg.fromUser ? 
-              Text(msg.msg, style: TextStyle(color: textColor))
-              :
-              MarkdownBody(
-                data: msg.msg,
-                shrinkWrap: true,
-                styleSheet: MarkdownStyleSheet(
-                  p: TextStyle(color: textColor),
-                  listBullet: TextStyle(color: theme.colorScheme.onSurface),
-                  code: TextStyle(color: theme.colorScheme.onSurface)
-                ),
-              )
+        child: msg.fromUser ?
+          Container(
+            decoration: BoxDecoration(
+              color: bgColor,
+              borderRadius: br
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(msg.msg, style: TextStyle(color: textColor))
+            )
           )
-        )
+          :
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: bgColor,
+                  borderRadius: br
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: MarkdownBody(
+                    data: msg.msg,
+                    shrinkWrap: true,
+                    styleSheet: MarkdownStyleSheet(
+                      p: TextStyle(color: textColor),
+                      listBullet: TextStyle(color: theme.colorScheme.onSurface),
+                      code: TextStyle(color: theme.colorScheme.onSurface)
+                    ),
+                  )
+                )
+              ),
+              if (query != null && msg.responseSnippets != null)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: HighlightableText(
+                    text: 'Details',
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder:(context) => ChatSource(
+                          question: query,
+                          answer: msg.msg,
+                          quality: msg.respQuality!,
+                          snippets: msg.responseSnippets!
+                        ),
+                      ));
+                    }
+                  ),
+                )
+            ],
+          )
       );
     }
 
@@ -48,14 +80,18 @@ class ChatBubbles extends ConsumerWidget {
       
       // Process the log messages in reverse because the ListView
       // in the build() method will reverse them again.
-      for (Message m in log.reversed.toList()) {
+      // List<Message> reversedLog = log.reversed.toList();
+      for (int idx = log.length - 1; idx >= 0; idx--) {
+        Message m = log[idx];
         Widget child1 = m.fromUser ? Spacer() : generateBubble(
           m,
+          idx != 0 ? log[idx - 1].msg : null,
           appMessageBorder,
           theme.colorScheme.surfaceContainerHighest,
           theme.colorScheme.onSurface);
         Widget child2 = m.fromUser ? generateBubble(
           m,
+          null,
           userMessageBorder,
           theme.colorScheme.primary,
           theme.colorScheme.onPrimary) : Spacer();

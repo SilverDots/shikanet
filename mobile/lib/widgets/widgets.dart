@@ -15,3 +15,4 @@ export 'full_width_button.dart';
 export 'settings_heading.dart';
 export 'color_grid_sample.dart';
 export 'friend_detail_card.dart';
+export 'highlightable_text.dart';

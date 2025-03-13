@@ -46,7 +46,11 @@ class _AnimatedCardButtonState extends State<AnimatedCardButton> {
           decoration: BoxDecoration(
             borderRadius: widget.borderRadius ?? BorderRadius.circular(12),
             color: selected ?
-              widget.highlightColor ?? theme.colorScheme.secondaryFixedDim
+              widget.highlightColor ?? 
+                (theme.brightness == Brightness.light ?
+                  theme.colorScheme.secondaryFixed
+                  :
+                  theme.colorScheme.onSecondaryFixedVariant)
               :
               widget.backgroundColor ?? theme.colorScheme.secondaryContainer,
             boxShadow: [
