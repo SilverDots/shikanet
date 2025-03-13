@@ -33,7 +33,7 @@ class ChatSource extends StatelessWidget {
       String platform = snippet[0].platform;
       String chat = snippet[0].chat.substring(5);
       children.add(Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        padding: const EdgeInsets.only(top: 20.0),
         child: Row(
           children: [
             Expanded(
@@ -176,7 +176,7 @@ class ChatSource extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20.0),
+            padding: const EdgeInsets.only(top: 20.0),
             child: Row(
               children: [
                 Expanded(
