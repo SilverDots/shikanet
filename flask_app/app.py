@@ -15,23 +15,23 @@ def get_filter_dates(today):
         today-timedelta(days=365*7), today-timedelta(days=365*10), datetime(2000, 1, 1)
     ]
 
-def try_date_ranges(query, today, answer_fn):
+def try_date_ranges(query, today, answer_fn, user_aliases, friend_aliases):
     end_dt = today
     for start_dt in get_filter_dates(today):
-        generated_text, grounded_flag, metadata = answer_fn(query, start_dt, end_dt)
+        generated_text, grounded_flag, metadata = answer_fn(query, start_dt, end_dt, user_aliases, friend_aliases)
         usefulness_flag = check_usefulness(query, generated_text)
         if usefulness_flag == 'yes':
             return generated_text, grounded_flag, metadata
     return "No messages match your query", "No", []
 
-def get_response(query, answer_fn):
+def get_response(query, answer_fn, user_aliases, friend_aliases):
     start_dt = datetime(2000, 1, 1)
     end_dt = datetime.now().replace(hour=23, minute=59, second=59, microsecond=999)
 
     if query.lower().find('recent') >= 0:
-        return try_date_ranges(query, end_dt, answer_fn)
+        return try_date_ranges(query, end_dt, answer_fn, user_aliases, friend_aliases)
     else:
-        return answer_fn(query, start_dt, end_dt)
+        return answer_fn(query, start_dt, end_dt, user_aliases, friend_aliases)
 
 def get_default_user():
     return {
@@ -48,14 +48,17 @@ def get_default_friends():
         }
     ]
 
-def get_user_friend_aliases(user_info, friend_info):
+def get_user_friend_aliases(user_info, friends_info):
     user_aliases = {
         f'@{user_info["phone"]}' : f'{user_info["firstName"]} {user_info["lastName"]}',
         user_info["discordID"] : f'{user_info["firstName"]} {user_info["lastName"]}'
     }
     friend_aliases = {}
-    for f_id, friend in friend_info.items():
-        friend_aliases.update({friend["discordID"] : f'{friend["firstName"]} {friend["lastName"]}'})
+    for friend_info in friends_info:
+        for f_id, friend in friend_info.items():
+            for platform_name in friend.keys():
+                if platform_name not in {'firstName', 'lastName'}:
+                    friend_aliases.update({friend[platform_name] : f'{friend["firstName"]} {friend["lastName"]}'})
     return user_aliases, friend_aliases
 
 @app.route('/generateTimeScale', methods=['POST'])

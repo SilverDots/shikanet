@@ -50,7 +50,6 @@ ret_llm = ChatGoogleGenerativeAI(
 )
 
 embed_model = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
-chunk_embed_model = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
 
 vector_db = TimescaleVector(
   collection_name=COLLECTION_NAME,
@@ -58,6 +57,7 @@ vector_db = TimescaleVector(
   embedding=embed_model,
 )
 
+print('COLLECTION_NAME_SUMM', COLLECTION_NAME_SUMM)
 vector_db_summ = TimescaleVector(
     collection_name=COLLECTION_NAME_SUMM,
     service_url=os.environ['TIMESCALE_SERVICE_URL'],
@@ -93,12 +93,11 @@ def highlight_segment(source, segment, hl_start_symbol='**', hl_end_symbol='**')
   highlight_index = source.find(segment)
   return source[:highlight_index] + hl_start_symbol + source[highlight_index:highlight_index + len(segment)] + hl_end_symbol + source[highlight_index + len(segment):] if highlight_index >= 0 else source
 
-def replace_aliases(str_val, user_aliases, friend_aliases):
+def replace_aliases(df, str_col, user_aliases, friend_aliases):
   for alias, name in user_aliases.items():
-    str_val = str_val.replace(alias, name)
+    df[str_col] = df[str_col].str.replace(alias, name)
   for alias, name in friend_aliases.items():
-    str_val = str_val.replace(alias, name)
-  return str_val
+    df[str_col] = df[str_col].str.replace(alias, name)
 
 ### Context retrieval functions
 def retrieve_more_context(data, msg_id, platform, chat, user_aliases, friend_aliases, n_addl_msgs=10):
@@ -122,8 +121,8 @@ def retrieve_more_context(data, msg_id, platform, chat, user_aliases, friend_ali
   context_lo = max(chat_hist.index[0], msg_info.index[0] - n_addl_msgs)
   context_hi = min(chat_hist.index[-1], msg_info.index[0] + n_addl_msgs)
 
-  within_context_df = data[(data.index >= context_lo)&(data.index <= context_hi)].copy()
-  within_context_df['MESSAGE'].apply(partial(replace_aliases, user_aliases=user_aliases, friend_aliases=friend_aliases))
+  within_context_df = data[(data.index >= context_lo) & (data.index <= context_hi)].copy()
+  replace_aliases(within_context_df, 'MESSAGE', user_aliases, friend_aliases)
   within_context_df['VERBOSE'] = within_context_df['DATETIME'].dt.strftime('%A %B %d, %Y %H:%M') + '\t' + \
                                  within_context_df['SENDER'] + ' ~ ' + within_context_df['MESSAGE']
 
@@ -157,8 +156,8 @@ def retrieve_more_context_summ(data, msg_id, platform, chat, user_aliases, frien
   context_lo = max(chat_hist.index[0], msg_info.index[0] - n_addl_msgs)
   context_hi = min(chat_hist.index[-1], msg_info.index[0] + context_len + n_addl_msgs)
 
-  within_context_df = data[(data.index >= context_lo)&(data.index <= context_hi)].copy()
-  within_context_df['MESSAGE'].apply(partial(replace_aliases, user_aliases=user_aliases, friend_aliases=friend_aliases))
+  within_context_df = data[(data.index >= context_lo) & (data.index <= context_hi)].copy()
+  replace_aliases(within_context_df, 'MESSAGE', user_aliases, friend_aliases)
   within_context_df['VERBOSE'] = within_context_df['DATETIME'].dt.strftime('%A %B %d, %Y %H:%M') + '\t' + within_context_df['SENDER'] + ' ~ ' + within_context_df['MESSAGE']
 
   return within_context_df['VERBOSE'].str.cat(sep='\n'), get_metadata_dict(within_context_df)
@@ -294,7 +293,7 @@ def my_get_relevant_documents(self, query: str, *, run_manager: CallbackManagerF
     {"query": query}, config={"callbacks": run_manager.get_child()}
   )
   if self.verbose:
-    logger.info(f"Generated Query: {structured_query}")
+    print(f"Generated Query: {structured_query}")
   new_query, search_kwargs = self._prepare_query(query, structured_query)
   # ################# BEGIN: MY INTRODUCTION #################
   # Double the requested message count, and return at least 10
@@ -303,7 +302,7 @@ def my_get_relevant_documents(self, query: str, *, run_manager: CallbackManagerF
   if search_kwargs['k'] < 10:
     search_kwargs['k'] = 10
   if self.verbose:
-    logger.info(f"Final Query: {new_query} with args {search_kwargs}")
+    print(f"Final Query: {new_query} with args {search_kwargs}")
   # #################  END: MY INTRODUCTION  #################
   docs = self._get_docs_with_query(new_query, search_kwargs)
   return docs
@@ -384,7 +383,7 @@ def format_retrieved_docs(question, docs, retrieve_more_context_fn, user_aliases
   fuller_context = [
     (
       doc.metadata['MSG_ID'],
-      *retrieve_more_context_fn(data, doc.metadata['MSG_ID'], doc.metadata['PLATFORM'], doc.metadata['CHAT'])
+      *retrieve_more_context_fn(data, doc.metadata['MSG_ID'], doc.metadata['PLATFORM'], doc.metadata['CHAT'], user_aliases, friend_aliases)
     )
     for doc in docs
   ]
