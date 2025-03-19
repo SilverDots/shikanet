@@ -1,0 +1,92 @@
+[
+  {
+    "question": "Who requested someone to let them in on February 24th, 2024?",
+    "answer": "Zareef Amyeen",
+    "messages": [
+      "SENDER: Zareef Amyeen | MESSAGE: @14255353544 can you let me in when i get there | DATETIME: 2/24/24 5:32 PM"
+    ],
+    "message_summary": "Zareef Amyeen requests to be let in upon arrival on February 24th, 2024."
+  },
+  {
+    "question": "Who apologized for eating Pujan's pizza on April 6, 2024?",
+    "answer": "Shridhar Sinha",
+    "messages": [
+      "SENDER: Shridhar Sinha | MESSAGE: Thanks for coming gentlemen Sorry for eating your pizza pujan Dawg who tuned my guitar to open D# | DATETIME: 4/6/24 12:03 PM"
+    ],
+    "message_summary": "Shridhar Sinha apologized to Pujan for eating his pizza."
+  },
+  {
+    "question": "Who removed someone from the chat before 4/23/24 at 1:44 PM?",
+    "answer": "Aaryaman Chakravarthi",
+    "messages": [
+      "SENDER: Aaryaman Chakravarthi | MESSAGE: Man had the audacity to talk some absolute jackshit after getting removed once | DATETIME: 4/23/24 1:44 PM"
+    ],
+    "message_summary": "Aaryaman mentions someone talking trash after being removed from the chat, implying he had previously removed them."
+  },
+  {
+    "question": "Did the Mexican store near Sahil Singhvi's place have sugarcane juice on 4/25/24?",
+    "answer": "No",
+    "messages": [
+      "SENDER: Krishna Saxena | MESSAGE: @12065325725 does the Mexican store near your place have sugarcane juice? | DATETIME: 4/25/24 5:01 PM",
+      "SENDER: Sahil Singhvi | MESSAGE: nah they don\u2019t | DATETIME: 4/25/24 6:57 PM"
+    ],
+    "message_summary": "Krishna Saxena asked Sahil Singhvi if the Mexican store near his place has sugarcane juice on 4/25/24, and Sahil replied that they don't."
+  },
+  {
+    "question": "When is Zareef Amyeen's IM game?",
+    "answer": "On 5/3/24 at 7 PM",
+    "messages": [
+      "SENDER: Zareef Amyeen | MESSAGE: oh yeah if y'all are not doing anything at 7 come support me at my IM game (we're gonna get cooked)\nit's at the same place we place soccer | DATETIME: 5/3/24 5:16 PM"
+    ],
+    "message_summary": "Zareef Amyeen invites friends to support him at his IM game on May 3rd, 2024, at 7 PM."
+  },
+  {
+    "question": "Who claimed to be the other guy in the chat on May 7, 2024?",
+    "answer": "Shridhar Sinha",
+    "messages": [
+      "SENDER: Soham Raut | MESSAGE: His instagram story goes so hard | DATETIME: 5/7/24 8:50 PM",
+      "SENDER: Arya GJ | MESSAGE: wtf I didn\u2019t know he was violent like that | DATETIME: 5/7/24 8:51 PM",
+      "SENDER: Soham Raut | MESSAGE: You should see the other guy lol | DATETIME: 5/7/24 8:52 PM",
+      "SENDER: Aaryaman Chakravarthi | MESSAGE: <Media omitted> | DATETIME: 5/7/24 8:52 PM",
+      "SENDER: Arya GJ | MESSAGE: I\u2019m sure he had all his teeth | DATETIME: 5/7/24 8:52 PM",
+      "SENDER: Aaryaman Chakravarthi | MESSAGE: Prolly beat the shit out of lil Ali | DATETIME: 5/7/24 8:53 PM",
+      "SENDER: Shridhar Sinha | MESSAGE: I'm the other guy | DATETIME: 5/7/24 8:57 PM"
+    ],
+    "message_summary": "Shridhar Sinha claimed to be the 'other guy' in a conversation about a violent incident discussed on May 7, 2024."
+  },
+  {
+    "question": "What does the race pack contain?",
+    "answer": "bib + 2 pins + a free shirt",
+    "messages": [
+      "SENDER: Arya GJ | MESSAGE: Tentative\nCan others pick up the race pack? | DATETIME: 5/10/24 4:05 PM",
+      "SENDER: Krishna Saxena | MESSAGE: bib + 2 pins + a free shirt | DATETIME: 5/10/24 4:55 PM"
+    ],
+    "message_summary": "Krishna Saxena describes the contents of the race pack."
+  },
+  {
+    "question": "Who beat Zareef in a best of 7 on 5/9/24?",
+    "answer": "Pujan Patel",
+    "messages": [
+      "SENDER: Pujan Patel | MESSAGE: I literally beat Zareef best of 7 yesterday | DATETIME: 5/10/24 8:51 PM"
+    ],
+    "message_summary": "Pujan Patel mentions beating Zareef in a best of 7 game the day before May 10, 2024."
+  },
+  {
+    "question": "Who graduated and left UW last year?",
+    "answer": "Ajay",
+    "messages": [
+      "SENDER: Arya GJ | MESSAGE: Oh Ajay \ud83d\ude02\ud83d\ude02\\nYeah idky he\u2019s still in the group coz he graduated and left UW last year | DATETIME: 5/17/24 4:58 PM"
+    ],
+    "message_summary": "Arya shares that Ajay has graduated and left the University of Washington last year, but questions why he is still in the group."
+  },
+  {
+    "question": "When does the event Sahil Singhvi was invited to end on 5/21/24?",
+    "answer": "At 7:30 PM.",
+    "messages": [
+      "SENDER: Maanav Agraval | MESSAGE: sahil you should come now | DATETIME: 5/21/24 6:35 PM",
+      "SENDER: Sahil Singhvi | MESSAGE: when does it end | DATETIME: 5/21/24 6:36 PM",
+      "SENDER: Shridhar Sinha | MESSAGE: 730 | DATETIME: 5/21/24 6:36 PM"
+    ],
+    "message_summary": "Sahil asks about the end time of an event, and Shridhar replies it ends at 7:30 PM."
+  }
+]

@@ -1,0 +1,759 @@
+[
+  {
+    "score": 2,
+    "reasoning": "The model's response correctly identifies that Zareef found the main group chat to be saturated, correlating it to the need for a secondary chat. However, the additional details (Soham's suggestion) are not substantiated by the ground-truth information or supporting messages, which only focus on the saturation aspect. While the response captures part of the reason for creating a secondary chat (the chat being crowded), the additional information reflects assumptions not present in the provided messages.",
+    "model_answer": "Zareef mentioned that the big chat has been saturated. This was the reason for creating a group chat of a group chat. Soham then suggested that they can talk about everyone else in the new group chat.",
+    "question": "Why was the big chat described as saturated by Zareef?",
+    "ground_truth": "The message suggests that the main group chat was crowded or full, leading to the creation of a secondary chat for more open conversation.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Zareef Amyeen | MESSAGE: since the big chat has lowk been saturated | DATETIME: 2/24/24 5:30 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response incorrectly identifies Krishna Saxena as the person who finished their homework without eating, whereas the ground truth clearly identifies Aaryaman Chakravarthi as the correct person. Additionally, the date and context provided in the model response do not align with the ground truth, leading to an incorrect conclusion.",
+    "model_answer": "On Tuesday, October 19, 2021, Krishna Saxena stated that they had finished their homework. Later, Papa asked if Krishna was done with dinner, to which Krishna replied no. This indicates that Krishna had completed their homework before having dinner.",
+    "question": "Who expressed having finished their homework without eating any food?",
+    "ground_truth": "Aaryaman Chakravarthi said he just finished his homework without eating any food.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aaryaman Chakravarthi | MESSAGE: No food\nI just finished hw | DATETIME: 4/26/24 10:08 PM"
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model response partially reflects the ground-truth information. It correctly identifies Zareef Amyeen as the person who invited everyone to an event. However, it misplaces the context by mentioning two separate events (a soccer game and a football game) instead of specifically focusing on the IM game Zareef wanted support for. It lacks the direct reference to the IM game from the ground-truth answer and supporting messages. Despite this, the model picks up on the act of inviting people to a game, maintaining overall relevance, which is why it earns a partial score.",
+    "model_answer": "Zareef Amyeen invited everyone to play soccer on Friday, February 16, 2024. He also invited people to a Husky football game on a separate occasion. He offered tickets for $35 each and recommended that people attend the game.",
+    "question": "Who invited everyone to support them at their game?",
+    "ground_truth": "Zareef Amyeen invited everyone to support him at his IM game.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Zareef Amyeen | MESSAGE: I love people who test limits for science. Oh yeah, if y'all are not doing anything at 7, come support me at my IM game (we're gonna get cooked). It's at the same place we play soccer | DATETIME: 5/3/24 5:16 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response indicates a lack of knowledge about who invited people to Hamza's performance. The ground truth clearly states it was Aaryaman Chakravarthi. Therefore, the model's response is incorrect.",
+    "model_answer": "I'm sorry, but I lack the information to answer who invited people to Hamza's performance.",
+    "question": "Who invited people to Hamza's performance?",
+    "ground_truth": "Aaryaman Chakravarthi",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aaryaman Chakravarthi | MESSAGE: We invited to hamzas performance | DATETIME: 5/9/24 3:42 PM"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model's response accurately reflects the ground-truth answer that Ajay left UW after graduating last year. It directly references information provided by Arya GJ, which matches the supporting message. Despite the inclusion of additional context, such as Arya's questioning why Ajay is still in the group, this information is consistent with the content and does not introduce any inaccuracies.",
+    "model_answer": "Ajay left UW last year after graduating, according to Arya GJ. She mentions that she doesn't know why he's still in the group. This is because he graduated and left UW last year.",
+    "question": "Who left UW last year after graduating?",
+    "ground_truth": "Ajay left UW last year after graduating.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Arya GJ | MESSAGE: Oh Ajay \ud83d\ude02\ud83d\ude02 Yeah idky he\u2019s still in the group coz he graduated and left UW last year | DATETIME: 5/17/24 4:58 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is incorrect because it failed to identify the location where Soham Raut planned to print Pujan Patel's request. The correct answer, as supported by the ground-truth, specifies the CSE department. The model incorrectly assumed that there was no available information, which indicates a misunderstanding of the messages provided.",
+    "model_answer": "I am sorry, but I cannot answer the question because there is no information about Soham Raut or Pujan Patel in the given context.",
+    "question": "Where did Soham Raut plan to print Pujan Patel's request?",
+    "ground_truth": "At the CSE department.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Pujan Patel | MESSAGE: Will anyone be able to print for me some time today? | DATETIME: 5/28/24 11:07 AM",
+      "SENDER: Soham Raut | MESSAGE: when do you want it | DATETIME: 5/28/24 11:07 AM",
+      "SENDER: Pujan Patel | MESSAGE: Any time before 3 pm would be nice? | DATETIME: 5/28/24 11:07 AM",
+      "SENDER: Soham Raut | MESSAGE: I'm heading to cse rn, i can do it | DATETIME: 5/28/24 11:21 AM"
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model response is partially correct but contains ambiguity. It captured the key point that Maanav Agraval received a text inviting him to the match, aligning with the ground-truth. However, it introduced additional information about Krishna Saxena and did not explicitly confirm attendance, which was expected based on the prompt format. This additional detail neither confirms nor denies attendance and adds unexplained context.",
+    "model_answer": "Maanav Agraval was asked by his friend if he would go to the New York stadium to watch the match between Oman and Scotland. Krishna Saxena also inquired about the match ticket prices. It is not explicitly stated whether either of them will attend.",
+    "question": "Who is attending the cricket match between Oman and Scotland?",
+    "ground_truth": "Maanav Agraval received a text asking if he'll go to the New York stadium for the match.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Maanav Agraval | MESSAGE: woke up this morning to my friend\u2019s text asking if i\u2019ll go to the new york stadium to watch \u201cexciting matches such as oman vs scotland\u201d",
+      "DATETIME: 6/2/24 5:43 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response indicates that it cannot provide an answer due to lack of context, while the ground truth clearly states that 'Shwid and gang were in Safeway' according to Aaryaman Chakravarthi. The model's response does not align with the ground truth, making it incorrect.",
+    "model_answer": "I am sorry, but I do not have the context of any conversation to answer your question.",
+    "question": "Who was in Safeway according to Aaryaman Chakravarthi?",
+    "ground_truth": "Shwid and gang were in Safeway.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aaryaman Chakravarthi | MESSAGE: Wait I don\u2019t have my keys. Shwid and gang are in Safeway | DATETIME: 6/4/24 12:16 AM"
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model response is partially correct as it identifies the correct individual, Aaryaman Chakravarthi, whom Krishna considers perfect. However, the response incorrectly assumes that the statement made by Krishna is directed to an actual named person rather than using the phrase generically. Additionally, it provides context about Aaryaman's comment about the sport, which is not supported by the ground-truth supporting messages. While the primary information aligns with the idea that Krishna thinks someone is perfect, the erroneously added assumption about Aaryaman and the unsupported context regarding the interaction affects the completeness and accuracy of the response.",
+    "model_answer": "Krishna Saxena thinks Aaryaman Chakravarthi is perfect. This is based on Krishna's response to Aaryaman's comment about the sport being \"shit.\" Krishna replies to Aaryaman by saying \"Only you are perfect bb\".",
+    "question": "Who does Krishna think is perfect?",
+    "ground_truth": "Krishna tells someone 'Only you are perfect bb'.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Krishna Saxena | MESSAGE: Only you are perfect bb | DATETIME: 6/16/24 8:30 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response states it lacks enough context, but the ground truth confirms Krisha left his wallet at Stevens without any specific person involved. The model did not provide any answer or relevant information.",
+    "model_answer": "I am sorry, but I do not have the context to answer your question. There was no conversation provided.",
+    "question": "Who did Krishna forget his wallet at Stevens with?",
+    "ground_truth": "No one in particular, Krishna just mentioned he left his wallet at Stevens.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Krishna Saxena | MESSAGE: Shit, forgot my wallet at Stevens. I'll see y'all at cap hill",
+      "DATETIME: 6/28/24 7:50 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response did not provide any information about the location of the track that Sahil Singhvi and the group are planning to visit. The ground-truth answer specified 'In Kent,' which the model failed to identify or mention. The model claimed it lacked context, resulting in an incorrect response.",
+    "model_answer": "I am sorry, but I do not have the context to answer your question. There was no conversation provided.",
+    "question": "Where is the track that Sahil Singhvi and the group are planning to visit?",
+    "ground_truth": "In Kent",
+    "ground_truth_supporting_messages": [
+      "SENDER: Sahil Singhvi | MESSAGE: yeah it\u2019s in kent | DATETIME: 7/28/24 5:06 PM"
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model response correctly identifies that Krishna Saxena is the person who inquired about sports-related activity. However, it incorrectly states the timeframe as April 19, 2024, rather than aligning with the provided message dated August 3, 2024, and fails to specifically mention the context of watching sports. It adds potentially incorrect information about playing cricket without sufficient evidence from the supporting messages, introducing some errors and omissions. Thus, the score is 2.",
+    "model_answer": "Krishna Saxena asked about playing cricket tonight in the WA_Intramural Athletics_886 chat. This occurred on Friday, April 19, 2024, at 15:37. It is unknown if they were planning on watching or playing cricket.",
+    "question": "Who asked about watching sports tonight?",
+    "ground_truth": "Krishna Saxena",
+    "ground_truth_supporting_messages": [
+      "SENDER: Krishna Saxena | MESSAGE: Does anyone want to watch \ud83c\udff8/\ud83c\udfd1 tonight? | DATETIME: 8/3/24 2:23 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model failed to find the relevant information about Krishna not being able to join the football game due to his flight boarding at 8 PM. This information was present in the ground truth, but the model did not identify or acknowledge it, resulting in an incorrect evaluation.",
+    "model_answer": "There is no information about Krishna or a football game in the provided context. Therefore, I cannot answer the question.",
+    "question": "Why couldn't Krishna join the football game on August 15th?",
+    "ground_truth": "Krishna's flight boarded at 8 PM, so he was probably out of luck.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Krishna Saxena | MESSAGE: My flight out boards at 8, probably out of luck :(",
+      "SENDER: Aaryaman Chakravarthi | MESSAGE: Elooo brathars Tmr football ? | DATETIME: 8/15/24 8:13 PM",
+      "SENDER: Shridhar Sinha | MESSAGE: In | DATETIME: 8/15/24 8:21 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response states that it lacks the context to provide an answer, which is incorrect. The ground-truth answer clearly identifies that Shridhar Sinha and Chris are planning one last Warzone match as supported by the message from Aaryaman Chakravarthi. Therefore, the model provided no relevant information in its response.",
+    "model_answer": "I am sorry, but I do not have the context to answer your question.",
+    "question": "Who is planning one last Warzone match?",
+    "ground_truth": "Shridhar Sinha and Chris.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aaryaman Chakravarthi | MESSAGE: Goat\nSo looks like shwid and Chris are tryna war zone this mf for the last time\nI feel like I\u2019m retired hurt | DATETIME: 9/23/24 11:02 AM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model's response indicates a future meeting plan between Aaryaman and Mr. Mufti and highlights that the location of the meeting is unspecified. However, the ground-truth answer specifies that the meeting was for lunch, with the supporting messages implying the meeting has occurred. The answer provided by the model is factually incorrect, as it does not confirm that Aaryaman met Mr. Mufti for lunch, which is the information prompted.",
+    "model_answer": "Aaryaman is planning on meeting Mr. Mufti tomorrow for lunch. Shridhar Sinha wishes he could come, but Aaryaman says they had a sweet conversation. Soham Raut saw Mr. Mufti yesterday. The location of the meeting is not mentioned.",
+    "question": "Where did Aaryaman meet Mr. Mufti?",
+    "ground_truth": "Aaryaman met Mr. Mufti for lunch.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aaryaman Chakravarthi | MESSAGE: Who wants to meet the fucker Mr mufti tmr We\u2019re prolly getttung lunch | DATETIME: 9/25/24 2:32 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response states that the question cannot be answered from the given source, which is incorrect. The ground truth indicates that Chris Hunt was almost there to meet Aaryaman Chakravarthi on October 3rd. The supporting messages clearly show a conversation indicating Aaryaman Chakravarthi is who Chris Hunt was meeting, thus the answer can be derived from the given source.",
+    "model_answer": "This question cannot be answered from the given source.",
+    "question": "Who did Chris Hunt say he was almost there to meet on October 3rd?",
+    "ground_truth": "Aaryaman Chakravarthi",
+    "ground_truth_supporting_messages": [
+      "SENDER: Chris Hunt | MESSAGE: Ok sick I\u2019ll be there right around then too | DATETIME: 10/3/24 12:27 PM",
+      "SENDER: Chris Hunt | MESSAGE: Damn Almost there | DATETIME: 10/3/24 12:39 PM",
+      "SENDER: Aaryaman Chakravarthi | MESSAGE: Ya get here quick | DATETIME: 10/3/24 12:39 PM",
+      "SENDER: Aaryaman Chakravarthi | MESSAGE: I\u2019m in line with Chris | DATETIME: 10/3/24 12:43 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model's response incorrectly identifies Soham Raut as the person who wanted to meet and provides incorrect timing for the meeting, along with irrelevant information about another person's plan. The actual ground-truth identifies Pujan Patel as the individual wanting to meet at 4:30. The response does not align with the ground-truth answer or the supporting message and therefore receives a score of 1.",
+    "model_answer": "Soham Raut wanted to meet outside of the CS building on Wednesday, October 16, 2024, around 2:38 PM. Zareef Amyeen said he would meet them there because he would be at his apartment. He suggested meeting in the center of the avenue near Chipotle.",
+    "question": "Who wanted to meet at the CS building around 4:30?",
+    "ground_truth": "Pujan Patel wanted to meet at the CS building around 4:30.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Pujan Patel | MESSAGE: Maybe \ud83d\udc40 Also whoever\u2019s eating with me, meet me at the cs building around 4:30 | DATETIME: 10/9/24 3:31 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response does not align with the ground truth. It suggests uncertainty about taking a class with Hannah Tang and related assignments, which contradicts the ground truth indicating uncertainty about finding the gradient and checking bounds of a region. The context provided shows no mention of Hannah Tang or related concerns in the ground truth supporting messages.",
+    "model_answer": "Zareef was uncertain about taking a class with Hannah Tang, as he heard negative things about it. He was also concerned about the difficulty and length of assignments in her class. However, Soham Raut tried to reassure him that the class was okay.",
+    "question": "What was Zareef uncertain about in the conversation?",
+    "ground_truth": "Zareef was uncertain about how to find the gradient and check the bounds of a region.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Zareef Amyeen | MESSAGE: so like.. what do i do with the region? i think i can just take the gradient and find when it's equal to the 0 vector but idk how to check the bounds | DATETIME: 10/21/24 7:30 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response indicates a lack of information, thus failing to identify the person who suggested buying tickets individually. The correct answer, supported by the provided message, is Maanav Agraval. Since the model did not provide any relevant information, it does not meet the criteria for partial or complete correctness.",
+    "model_answer": "I'm sorry, but I lack the information to answer your question. There was no conversation provided.",
+    "question": "Who suggested buying tickets individually?",
+    "ground_truth": "Maanav Agraval suggested buying tickets individually.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Maanav Agraval | MESSAGE: let\u2019s buy individually | DATETIME: 10/28/24 3:43 PM"
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model response is partially correct. It captures that Soham joked about going to a soccer field, which aligns with the ground truth. However, it misses a specific detail mentioned in the ground truth \u2014 that the soccer field is located at Green Lake. While the additional context about the conversation involving Zareef and Pujan is not incorrect, the omission of 'Green Lake' results in an incomplete answer based on the provided ground truth answer.",
+    "model_answer": "Soham joked about going to a soccer field. He mentioned this in a conversation with Zareef and Pujan. The conversation also involved a discussion about whether the field had lights.",
+    "question": "What location did Soham joke about going to?",
+    "ground_truth": "A soccer field at Green Lake.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Soham Raut | MESSAGE: It has a soccer field",
+      "SENDER: Soham Raut | MESSAGE: I was joking about going there but"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is incorrect as it failed to provide the information that Chris Hunt was present at fallfest, which is clearly stated in the ground-truth supporting messages. The response indicates a lack of context, but enough context was given in the provided messages to answer the question correctly.",
+    "model_answer": "I am sorry, but I do not have the context to answer your question.",
+    "question": "Who was present at fallfest?",
+    "ground_truth": "Chris Hunt attended fallfest.",
+    "ground_truth_supporting_messages": [
+      "Chris Hunt: Is anyone at fallfest yet | 11/22/24 5:18 PM",
+      "Soham Raut: Are you there | 11/22/24 5:28 PM",
+      "Chris Hunt: Not yet | 11/22/24 5:28 PM",
+      "Chris Hunt: I'm here | 11/22/24 5:47 PM",
+      "Soham Raut: Bet lmk I'll join you | 11/22/24 5:47 PM",
+      "Chris Hunt: There\u2019s a decent line | 11/22/24 5:47 PM"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model response accurately indicates that there is no available information specifying who received the first Happy New Year message from Maanav Agraval. This aligns with the ground-truth answer, which also states that the message was not directed to a specific individual. Thus, the model's answer is correct.",
+    "model_answer": "There is no information about who received the first Happy New Year message from Maanav Agraval in the provided context.",
+    "question": "Who received the first Happy New Year message from Maanav Agraval?",
+    "ground_truth": "The first Happy New Year message from Maanav Agraval was not directed to a specific individual in the conversation logs.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Maanav Agraval | MESSAGE: Happy New Year!! | DATETIME: 12/31/24 11:59 AM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is incorrect. It states that there is no information about who was supposed to be at Rituraj's apartment the night before the conversation; however, the ground-truth answer indicates that Shridhar Sinha confirmed their presence at Rituraj's apartment. The supporting messages also imply Shridhar Sinha's involvement. Therefore, the model failed to recognize the correct information.",
+    "model_answer": "There is no information about who was supposed to be at Rituraj's apartment the night before the conversation.",
+    "question": "Who was supposed to be at Rituraj's apartment the night before the conversation?",
+    "ground_truth": "Shridhar Sinha had confirmed the night before at Rituraj's apartment.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aaryaman Chakravarthi | MESSAGE: Bro u said it last night when I found u in Rituraj\u2019s apartment | DATETIME: 2/3/23 6:55 PM ",
+      "SENDER: Shridhar Sinha | MESSAGE: Don't speak on my behalf | DATETIME: 2/3/23 6:54 PM "
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is incorrect as it mentions a meeting date of February 24, 2024, which is inconsistent with the ground-truth that states they decided to meet at 8 pm in early April. Additionally, the supporting messages confirm the April timeframe, and no mentions of February 24 are present.",
+    "model_answer": "On Saturday, February 24, 2024, Shridhar Sinha and his friends decided to go to M. Zareef Amyeen suggested going to M instead of playing outdoors in the cold. Shridhar Sinha agreed to go to M.",
+    "question": "When did Shridhar Sinha and his friends decide to meet earlier in the year for their game?",
+    "ground_truth": "They decided to meet at 8 pm in early April.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Shridhar Sinha | MESSAGE: We are playing tomorrow.\\n@everyone pls make it | DATETIME: 3/30/23 7:57 PM",
+      "SENDER: Krishna Saxena | MESSAGE: 8pm? | DATETIME: 3/30/23 7:58 PM",
+      "SENDER: Shridhar Sinha | MESSAGE: Works for me | DATETIME: 3/30/23 7:58 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response indicates that it cannot provide an answer due to lack of access to relevant information, whereas the ground-truth answer clearly states 'West campus.' Thus, the model's response is incorrect as it fails to provide any answer when a specific answer is available in the ground-truth.",
+    "model_answer": "I'm sorry, but I do not have access to the conversation snippets. Therefore, I am unable to answer your question.",
+    "question": "Where was Aaryaman planning to leave from at 8:30?",
+    "ground_truth": "West campus.",
+    "ground_truth_supporting_messages": [
+      "Aaryaman Chakravarthi: He is running 30 miles | 4/28/23 5:28 PM",
+      "Maanav Agraval: he is driving car | 4/28/23 5:29 PM",
+      "Aaryaman Chakravarthi: Guys I will leave west campus at 8:30 | 4/28/23 7:19 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model did not provide the correct answer to the question. It stated a lack of context, while the ground-truth answer and supporting messages clearly point to 'one of Yash's roommates in Seattle.' Therefore, the model's response was incorrect.",
+    "model_answer": "I am sorry, but I do not have the context to answer your question. There was no conversation provided.",
+    "question": "Who was Yash talking about when talking about a lactose intolerant roommate?",
+    "ground_truth": "One of Yash's roommates in Seattle.",
+    "ground_truth_supporting_messages": [
+      "Yash | MESSAGE: One of my roommates when I was in Seattle few weeks ago is lactose intolerant and drinks whey protein every morning Reminded me of someone | DATETIME: 7/18/23 12:11 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model provided an incorrect answer. The ground-truth supporting messages clearly state that Krishna Saxena suggested a kickoff time of 7:30 PM. The model\u2019s response, which suggests a 7:00 PM kickoff time on Friday, November 10, 2023, does not match the ground-truth information. Additionally, the other dates and their associated times provided in the model's response do not align with the question asking specifically about Krishna Saxena's kickoff suggestion, showcasing further inaccuracies in context.",
+    "model_answer": "On Friday November 10, 2023, Krishna Saxena suggested a 7:00 kickoff time. On Friday May 12, 2023, Krishna Saxena mentioned that they usually play at 9. On Friday January 17, 2025, Krishna Saxena mentioned the first game of the year will be at 8pm.",
+    "question": "What time did Krishna Saxena suggest as the kickoff for their game?",
+    "ground_truth": "7:30 PM",
+    "ground_truth_supporting_messages": [
+      "SENDER: Krishna Saxena | MESSAGE: Let's aim for 7:30 kickoff | DATETIME: 10/27/23 4:21 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is incorrect. The ground-truth answer clearly states that Maanav Agraval was planning to support Soham at his supposed wedding, as indicated by the supporting message.",
+    "model_answer": "There is no information about who was planning to support Soham at his supposed wedding in the given context.",
+    "question": "Who was planning to support Soham at his supposed wedding?",
+    "ground_truth": "Maanav Agraval",
+    "ground_truth_supporting_messages": [
+      "Maanav Agraval: but i gotta support soham at his wedding. DATETIME: 12/8/23 12:05 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response does not align with the ground-truth answer. The ground-truth clearly states that Maanav was delayed due to attending an event, as supported by the message where Maanav himself mentions being at an event. The model response deviates by attributing the delay to a gym accident, which is not supported by the ground-truth or supporting messages. Therefore, the model's response is incorrect.",
+    "model_answer": "Maanav Agraval may not come because he is slightly disabled due to a gym accident. Yash told Maanav not to go to the gym the previous day.",
+    "question": "What event caused Maanav Agraval to be delayed?",
+    "ground_truth": "An event Maanav attended made him late.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Maanav Agraval | MESSAGE: let me try coming in an hour i was at an event, got delayed | DATETIME: 1/26/24 8:21 PM"
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model response includes some relevant information about the north campus courts but does not fully align with the ground truth. It omits the final decision to play at M Court, which is significant in this context. The additional detail about the leasing office being closed is irrelevant to the core question asked and could potentially mislead the reader.",
+    "model_answer": "On February 24th, Zareef and others were considering playing on the outdoor courts next to Denny, located on the north campus. Shridhar mentioned that people play past 8 PM. However, Maanav stated that the leasing office was closed.",
+    "question": "Where were Zareef and the others playing basketball on February 24th?",
+    "ground_truth": "They were checking the north campus courts but decided to go to M Court.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Shridhar Sinha | MESSAGE: Playing bball from 5 onwards at ima if anyone wants to join | DATETIME: 2/24/24 4:42 PM",
+      "SENDER: Soham Raut | MESSAGE: Ima courts are full. We're heading to the m court | DATETIME: 2/24/24 5:24 PM",
+      "SENDER: Shridhar Sinha | MESSAGE: No people play past 8. But we are checking out north first | DATETIME: 2/24/24 5:26 PM",
+      "SENDER: Zareef Amyeen | MESSAGE: north? the outdoor courts next to Denny? | DATETIME: 2/24/24 5:27 PM",
+      "SENDER: Shridhar Sinha | MESSAGE: Yes | DATETIME: 2/24/24 5:27 PM",
+      "SENDER: Zareef Amyeen | MESSAGE: ack only sweats play there and it's outdoor not tryna freeze let's go M | DATETIME: 2/24/24 5:27 PM"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model response correctly identifies that Denny Field is located in north campus, which matches the ground-truth answer. Additionally, the model provides extra information about its usage and location relative to the IMA field, which is accurate and complements the main answer. The additional details are not incorrect and improve the context.",
+    "model_answer": "Denny Field is located in north campus. It is an alternative location to the IMA field. It is often busy, especially on sunny days.",
+    "question": "Where is Denny Field located?",
+    "ground_truth": "In north campus",
+    "ground_truth_supporting_messages": [
+      "SENDER: Arya GJ | MESSAGE: Denny field In north campus | DATETIME: 4/10/24 2:09 PM"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model response correctly identifies Zareef Amyeen as the person who mentioned that soccer plans depend on the Lakers game, which matches the ground-truth answer. Additionally, the model provided extra context by mentioning Aaryaman Chakravarthi repeating the information and Krishna Saxena commenting on the game. However, this added information does not contradict the correct answer, as it still aligns with the supporting messages.",
+    "model_answer": "Zareef Amyeen mentioned that soccer plans depend on the Lakers game. Aaryaman Chakravarthi repeated this information. Krishna Saxena hoped that the Lakers game would be good.",
+    "question": "Who said that the soccer plans depend on the Lakers game?",
+    "ground_truth": "Zareef Amyeen",
+    "ground_truth_supporting_messages": [
+      "SENDER: Zareef Amyeen | MESSAGE: soccer plans are dependent on lakers game | DATETIME: 4/29/24 3:51 PM",
+      "SENDER: Aaryaman Chakravarthi | MESSAGE: Bro said soccer plans are dependent on lakers game | DATETIME: 4/29/24 3:51 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is incorrect. The ground-truth answer states that Pujan Patel wanted to participate in a swimming session but lacked the necessary items. However, the model mentioned an event at Hutchinson Hall without referencing the swimming session, which is unrelated to the ground-truth information.",
+    "model_answer": "Pujan Patel wanted to attend an event at Hutchinson Hall on Friday, February 16, 2024, but he did not have a ticket. He asked if he could still sign up, but the event was sold out. He then inquired if it was still worth trying to attend.",
+    "question": "What activity did Pujan Patel want to participate in but lacked the necessary items?",
+    "ground_truth": "Swimming session.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Arya GJ | MESSAGE: What match? | DATETIME: 5/10/24 4:49 PM",
+      "SENDER: Pujan Patel | MESSAGE: Swim \ud83d\udc40\nI don\u2019t have my stuff \ud83d\ude2d | DATETIME: 5/10/24 4:53 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is incorrect. The ground-truth clearly states that Arya GJ reminded Zareef Amyeen to bring the ball. The model incorrectly attributes the action to Krishna Saxena, who is not mentioned at all in the ground-truth supporting messages. The additional information about location and time, though potentially relevant to a game, is not relevant to evaluating who offered to bring the ball and further deviates from the correct answer.",
+    "model_answer": "Krishna Saxena offered to bring a ball for the game on Friday, November 10, 2023. He mentioned that the game would be at north campus at 7:30. He also checked on the availability of the field.",
+    "question": "Who offered to bring the ball for the game?",
+    "ground_truth": "Arya GJ told Zareef Amyeen not to forget to bring a ball.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Arya GJ | MESSAGE: Don\u2019t forget to bring a ball | DATETIME: 10/25/24 5:37 PM",
+      "SENDER: Zareef Amyeen | MESSAGE: thx for reminder | DATETIME: 10/25/24 5:38 PM"
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model's response identifies Zareef Amyeen as the person who checked if the fields at IMA were open, whereas the ground-truth indicates Krishna Saxena was responsible. However, the model does include some information suggesting Krishna was involved, referencing his awareness of the light situation. This partial involvement suggests some correctness, though the primary detail of who actually checked the fields is incorrect.",
+    "model_answer": "Zareef Amyeen checked if the fields at IMA were open on time. He mentioned he would go early to check the reservations and availability of turf field 3. Krishna Saxena also noted the lights might be off, so going early was important.",
+    "question": "Who checked if the fields at IMA were open on time?",
+    "ground_truth": "Krishna Saxena checked if the fields at IMA were open.",
+    "ground_truth_supporting_messages": [
+      "Who said that Zareef? Did you check it??",
+      "I'll take a look at IMA at 7",
+      "Floodlights are all on at IMA.",
+      "No one else is here"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is incorrect. The ground-truth answer specifies that Krishna Saxena invited Papa. However, the model failed to identify the correct person responsible for the invitation, despite the supporting message indicating Krishna Saxena's involvement in the team activities. This indicates a lack of accurate information retrieval from the given context.",
+    "model_answer": "Based on the conversation, Papa mentions that he is on the team for Kaggle NFL, but it is not explicitly stated who invited him. Therefore, I cannot answer the question.",
+    "question": "Who invited Papa to participate in a Kaggle NFL competition?",
+    "ground_truth": "Krishna Saxena.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Krishna Saxena | MESSAGE: Also, on the team for Kaggle NFL, so will be busy this weekend. Let's see what we can do. I will keep you posted"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is incorrect. The ground-truth answer clearly states that Papa was unsure about going to TensorFlow 1.x and suggested skipping the step. The model stated that there was no information available, which is not accurate.",
+    "model_answer": "There is no information about what Papa thought about going to TensorFlow 1.x in the provided context.",
+    "question": "What did Papa think about going to TensorFlow 1.x?",
+    "ground_truth": "Papa was not sure if going to TensorFlow 1.x was a good idea and suggested skipping that step.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | MESSAGE: The article on the new pytotch video Towardsdatascience I am not sure if going to tf 1.x is a good idea. So skipping that step. It takes forever to download those YouTube videos. Still waiting... Maybe you can reduce the max_samples to 2"
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model response correctly identifies Papa's questions about the laptop model, processor, and RAM, providing specific details such as the HP Envy x360 for the model, an i7 7th gen processor, and 16GB RAM. However, it fails to mention two additional specifications that Papa asked about: the display size and resolution. These omissions make the response partial as it does not cover all the topics asked by Papa.",
+    "model_answer": "Papa asked Krishna about the model, processor, and RAM of his laptop. Krishna said the laptop model is an HP Envy x360. The processor is an i7 7th gen, and the RAM is 16gb.",
+    "question": "What did Papa ask Krishna about his laptop's specifications?",
+    "ground_truth": "Papa asked about Krishna's laptop model, processor, RAM, display size, and resolution.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | MESSAGE: Betu... What is the model of your laptop? | DATETIME: 11/9/21 8:15 PM",
+      "SENDER: Krishna Saxena | MESSAGE: Hp envy x360 | DATETIME: 11/9/21 8:18 PM",
+      "SENDER: Papa | MESSAGE: Thank u What is the processor on it... | DATETIME: 11/9/21 8:21 PM",
+      "SENDER: Krishna Saxena | MESSAGE: i7 7th gen | DATETIME: 11/9/21 8:23 PM",
+      "SENDER: Papa | MESSAGE: And RAM | DATETIME: 11/9/21 8:23 PM",
+      "SENDER: Krishna Saxena | MESSAGE: 16gb | DATETIME: 11/9/21 8:23 PM",
+      "SENDER: Papa | MESSAGE: and display size... | DATETIME: 11/9/21 8:23 PM",
+      "SENDER: Krishna Saxena | MESSAGE: 13.3\" | DATETIME: 11/9/21 8:24 PM",
+      "SENDER: Papa | MESSAGE: Oh one last q... Resolution | DATETIME: 11/9/21 8:24 PM",
+      "SENDER: Krishna Saxena | MESSAGE: 3200 x 1800 | DATETIME: 11/9/21 8:25 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response states that there is no information provided about who saw the lectures, while the ground-truth clearly indicates that Krishna Saxena watched the lectures from the rest of the week. The model failed to extract and deliver the correct information provided by the ground-truth supporting message.",
+    "model_answer": "There is no information about who saw the lectures from the rest of the week in the given context.",
+    "question": "Who saw the lectures from the rest of the week?",
+    "ground_truth": "Krishna Saxena watched the lectures.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Krishna Saxena | MESSAGE: I saw the rest of the week 2 lectures. All the equations made sense with the professor's example. Still understanding the tetris problem... | DATETIME: 12/3/21 5:26 PM"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model's response is accurate and aligns with the ground-truth answer that Krishna Saxena was working on a computer science assignment. Additionally, it correctly includes context from the supporting messages, mentioning that Papa did not want to disturb him and that Krishna aimed to finish after dinner. The extra details provided are consistent with the context and do not contain any errors or omissions.",
+    "model_answer": "On January 24, Krishna Saxena was working on a computer science assignment. He said that he should be done after dinner. Papa wanted to call but did not want to disturb him.",
+    "question": "What was Krishna Saxena working on when Papa wanted to call on January 24?",
+    "ground_truth": "Krishna Saxena was working on their computer science assignment.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | MESSAGE: Are you free Don't want to disturb you | DATETIME: 1/24/22 5:49 PM",
+      "SENDER: Krishna Saxena | MESSAGE: i am working on cs assignment right now i should be done after dinner | DATETIME: 1/24/22 5:50 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is incorrect because it fails to answer the question. It claims it doesn't have access to the conversation history, even though the provided ground-truth answer clearly states that Krishna Saxena finished stats homework on 4/28. Since the model could not give any relevant response to the question, it deserves the lowest score.",
+    "model_answer": "I am sorry, but I do not have access to the conversation history to answer your question.",
+    "question": "What homework did Krishna Saxena finish on 4/28?",
+    "ground_truth": "Stats homework",
+    "ground_truth_supporting_messages": [
+      "SENDER: Krishna Saxena | MESSAGE: Another 15 mins and I will finish my stats hw | DATETIME: 4/10/22 1:48 PM ",
+      "SENDER: Krishna Saxena | MESSAGE: Good. Just finished hw for tonight | DATETIME: 4/28/22 3:27 PM ",
+      "SENDER: Papa | MESSAGE: Oh ok. I also had to take some time finishing work for Professors. | DATETIME: 4/28/22 3:27 PM "
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response was unable to provide an answer and cited a lack of context, while the ground truth clearly states that Krishna Saxena planned to be free at 12:30. Therefore, the model answer is incorrect.",
+    "model_answer": "I am sorry, but I do not have the context needed to answer your question about Krishna Saxena's availability on May 8th.",
+    "question": "What time did Krishna Saxena plan to be free on May 8th?",
+    "ground_truth": "12:30",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | MESSAGE: Roughly what time will you be free by | DATETIME: 5/8/22 11:24 AM",
+      "SENDER: Krishna Saxena | MESSAGE: 12:30 | DATETIME: 5/8/22 11:25 AM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response provided no answer, making it incorrect since the ground truth explicitly states that 'Papa suggested watching the match on Willow.' The supporting messages also confirm that Papa was involved in discussing the match, aligning with the ground truth, which the model failed to identify.",
+    "model_answer": "No answer",
+    "question": "Who suggested watching the match on Willow?",
+    "ground_truth": "Papa suggested watching the match on Willow.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | MESSAGE: You seeing the match on willow? | DATETIME: 4/8/24 4:35 PM",
+      "SENDER: Krishna Saxena | MESSAGE: You can watch | DATETIME: 6/21/24 5:34 PM",
+      "SENDER: Papa | MESSAGE: No go for it\u2026 apparently only 1 stream is allowed \nTomorrow I will watch. \nWI should win \nGo USA \u2026 48/1 \nIn power play | DATETIME: 6/21/24 5:35 PM"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model response correctly identifies that Krishna Saxena was advised to collaborate with batchmates and seniors for job hunting. This matches the ground-truth answer. The additional context about preparation and the challenge of the task provides further depth, but does not contradict the ground-truth information.",
+    "model_answer": "Krishna Saxena was advised to collaborate with his batchmates and seniors for job hunting. The goal was to prepare and get a chance to interview. It was acknowledged that this would be extremely hard but still worth pushing for.",
+    "question": "Who did Krishna Saxena collaborate with for job hunting?",
+    "ground_truth": "Batchmates and seniors",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | MESSAGE: Please make a short list of what you have to do to finish the undergrad program... Wrt job hunting, the best use of the time would be to collaborate with your batchmates (and seniors that you can get in touch with) for preparing and getting a chance to interview... | DATETIME: 1/31/25 9:14 AM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model's response lists several names as the first speakers in multiple conversation snippets, which does not align with the ground-truth. The provided answer, \"Aditi said 'Hi,'\" clearly indicates that Aditi was the first to speak, according to the initial supporting message. The model's response is incorrect as it does not specify Aditi as the first speaker in any snippet, thus failing to match the expected answer.",
+    "model_answer": "Based on the provided conversations, the first person to speak in the first conversation snippet was Shridhar Sinha. In the second conversation snippet, Pujan Patel was the first to speak. In the third conversation snippet, Krishna Saxena was the first to speak. In the fourth conversation snippet, Papa was the first to speak. In the fifth conversation snippet, Krishna Saxena was the first to speak. In the sixth conversation snippet, Papa was the first to speak. In the seventh conversation snippet, Arya GJ was the first to speak.",
+    "question": "Who was the first to speak in the conversation?",
+    "ground_truth": "Aditi said 'Hi'",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aditi | MESSAGE: Hi | Are you guys coming home? | DATETIME: 9/24/19 5:02 PM"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model's response matches the ground truth that the cake cutting is scheduled for 1 PM. The additional information provided by the model about appetizers, pool play, and lunch does not contradict the ground truth and thus doesn't negatively impact the score. Therefore, the provided answer is completely correct and includes all relevant information.",
+    "model_answer": "The cake cutting is scheduled for 1 PM, with appetizers being served at the same time. Pool play will occur from 1:30 PM to 3:30 PM, and lunch will be available from 2 PM onwards. Kids can have lunch when they're done with pool play.",
+    "question": "What time is the cake cutting during the event?",
+    "ground_truth": "1 pm.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aditi | MESSAGE: <Media omitted> where r u gugs guys* 1pm - Cake cutting and appetizers 1:30 to 3:30pm - pool play 2 pm onwards - lunch Kids can have lunch when they're done with pool play"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response failed to provide the correct answer, which is 'Tania Didi'. Instead, it claimed that there was no conversation provided, neglecting the fact that the relevant information is included in the ground truth supporting messages.",
+    "model_answer": "I am sorry, but I cannot answer the question as there is no conversation provided.",
+    "question": "Who will Krishna meet for the birthday celebration on Tuesday night?",
+    "ground_truth": "Tania Didi",
+    "ground_truth_supporting_messages": [
+      "SENDER: Ma | MESSAGE: For Tanya\u2019s birthday cake cutting and celebration | DATETIME: 3/24/22 8:15 AM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is incorrect. The ground truth clearly indicates that Krishna is responsible for coordinating with Jaya aunty regarding his travel. This is supported by Papa's message suggesting Krishna to inform Jaya aunty. The model states it has insufficient information, which is not accurate given the ground truth.",
+    "model_answer": "I am sorry, but I do not have the information needed to answer this question. There was no conversation provided.",
+    "question": "Who is responsible for coordinating with Jaya aunty regarding Krishna's travel?",
+    "ground_truth": "Krishna is responsible for coordinating with Jaya aunty about his travel.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Krishna Saxena | MESSAGE: Reached airport | DATETIME: 6/20/22 9:36 AM",
+      "SENDER: Papa | MESSAGE: Cool Inform Jaya aunty as you are closer. | DATETIME: 6/20/22 9:37 AM",
+      "SENDER: Ma | MESSAGE: You have her home address to give to Uber? | DATETIME: 6/20/22 9:46 AM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response indicates a lack of information to answer the question, whereas the ground-truth answer clearly states that 'Ma' was heading to Jamba Juices. Therefore, the model answer is incorrect as it did not provide the right person heading to Jamba Juices.",
+    "model_answer": "I'm sorry, but I lack the information to answer who was heading to Jamba Juices.",
+    "question": "Who was heading to Jamba Juices?",
+    "ground_truth": "Ma",
+    "ground_truth_supporting_messages": [
+      "SENDER: Ma | MESSAGE: I left Heading to Jamba juices Do you guys want something | DATETIME: 9/30/22 4:52 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is incorrect. It fails to answer the question by stating it lacks information, even though the ground truth specifies a change in practice schedule from 3:15 to 4pm with a 7pm pickup. The answer does not include any relevant details from the ground-truth answer or supporting messages.",
+    "model_answer": "I am sorry, but I do not have the information needed to answer the question, since there was no conversation provided.",
+    "question": "What is Aditi's schedule change on November 17th regarding practice?",
+    "ground_truth": "Aditi confirmed a change to her practice schedule from 3:15 to 4pm, with a pickup needed at 7pm.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Ma | MESSAGE: This shows 3:15 to 4pm practice?? Change of plans I suppose | DATETIME: 11/17/22 10:46 AM",
+      "SENDER: Aditi | MESSAGE: yes 7 pickup today \u2639\ufe0f | DATETIME: 11/17/22 10:51 AM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is incorrect as it provides no information relevant to the original question about Aditi's 2:10 pickup on February 3rd. Instead, it discusses a different date and activity that is unrelated to the reason for Aditi's need for a pickup on the specified date. The ground-truth indicates the correct answer was related to classes, which the model failed to mention.",
+    "model_answer": "The provided conversation does not contain any information about February 3rd or why Aditi needed a pickup at 2:10 on that date. The conversation does mention Aditi needing a pickup at 2:10 on Tuesday, November 28, 2023, because she had to go back at 5:30 to help with a game.",
+    "question": "Why did Aditi need a 2:10 pickup on February 3rd?",
+    "ground_truth": "To pick her up after classes.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aditi | MESSAGE: 2:10 pickup please | DATETIME: 1/20/23 12:39 PM",
+      "SENDER: Aditi | MESSAGE: practice ends at 4pm not sure if I have to stay for JVs game though I\u2019ll let you know i believe its 6:15 pickup | DATETIME: 1/24/23 1:16 PM",
+      "SENDER: Ma | MESSAGE: Aditi will be done by 7:45pm helping with JV game | DATETIME: 1/24/23 5:12 PM",
+      "SENDER: Papa | MESSAGE: Please let me know if 7:45 is still ok | DATETIME: 1/24/23 7:25 PM",
+      "SENDER: Aditi | MESSAGE: I dont think the game will be finished , 8pm sorry | DATETIME: 1/24/23 7:28 PM"
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model response correctly identifies Aditi as the person needing pickups from PAL stadium on multiple days, consistent with the ground-truth answer. However, the model includes specific dates and times for pickups (May 4 and November 28) not present in the provided ground-truth supporting messages, potentially making these details inaccurate. While the core answer is accurate, these additional specifics create discrepancies, resulting in a partially correct answer.",
+    "model_answer": "Aditi needs to be picked up from PAL stadium on multiple days. On May 4, 2023, Aditi requests a 5:30 pickup at PAL, which is later updated to 5:10. On November 28, 2023, Aditi mentions pickups at 5:15.",
+    "question": "Who needs a pickup from PAL stadium on multiple days?",
+    "ground_truth": "Aditi needed a pickup from PAL stadium on multiple days.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aditi | MESSAGE: 4:15 pickup at PAL stadium please | DATETIME: 3/3/23 2:38 PM",
+      "SENDER: Aditi | MESSAGE: 5:15 @ Del Monte Soccer Field please | DATETIME: 3/6/23 3:10 PM",
+      "SENDER: Aditi | MESSAGE: 5:15 pickup at PAL game got canceled :( | DATETIME: 3/7/23 12:05 PM",
+      "SENDER: Aditi | MESSAGE: 3:00 pickup today only please | DATETIME: 3/7/23 12:33 PM",
+      "SENDER: Aditi | MESSAGE: 5:15 pickup at PAL stadium please | DATETIME: 3/10/23 3:09 PM",
+      "SENDER: Aditi | MESSAGE: 5:15 pickup at PAL please :) | DATETIME: 3/16/23 1:28 PM",
+      "SENDER: Aditi | MESSAGE: 4:30 pickup at PAL please | DATETIME: 3/17/23 1:20 PM",
+      "SENDER: Aditi | MESSAGE: 5:15 at PAL stadium please | DATETIME: 3/20/23 2:43 PM",
+      "SENDER: Aditi | MESSAGE: 5:15 pickup at PAL please | DATETIME: 3/23/23 2:30 PM"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model response correctly identifies Aditi as the person frequently asking about pickup times. The additional information provided about confirming pickup times with her parents does not contradict the ground-truth answer and allows for a more comprehensive understanding.",
+    "model_answer": "Aditi frequently asks about pickup times. In the provided conversations, she often requests to be picked up at specific times. She also confirms the pickup times with her parents.",
+    "question": "Who has been asking about pickup times frequently?",
+    "ground_truth": "Aditi has been asking about pickup times frequently.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aditi | MESSAGE: yes please | DATETIME: 3/29/23 2:46 PM ",
+      "SENDER: Aditi | MESSAGE: 2:10 pickup please | DATETIME: 3/30/23 2:48 PM",
+      "SENDER: Aditi | MESSAGE: can someone come to nd to pick me up please | DATETIME: 4/3/23 5:12 PM",
+      "SENDER: Aditi | MESSAGE: 4:30 pickup please at PAL | DATETIME: 4/5/23 2:19 PM",
+      "SENDER: Aditi | MESSAGE: 5:15 pick up at PAL | DATETIME: 4/17/23 3:27 PM",
+      "SENDER: Aditi | MESSAGE: 5:20 pickup at PAL please | DATETIME: 4/24/23 3:13 PM",
+      "SENDER: Aditi | MESSAGE: 5:30 pickup at PAL :) | DATETIME: 5/1/23 4:49 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response was unable to provide any answer regarding who was responsible for setting the alarm. According to the ground truth, the person responsible for setting the alarm was 'Ma,' as she asked for an alarm to be set for dropping the vac to Home Depot. The model's lack of a suggested answer did not match the given information provided in the ground truth, resulting in a score of 1.",
+    "model_answer": "I'm sorry, but I don't have access to that information.",
+    "question": "Who was responsible for setting an alarm to drop the vac to Home Depot?",
+    "ground_truth": "Ma asked to set an alarm for 6:30 to drop the vac to Home Depot by 7pm.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Ma | MESSAGE: Please set an alarm for 6:30 We need to drop the vac to Home Depot by 7pm | DATETIME: 5/20/23 4:48 PM"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model response is correct by identifying 'Ma' as the sender of the message regarding obtaining an online visa within 24 hours. The additional information about the message's date and time, as well as a related note about SFO, is not incorrect or misleading, making the response entirely accurate according to the evaluation criteria.",
+    "model_answer": "The message about getting an online visa within 24 hours was sent by Ma. This message was sent on Friday, June 09, 2023, at 17:12. Ma also mentioned that if they go to SFO, they will give a visa right there.",
+    "question": "Who sent the message about getting an online visa within 24 hours?",
+    "ground_truth": "Ma",
+    "ground_truth_supporting_messages": [
+      "SENDER: Ma | MESSAGE: Apprently you can get online cisa within 24hours | DATETIME: 6/9/23 5:12 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model was unable to identify the correct communication exchange about the pickup on September 19, despite the supporting messages indicating that Aditi was communicating with Krishna Saxena. Therefore, the response is incorrect as it fails to mention the correct person involved in the communication on that specific date.",
+    "model_answer": "The provided conversations do not contain any information about communications on September 19. Therefore, I cannot answer who Aditi was communicating with about a pickup on that date. The conversations mention Aditi arranging pickups with \"Ma\" on multiple occasions in May and November.",
+    "question": "Who was Aditi communicating about the pickup with on September 19?",
+    "ground_truth": "Aditi was communicating with Krishna Saxena about the pickup on September 19.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aditi | MESSAGE: 2:10 pickup please | DATETIME: 9/19/23 12:58 PM",
+      "SENDER: Krishna Saxena | MESSAGE: Weare 4 mins away | DATETIME: 9/19/23 2:10 PM",
+      "SENDER: Aditi | MESSAGE: This message was deleted i am** | DATETIME: 9/19/23 2:13 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response does not provide any information about who was outside waiting for Aditi. It simply states that it does not have the pertinent conversation snippets, which implies an inability to answer the question. The ground-truth answer, however, indicates that 'Papa' was waiting. Therefore, the model's answer is incorrect because it does not identify the correct person or provide any relevant details.",
+    "model_answer": "I am sorry, but I do not have access to the conversation snippets to answer your question.",
+    "question": "Who is outside waiting for Aditi to be picked up on November 2nd?",
+    "ground_truth": "Papa was outside waiting for Aditi.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | MESSAGE: Yes | DATETIME: 11/2/23 5:49 PM",
+      "SENDER: Aditi | MESSAGE: can you give me 10 minutes gotta talk to a coach sorry can i get picked up at 5 today theres a hoco game at notre dame \ud83d\ude32 | DATETIME: 11/2/23 5:50 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is incorrect. While the model stated that the conversation did not contain the answer, the ground-truth supporting messages clearly indicate that 'Papa' is picking Aditi up at 5:15 PM on January 3, 2024. The model's failure to extract this information leads to an incorrect answer.",
+    "model_answer": "This conversation does not contain the answer to this question. The conversation discusses Aditi being picked up at 5:30 PM on Wednesday, November 9, 2022, but does not mention anything about January 3, 2024.",
+    "question": "Who is picking Aditi up at 5:15 PM on January 3, 2024?",
+    "ground_truth": "Papa",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aditi | MESSAGE: pickup at 5:15 today please | DATETIME: 1/3/24 1:24 PM",
+      "SENDER: Papa | MESSAGE: We are outside | DATETIME: 1/3/24 5:17 PM"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model response accurately identifies Jeremy Conner at Lucid Motors as the person Ma suggested connecting with for automotive engineering interests, matching the ground truth answer. Additionally, the model text includes useful, accurate extra information about email addresses and potential opportunities like internships, which are mentioned in the supporting message. The inclusion of these details does not introduce any inaccuracies and enhances the context, making the response comprehensive and fully correct.",
+    "model_answer": "Ma suggested connecting with Jeremy Conner, who works at Lucid, for automotive engineering interests. Two email addresses were provided for Jeremy Conner: jeremyconner@mac.com and jeremyconner@lucidmotors.com. Ma suggested reaching out to him to explore potential internships and connections with automotive designers/engineers at Lucid.",
+    "question": "Who did Ma suggest connecting with for automotive engineering interests?",
+    "ground_truth": "Jeremy Conner at Lucid Motors",
+    "ground_truth_supporting_messages": [
+      "SENDER: Ma | MESSAGE: @15036908999 my friend works in Lucid. I told him you are interested in Automotive engineering, connect with him on email and share your interest and he will connect you to automotive designer / engineers in lucid. Check if they have interships that help you learn \\njeremyconner@mac.com\\njeremyconner@lucidmotors.com\\nhttps://www.instagram.com/reel/C2nEBYiJ1eH/?igsh=NjFhOGMzYTE3ZQ== | DATETIME: 1/26/24 2:59 PM"
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model response partially matches the ground truth by identifying Ma and Papa as individuals who typically pick Aditi up from Notre Dame. However, the ground truth includes another potential person, Krishna, who the model did not mention. Additionally, the model incorrectly suggests that Aditi wanted a 2:30 pickup on a specific date, which is not supported by the ground truth or supporting messages. The mention of PAL stadium in the supporting messages also seems unrelated to her usual pickup at Notre Dame, creating potential confusion. Hence, the answer is partially correct but has minor omissions and inaccuracies.",
+    "model_answer": "Based on the provided conversations, Ma and Papa are the ones who pick up Aditi from Notre Dame. Aditi asks for a 2:30 pickup at ND on Thursday, May 25th. On another day, Aditi asks to be picked up from PAL instead of Notre Dame.",
+    "question": "Who is supposed to pick up Aditi from Notre Dame?",
+    "ground_truth": "Typically, either Papa, Ma, or Krishna would pick up Aditi from Notre Dame.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aditi | MESSAGE: can someone pick me up at PAL stadium today? | DATETIME: 2/28/24 6:20 PM",
+      "SENDER: Papa | MESSAGE: Not me, but what time? | DATETIME: 2/29/24 3:39 PM"
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model response mentions that Aditi is going to Valley Fair with her friends and specifically mentions Lailie, which adheres to the ground truth of her going with her friend Lailie. However, the model's response suggests a broader context by including 'her friends' more generally, which isn't explicitly stated in the ground truth message about her accompanying group. The additional details regarding timing and being dropped home don't contradict the scenario and are consistent with the supporting message; however, they are unnecessary. While the primary fact (going with Lailie) is captured, the broader reference to 'friends' can create ambiguity since the ground truth specifies only Lailie as the known individual accompanying Aditi.",
+    "model_answer": "Aditi is going to Valley Fair with her friends and Lailie. Her friends are taking her to Valley Fair at 1-3 and will drop her off at home.",
+    "question": "Who is Aditi going to Valley Fair with?",
+    "ground_truth": "Aditi is going with her friend Lailie.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aditi | MESSAGE: my friends taking me to valley fair at 1-3, shell drop me off home too | DATETIME: 4/4/24 12:05 PM",
+      "SENDER: Papa | MESSAGE: Which ones ? And which mall | DATETIME: 4/4/24 12:20 PM",
+      "SENDER: Aditi | MESSAGE: valley fair and lailie | DATETIME: 4/4/24 12:25 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model's response is incorrect. It provides a list of addresses none of which include the ground-truth address \"522 south 5th street.\" The model mentions several other addresses, but these do not coincide with the ground-truth answer, indicating a failure to correctly identify or retrieve the information being asked for in the question.",
+    "model_answer": "Aditi provided the address 1777 lafayette st in a conversation on Saturday, October 5, 2024. She also mentions an address of 8205 SW Hunziker St, Tigard, OR 97223. Additionally, she has an appointment at 2542 Monterey Hwy Gate D.",
+    "question": "What address did Aditi provide during the conversation?",
+    "ground_truth": "522 south 5th street",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aditi | MESSAGE: 522 south 5th street | DATETIME: 6/5/24 4:46 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model's response failed to provide the relevant information regarding the natural event discussed by Papa. The ground truth clearly indicates that it involved a hydrothermal explosion at Biscuit Basin, but the model claimed a lack of information, which is incorrect according to the data provided. Without recognizing or mentioning the specific event, the model did not fulfill the requirement for a correct answer.",
+    "model_answer": "There is no information about what Papa discussed about Yellowstone in the given context.",
+    "question": "What natural event in Yellowstone was discussed by Papa?",
+    "ground_truth": "A hydrothermal explosion at Biscuit Basin that damaged the boardwalk.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | MESSAGE: Hydrothermal explosion at Biscuit Basin in Yellowstone National Park damages boardwalk https://www.usatoday.com/story/news/nation/2024/07/23/yellowstone-biscuit-basin-explosion/74516974007/ | DATETIME: 7/23/24 4:09 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response does not provide the correct answer to the question. The ground-truth indicates that Papa performed spreadsheet work on expenses from August 2023 to August 2024, but the model states it doesn't have this information and does not mention any spreadsheet work.",
+    "model_answer": "I am sorry, but I do not have the information needed to answer this question. There was no conversation provided.",
+    "question": "What task did Papa perform between August 2023 and August 2024?",
+    "ground_truth": "Papa did some spreadsheet work on expenses for one year (Aug 23 to Aug 24).",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | MESSAGE: I did some spreadsheet work on expenses for one year (aug 23 to aug 24); just an fyi\u2026  Ins.   13,410 ( auto home fire earthquake)  Tax.    26,268 Utility.  6,883 (phone, internet, electricity, gas, lawn)  Credit Cards  1. Costco 31,051 2. \u2060United.55,040 3. \u2060mc.          1,490  NDSJ   25,260 UW.       41,389 UW.       14,861 | DATETIME: 9/17/24 12:28 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response was 'No messages match your query', indicating that it did not or could not provide an answer to the question. The ground-truth clearly states that Aditi experienced a cramping stomach recently. Since the model's response does not align with the ground-truth answer at all, the answer is incorrect.",
+    "model_answer": "No messages match your query",
+    "question": "Who experienced a cramping stomach recently?",
+    "ground_truth": "Aditi.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Ma | MESSAGE: How are you feeling now @15036908999 | DATETIME: 10/29/24 10:29 AM",
+      "SENDER: Aditi | MESSAGE: stomach is still cramping but less nauseous | DATETIME: 10/29/24 10:44 AM"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model's response accurately identifies the unique feature of this year's Father/Daughter Breakfast event, which is the theme of Ugly Christmas Sweaters. The additional details provided about the event's time, location, and admission cost align with the information from the ground-truth supporting messages and add useful context, without contradicting the ground-truth answer.",
+    "model_answer": "This year's Father/Daughter Breakfast theme is Ugly Christmas Sweaters. The event is on Saturday, Dec. 7 from 9 to 11 a.m. in the Julie Billiart Hall. Admission is $20 per family and to RSVP by December 1.",
+    "question": "What unique feature does the Father/Daughter Breakfast event have this year?",
+    "ground_truth": "The theme for this year's Father/Daughter Breakfast is Ugly Christmas Sweaters.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Ma | MESSAGE: Our third annual Father/Daughter Breakfast hosted by our ND Dads is on Saturday, Dec. 7 from 9 to 11 a.m. in the Julie Billiart Hall. Come hang out with your daughters, their friends, and other dads/father figures/guardians and enjoy breakfast together. This year's theme is Ugly Christmas Sweaters! Admission is $20 per family RSVP by December 1 https://secure.lglforms.com/.../s/FYhBIT_13k698J9NNoY8gw... We are also looking for Volunteers! Help with set up, cooking, serving, and clean up. Non-attendees please volunteer to support the event leaving our attendees to fully enjoy and participate with their student(s). Volunteer with us: https://ndsj.volunteermatters.org/project-catalog/263 | DATETIME: 11/19/24 3:54 PM"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response does not correctly identify Aditi's current location as 'up around Milpitas.' Instead, it provides historical locations that are unrelated to her current whereabouts. The given dates range from 2020 to 2024, but none aligns with the ground truth message dated 12/18/24, which indicates that she is 'up around Milpitas.' Thus, the model answer is incorrect as it doesn't identify the present location.",
+    "model_answer": "Aditi has been in multiple locations based on the provided conversations. On October 5, 2024, she was at 1777 lafayette st in Santa Clara. On February 18, 2020, she was at her mom's work while her mom was in a meeting. On May 26, 2023, she was at ND and needed to be picked up from school.",
+    "question": "Where is Aditi currently located?",
+    "ground_truth": "Up around Milpitas.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aditi | MESSAGE: up around milpitas",
+      "DATETIME: 12/18/24 9:37 PM"
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model response mentions Ma is in the hospital for tests at O'Connor Hospital Emergency Department, which aligns with the ground truth that Krishna's mom is in the hospital. However, the model inaccurately states that Ma is also hospitalized for a brain stroke and vision loss, which is not supported by the ground truth. This introduces incorrect information, thus leading to a partial score.",
+    "model_answer": "Based on the provided conversation snippets, Ma is getting tests done at O'Connor Hospital Emergency Department. She mentions this while sharing a map link to the hospital. It is also mentioned that Mama is hospitalized with a brain stroke and vision loss.",
+    "question": "Who is in the hospital for tests?",
+    "ground_truth": "Krishna's mom is in the hospital for tests.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | MESSAGE: Hi Krishna - mom is in the hospital and getting the tests - \u2060Sent you an updated short answers document ... | DATETIME: 1/30/25 11:41 AM"
+    ]
+  }
+]

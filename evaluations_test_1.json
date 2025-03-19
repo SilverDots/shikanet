@@ -1,0 +1,1013 @@
+[
+  {
+    "score": 4,
+    "reasoning": "The model's answer correctly identifies the restaurant, Portage Bay, which the group discussed visiting. The ground-truth answer includes a specific date, March 9th, which the model did not mention. However, the primary focus is on the restaurant discussed rather than the date. The omission of the exact date is a minor detail, not crucial to correctly identifying the restaurant.\n- Correct and complete identification of the restaurant: Portage Bay.\n- Omission of the date: March 9th.",
+    "model_answer": "The group discussed going to Portage Bay for dinner.",
+    "question": "What restaurant did the group discuss going to?",
+    "ground_truth": "The group discussed going to Portage Bay for food on March 9th.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Zareef Amyeen | DATETIME: 2024-03-09 12:48:00 | MESSAGE: Portage Bay?",
+      "SENDER: Shridhar Sinha | DATETIME: 2024-03-09 12:49:00 | MESSAGE: I'll try to come",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-03-09 13:01:00 | MESSAGE: made reservation for 3\n@arya\n1:15",
+      "SENDER: Arya GJ | DATETIME: 2024-03-09 13:03:00 | MESSAGE: Done\nWhere do we meet?",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-03-09 13:03:00 | MESSAGE: i\u2019m right next to the standard",
+      "SENDER: Arya GJ | DATETIME: 2024-03-09 13:03:00 | MESSAGE: Ok give me 5 and I\u2019ll meet at the standard"
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model's response is notably different from the ground-truth answer. The model mentions Ali being ignored, wanting to join sports activities, and discussions about his presence in the group with some references to events and performances. However, it misses the significant context of Ali being removed multiple times and discussions about adding him back. The ground-truth messages explicitly indicate conversations around his removal and re-addition, which the model's answer fails to capture. The model's response is vague and does not align with the key actions involving Ali discussed in the chat.",
+    "model_answer": "Ali has been mentioned in the chat as being ignored and wanting to join a sports activity in the morning or midday. There are references to Ali being invited to events and performances, as well as discussions about his presence in the group.",
+    "question": "What is the history of Ali in this chat?",
+    "ground_truth": "Ali was removed from the chat multiple times, and there was discussion about adding him back.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-23 13:39:00 | MESSAGE: Ali hamza ki Gand me lamba",
+      "SENDER: Maanav Agraval | DATETIME: 2024-04-23 13:40:00 | MESSAGE: does this mean ali isn\u2019t invited to the tiktok rizz party",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-23 13:44:00 | MESSAGE: Man had the audacity to talk some absolute jackshit after getting removed once",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-04-23 14:26:00 | MESSAGE: why do we keep adding him back",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-23 14:26:00 | MESSAGE: He ain\u2019t coming back son I",
+      "SENDER: Krishna Saxena | DATETIME: 2024-04-23 16:17:00 | MESSAGE: Can someone add him back though. Mans just wants to play \u26bd",
+      "SENDER: Andrew Awada | DATETIME: 2024-04-23 17:12:00 | MESSAGE: U can bro",
+      "SENDER: Arya GJ | DATETIME: 2024-04-30 17:14:00 | MESSAGE: Bruh he\u2019s calling u a cuck\nShow him his place",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-30 17:15:00 | MESSAGE: Sorry boys\nHe is gone",
+      "SENDER: Arya GJ | DATETIME: 2024-04-30 17:16:00 | MESSAGE: Nah Soham add him back and reply and then kick him out again \ud83d\ude02"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model's answer does not include any of the key information present in the ground-truth answer. The ground-truth answer clearly states that \"Chris won the poker game at his place.\" However, the model's response focuses on discussing the group's thoughts on making money or playing, which is unrelated to the actual outcome of the game. The model completely missed the main point of the ground-truth answer, which is that Chris won.",
+    "model_answer": "When the group played poker, they discussed the possibility of making money back and becoming no longer broke. Some members expressed interest in playing but mentioned they had no money at the moment. There was also a discussion about playing without stakes or gambling for money.",
+    "question": "What happened when the group played poker?",
+    "ground_truth": "Chris won the poker game at his place.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Chris Hunt | DATETIME: 2024-06-25 14:28:00 | MESSAGE: How do y\u2019all feel about poker",
+      "SENDER: Chris Hunt | DATETIME: 2024-06-26 13:39:00 | MESSAGE: Poker tonight at my place at 6:30, if you don\u2019t want to play feel free to come and hang out\n5 dollar buy in\n@12065326226 @12067569178 @19717270030 @12069349827?",
+      "SENDER: Chris Hunt | DATETIME: 2024-06-26 20:27:00 | MESSAGE: Sorry for that ending boys\nIf anyone wants to come back and play some werewolf I\u2019d be down\nAlso my venmo is chris-hunt-150 and my number is (914) 574-9125 if you\u2019re using zelle"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model's response captures the general problem with Chris's car\u2014that it failed to start due to a lack of gas\u2014and also mentions Chris's procrastination in resolving the issue. However, it inaccurately specifies a time frame ('a week ago'), which is not supported by the ground-truth messages. Additionally, although it implies Chris's negligence ('he has been too lazy to do anything about it'), it misses the specific plan Chris had to get gas. Still, it does identify the core problem with the car needing gas, which is the focal point of the ground-truth answer.",
+    "model_answer": "The status of Chris's car is that it did not start a week ago because there wasn't enough gas, and he has been too lazy to do anything about it.",
+    "question": "What is the status of Chris's car?",
+    "ground_truth": "Chris's car may not start because it needs gas.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Chris Hunt | DATETIME: 2024-07-28 17:11:00 | MESSAGE: I can drive if I can figure out how to start my car\nIt probably just needs gas",
+      "SENDER: Chris Hunt | DATETIME: 2024-08-01 18:09:00 | MESSAGE: I\u2019ll get some gas tomorrow and let you know if my car starts",
+      "SENDER: Chris Hunt | DATETIME: 2024-08-02 20:13:00 | MESSAGE: I haven\u2019t gotten gas"
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model's response mentions Portage Bay, which is consistent with the ground-truth answer. However, it incorrectly specifies the location as the \"U district\" instead of U Village, another location discussed in the ground-truth messages. Additionally, the model incorrectly includes \"Bill's Cafe on Lincoln for breakfast,\" a location not mentioned in the provided ground-truth messages. Furthermore, the model omits crucial information about the other discussed locations, such as Lezzet Brunch and the specific dates mentioned in the ground-truth answers. Thus, the provided answer is vague and doesn't cover the broader set of accurate information available.",
+    "model_answer": "The group has discussed going to Portage Bay, a restaurant in the U district, and Bill's Cafe on Lincoln for breakfast.",
+    "question": "What restaurants have the group discussed going to?",
+    "ground_truth": "The group discussed going to Lezzet Brunch on August 3rd, and Portage Bay on August 4th and 11th. They also discussed going to U Village on August 10th and 11th.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Sahil Singhvi | DATETIME: 2024-08-03 12:09:00 | MESSAGE: Lezzet Brunch (253) 737-4601 https://g.co/kgs/PzKGyhZ",
+      "SENDER: Shridhar Sinha | DATETIME: 2024-08-04 11:59:00 | MESSAGE: Portage bay was pretty good last time",
+      "SENDER: Krishna Saxena | DATETIME: 2024-08-04 13:51:00 | MESSAGE: Boys, Portage Bay closes at 2",
+      "SENDER: Krishna Saxena | DATETIME: 2024-08-10 10:14:00 | MESSAGE: Anyone still down for u village at 12:30?",
+      "SENDER: Rituraj | DATETIME: 2024-08-11 11:31:00 | MESSAGE: Boys, Uvill today for lunch at 2? <This message was edited>"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model's response is incorrect and does not match the ground truth. The ground truth and supporting messages indicate the group discussed going to Portage Bay on March 9th. The model response mentions Burger Hut and a new Indian place, which are not supported by any evidence in the provided messages.",
+    "model_answer": "The group discussed going to Burger Hut or a new Indian place on the ave for dinner.",
+    "question": "What restaurant did the group discuss going to?",
+    "ground_truth": "The group discussed going to Portage Bay for food on March 9th.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Zareef Amyeen | DATETIME: 2024-03-09 12:48:00 | MESSAGE: Portage Bay?",
+      "SENDER: Shridhar Sinha | DATETIME: 2024-03-09 12:49:00 | MESSAGE: I'll try to come",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-03-09 13:01:00 | MESSAGE: made reservation for 3\n@arya\n1:15",
+      "SENDER: Arya GJ | DATETIME: 2024-03-09 13:03:00 | MESSAGE: Done\nWhere do we meet?",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-03-09 13:03:00 | MESSAGE: i\u2019m right next to the standard",
+      "SENDER: Arya GJ | DATETIME: 2024-03-09 13:03:00 | MESSAGE: Ok give me 5 and I\u2019ll meet at the standard"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model's response is completely incorrect because it focuses on Ali wanting to play cricket at night and being ignored, which is not supported by any of the ground truth messages. The ground truth clearly indicates that the central discussion was about Ali being removed multiple times and the group's deliberation on adding him back. The model fails to reference this crucial aspect of the ground truth.",
+    "model_answer": "Ali is mentioned in the chat as being ignored and wanting to play cricket at night, but others prefer playing in the morning or midday.",
+    "question": "What is the history of Ali in this chat?",
+    "ground_truth": "Ali was removed from the chat multiple times, and there was discussion about adding him back.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-23 13:39:00 | MESSAGE: Ali hamza ki Gand me lamba",
+      "SENDER: Maanav Agraval | DATETIME: 2024-04-23 13:40:00 | MESSAGE: does this mean ali isn\u2019t invited to the tiktok rizz party",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-23 13:44:00 | MESSAGE: Man had the audacity to talk some absolute jackshit after getting removed once",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-04-23 14:26:00 | MESSAGE: why do we keep adding him back",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-23 14:26:00 | MESSAGE: He ain\u2019t coming back son I",
+      "SENDER: Krishna Saxena | DATETIME: 2024-04-23 16:17:00 | MESSAGE: Can someone add him back though. Mans just wants to play \u26bd",
+      "SENDER: Andrew Awada | DATETIME: 2024-04-23 17:12:00 | MESSAGE: U can bro",
+      "SENDER: Arya GJ | DATETIME: 2024-04-30 17:14:00 | MESSAGE: Bruh he\u2019s calling u a cuck\nShow him his place",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-30 17:15:00 | MESSAGE: Sorry boys\nHe is gone",
+      "SENDER: Arya GJ | DATETIME: 2024-04-30 17:16:00 | MESSAGE: Nah Soham add him back and reply and then kick him out again \ud83d\ude02"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is incorrect. The ground-truth clearly states that Chris won the poker game at his place, while the model incorrectly describes the outcome as a four-way all-in situation and does not mention Chris winning. There is no support in the ground-truth messages for a four-way all-in, reinforcing that this detail is incorrect.",
+    "model_answer": "When the group played poker, the game ended in a four-way all-in situation, as mentioned in the chat.",
+    "question": "What happened when the group played poker?",
+    "ground_truth": "Chris won the poker game at his place.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Chris Hunt | DATETIME: 2024-06-25 14:28:00 | MESSAGE: How do y\u2019all feel about poker",
+      "SENDER: Chris Hunt | DATETIME: 2024-06-26 13:39:00 | MESSAGE: Poker tonight at my place at 6:30, if you don\u2019t want to play feel free to come and hang out\n5 dollar buy in\n@12065326226 @12067569178 @19717270030 @12069349827?",
+      "SENDER: Chris Hunt | DATETIME: 2024-06-26 20:27:00 | MESSAGE: Sorry for that ending boys\nIf anyone wants to come back and play some werewolf I\u2019d be down\nAlso my venmo is chris-hunt-150 and my number is (914) 574-9125 if you\u2019re using zelle"
+    ]
+  },
+  {
+    "score": 4,
+    "reasoning": "The model's response accurately reflects the car's status as not starting due to a lack of gas, consistent with the ground-truth answer. The model's addition that Chris has been too lazy to do anything about it is inferred from the ground truth supporting messages, especially the note that Chris hasn't gotten gas yet. However, describing Chris explicitly as lazy may infer an interpretation beyond the supporting messages, which is why the score is not a perfect 5.",
+    "model_answer": "The status of Chris's car is that it didn't start a week ago because there wasn't enough gas in it. Chris has been too lazy to do anything about it.",
+    "question": "What is the status of Chris's car?",
+    "ground_truth": "Chris's car may not start because it needs gas.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Chris Hunt | DATETIME: 2024-07-28 17:11:00 | MESSAGE: I can drive if I can figure out how to start my car\nIt probably just needs gas",
+      "SENDER: Chris Hunt | DATETIME: 2024-08-01 18:09:00 | MESSAGE: I\u2019ll get some gas tomorrow and let you know if my car starts",
+      "SENDER: Chris Hunt | DATETIME: 2024-08-02 20:13:00 | MESSAGE: I haven\u2019t gotten gas"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model response includes one partially correct name (Soham Raut), but entirely misses Aaryaman and Shridhar from the list of those who took CS 333 with Hannah Tang. It incorrectly includes Zareef Amyeen as having taken the class when he's currently taking it, according to the supporting messages. Hence, the model's response captures some correct details but fails to be complete and accurate.",
+    "model_answer": "Zareef Amyeen and Soham Raut have taken CS 333 with Hannah Tang.",
+    "question": "Who has taken CS 333 with Hannah Tang?",
+    "ground_truth": "Aaryaman, Shridhar, and Soham took CS 333 with Hannah Tang. Zareef is taking it now.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Shridhar Sinha | DATETIME: 2024-09-25 11:31:00 | MESSAGE: Me soham and ariman ",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-09-25 11:31:00 | MESSAGE: oh fml\nariman was constantly fighting for his life\ni feel like that's not a good sign "
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model's response is completely incorrect as it mentions Burger Hut and a new Indian restaurant, neither of which match the ground truth answer that the group discussed going to Portage Bay on March 9th.",
+    "model_answer": "The group discussed going to Burger Hut or a new Indian place on the ave for dinner.",
+    "question": "What restaurant did the group discuss going to?",
+    "ground_truth": "The group discussed going to Portage Bay for food on March 9th.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Zareef Amyeen | DATETIME: 2024-03-09 12:48:00 | MESSAGE: Portage Bay?",
+      "SENDER: Shridhar Sinha | DATETIME: 2024-03-09 12:49:00 | MESSAGE: I'll try to come",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-03-09 13:01:00 | MESSAGE: made reservation for 3\n@arya\n1:15",
+      "SENDER: Arya GJ | DATETIME: 2024-03-09 13:03:00 | MESSAGE: Done\nWhere do we meet?",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-03-09 13:03:00 | MESSAGE: i\u2019m right next to the standard",
+      "SENDER: Arya GJ | DATETIME: 2024-03-09 13:03:00 | MESSAGE: Ok give me 5 and I\u2019ll meet at the standard"
+    ]
+  },
+  {
+    "score": 4,
+    "reasoning": "The model's response is mostly accurate as it identifies that Ali was removed and mentions exclusion, aligning with the fact that Ali was not invited to events and the discussions about whether to re-add him. However, the response lacks the precise detail present in the ground-truth answer, which specifically states that Ali was removed multiple times and discussions were had about adding him back. Additionally, the response suggests a negative interaction without explicitly addressing the multiple re-additions.",
+    "model_answer": "The history of Ali in this chat is that there are references to Ali being removed from the group and not being invited to certain events, indicating some sort of exclusion or negative interaction with the group members.",
+    "question": "What is the history of Ali in this chat?",
+    "ground_truth": "Ali was removed from the chat multiple times, and there was discussion about adding him back.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-23 13:39:00 | MESSAGE: Ali hamza ki Gand me lamba",
+      "SENDER: Maanav Agraval | DATETIME: 2024-04-23 13:40:00 | MESSAGE: does this mean ali isn\u2019t invited to the tiktok rizz party",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-23 13:44:00 | MESSAGE: Man had the audacity to talk some absolute jackshit after getting removed once",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-04-23 14:26:00 | MESSAGE: why do we keep adding him back",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-23 14:26:00 | MESSAGE: He ain\u2019t coming back son I",
+      "SENDER: Krishna Saxena | DATETIME: 2024-04-23 16:17:00 | MESSAGE: Can someone add him back though. Mans just wants to play \u26bd",
+      "SENDER: Andrew Awada | DATETIME: 2024-04-23 17:12:00 | MESSAGE: U can bro",
+      "SENDER: Arya GJ | DATETIME: 2024-04-30 17:14:00 | MESSAGE: Bruh he\u2019s calling u a cuck\nShow him his place",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-30 17:15:00 | MESSAGE: Sorry boys\nHe is gone",
+      "SENDER: Arya GJ | DATETIME: 2024-04-30 17:16:00 | MESSAGE: Nah Soham add him back and reply and then kick him out again \ud83d\ude02"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model's response states that the poker game ended in a four-way all-in situation. However, the ground truth indicates that Chris won the poker game at his place. There is no mention of a four-way all-in situation in the supporting messages, meaning the model provided a completely incorrect answer.",
+    "model_answer": "The group played poker and the game ended in a four-way all-in situation.",
+    "question": "What happened when the group played poker?",
+    "ground_truth": "Chris won the poker game at his place.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Chris Hunt | DATETIME: 2024-06-25 14:28:00 | MESSAGE: How do y\u2019all feel about poker",
+      "SENDER: Chris Hunt | DATETIME: 2024-06-26 13:39:00 | MESSAGE: Poker tonight at my place at 6:30, if you don\u2019t want to play feel free to come and hang out\n5 dollar buy in\n@12065326226 @12067569178 @19717270030 @12069349827?",
+      "SENDER: Chris Hunt | DATETIME: 2024-06-26 20:27:00 | MESSAGE: Sorry for that ending boys\nIf anyone wants to come back and play some werewolf I\u2019d be down\nAlso my venmo is chris-hunt-150 and my number is (914) 574-9125 if you\u2019re using zelle"
+    ]
+  },
+  {
+    "score": 4,
+    "reasoning": "The model response captures the essence of Chris's car's status, indicating that the car did not start due to a lack of gas and notes Chris's inaction in resolving the issue. However, the model adds a specific timeframe ('a week ago') which was not mentioned in any supporting messages or the ground truth, potentially leading to a slight deviation from the exact presented status.",
+    "model_answer": "The status of Chris's car is that it didn't start a week ago because there wasn't enough gas, and he has been too lazy to do anything about it.",
+    "question": "What is the status of Chris's car?",
+    "ground_truth": "Chris's car may not start because it needs gas.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Chris Hunt | DATETIME: 2024-07-28 17:11:00 | MESSAGE: I can drive if I can figure out how to start my car\nIt probably just needs gas",
+      "SENDER: Chris Hunt | DATETIME: 2024-08-01 18:09:00 | MESSAGE: I\u2019ll get some gas tomorrow and let you know if my car starts",
+      "SENDER: Chris Hunt | DATETIME: 2024-08-02 20:13:00 | MESSAGE: I haven\u2019t gotten gas"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model response partially aligns with the ground-truth answer. It correctly identifies one person, Soham, who took CS 333 with Hannah Tang. However, it incorrectly includes Zareef Amyeen as having taken the course with Hannah Tang, whereas the ground-truth indicates Zareef is currently taking the course. Additionally, the model omits two individuals, Aaryaman and Shridhar, who have taken the course, which makes the answer incomplete.",
+    "model_answer": "Zareef Amyeen and Soham Raut have taken CS 333 with Hannah Tang.",
+    "question": "Who has taken CS 333 with Hannah Tang?",
+    "ground_truth": "Aaryaman, Shridhar, and Soham took CS 333 with Hannah Tang. Zareef is taking it now.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Shridhar Sinha | DATETIME: 2024-09-25 11:31:00 | MESSAGE: Me soham and ariman ",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-09-25 11:31:00 | MESSAGE: oh fml\nariman was constantly fighting for his life\ni feel like that's not a good sign "
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model response captures some elements of the jokes targeted at CS majors, as supported by the ground truth supporting messages. Specifically, the model mentions phrases like 'drop out,' 'CS degree \ud83d\udc80,' and 'Permanent shit stain,' which are consistent with the supporting messages. However, the model introduces an irrelevant statement that doesn't relate to the ground truth: 'There's no reason to take a programming class in the CS department when I can do amath, lol.' This inclusion slightly deviates from the focused context of the actual jokes provided in the supporting messages.",
+    "model_answer": "Examples of jokes that people have made about CS majors include:\n1. \"There's no reason to take a programming class in the CS department when I can do amath, lol.\"\n2. \"If you hate CS majors so much, drop out.\"\n3. \"You'll have a CS degree \ud83d\udc80, I'm saying forfeit it.\"\n4. \"Permanent shit stain.\"",
+    "question": "Give examples of jokes that people have made about CS majors.",
+    "ground_truth": "Aaryaman is often the target of jokes about CS majors, with Zareef and others teasing him about his CS degree and his feelings about the CS building.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Zareef Amyeen | DATETIME: 2024-09-25 14:36:00 | MESSAGE: if you hate cs majors so much drop out",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-09-25 14:37:00 | MESSAGE: Boss once im done after this quarter and i have a degree in my hand i will gladly",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-09-25 14:37:00 | MESSAGE: you\u2019ll have a CS degree \ud83d\udc80\ni\u2019m saying forfeit it",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-09-25 14:37:00 | MESSAGE: Permanent shit stain"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model response identifies a negative sentiment, which aligns with some of the content in the ground truth supporting messages such as long lines and use of emojis indicating frustration or disappointment. However, the ground truth indicates a more neutral or observational tone, noting high attendance and long lines without explicitly stating a negative sentiment. The score is reduced because the model's conclusion of negativity is stronger than the more factual nature of the ground-truth.",
+    "model_answer": "The general sentiment around the CS career fair seems to be negative, as indicated by comments such as \"There are already more people in line for this career fair than people these guys will hire\" and the use of emojis like \ud83d\ude2d.",
+    "question": "What is the general sentiment around the CS career fair?",
+    "ground_truth": "The group discusses the CS career fair, with many people attending or planning to attend. The line is very long.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Krishna Saxena | DATETIME: 2024-10-03 11:07:00 | MESSAGE: There are already more people in line for this career fair than people these guys will hire",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:08:00 | MESSAGE: Are you there alr\ud83d\udc80",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-03 11:08:00 | MESSAGE: \ud83d\ude2d",
+      "SENDER: Krishna Saxena | DATETIME: 2024-10-03 11:08:00 | MESSAGE: I wanted to ensure I get to stat 535 by 12:30 UwU",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-03 11:08:00 | MESSAGE: Is it the cs fair",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-03 11:09:00 | MESSAGE: yuh",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:09:00 | MESSAGE: Lmao yeah",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-03 11:09:00 | MESSAGE: U there Zareef?\nUnlucky \ud83d\ude2d",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:09:00 | MESSAGE: Im in the lab printing out my resume and every single person here is talking about the fair",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-03 11:09:00 | MESSAGE: \ud83d\ude2d",
+      "SENDER: Krishna Saxena | DATETIME: 2024-10-03 11:09:00 | MESSAGE: Worst part is that I'm only here to talk to a recruiter for a nepo job",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-03 11:10:00 | MESSAGE: mashallah nepo job",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-03 11:10:00 | MESSAGE: Real \ud83d\ude4f",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:12:00 | MESSAGE: How long is the line lmao",
+      "SENDER: Krishna Saxena | DATETIME: 2024-10-03 11:13:00 | MESSAGE: Easily 400 people ahead of me \ud83d\ude2d",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:14:00 | MESSAGE: Where are you standing wtf",
+      "SENDER: Maanav Agraval | DATETIME: 2024-10-03 11:14:00 | MESSAGE: soham please go to the edgile table\ntalk to the recruiter about edging",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:14:00 | MESSAGE: Lmao",
+      "SENDER: Krishna Saxena | DATETIME: 2024-10-03 11:15:00 | MESSAGE: Hopefully this is intelligible: I'm facing THO, but close to turning the corner",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:18:00 | MESSAGE: Oh wow",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-10-03 11:19:00 | MESSAGE: Shit is it a good idea to go a little later",
+      "SENDER: Chris Hunt | DATETIME: 2024-10-03 11:23:00 | MESSAGE: Wtf\nI\u2019m probably gonna go around 12:30\nAlthough honestly it might be better to go a little later",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:24:00 | MESSAGE: Before the non majors come tho",
+      "SENDER: Chris Hunt | DATETIME: 2024-10-03 11:24:00 | MESSAGE: That\u2019s at 2\nSo maybe I\u2019ll go at 1",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:27:00 | MESSAGE: Bro the line wraps around inside the hub\nIm literally near like dub street",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-10-03 11:28:00 | MESSAGE: @19145749125 I\u2019ll meet u at 12:30-1",
+      "SENDER: Arya GJ | DATETIME: 2024-10-03 11:38:00 | MESSAGE: Damn the unemployment is crazy"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model response includes partial information, correctly identifying Pujan Patel and Arya GJ as attending the Kygo concert. However, it omits Shridhar, who is also confirmed to be attending according to the ground truth. The omittance of Shridhar results in an incomplete answer.",
+    "model_answer": "Pujan Patel and Arya GJ are going to the Kygo concert.",
+    "question": "Who is going to the Kygo concert?",
+    "ground_truth": "Arya, Shridhar, and Pujan are going to the Kygo concert.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Shridhar Sinha | DATETIME: 2024-10-09 13:01:00 | MESSAGE: Ur going to kygo right",
+      "SENDER: Arya GJ | DATETIME: 2024-10-09 13:08:00 | MESSAGE: Who @15034810370?",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-09 13:12:00 | MESSAGE: Yeah I am",
+      "SENDER: Shridhar Sinha | DATETIME: 2024-10-09 13:22:00 | MESSAGE: YOOOOO\nMe too",
+      "SENDER: Arya GJ | DATETIME: 2024-10-09 13:22:00 | MESSAGE: I\u2019m going too"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model answer is partially correct as it identifies the scope of the math problem discussed (determining the number of handshakes). However, it mistakenly states the conclusion of the discussion (40 handshakes) instead of the correct answer as per the discussion (45 handshakes). The model answer discusses the aspect of dividing by 2, which aligns with the correct reasoning that each handshake involves two people, but it includes an incorrect conclusion about the number of handshakes.",
+    "model_answer": "Pujan, Arya, and Zareef discussed the math problem of determining the number of handshakes that can occur between a group of people on October 21st, 2024. They concluded that the maximum number of handshakes possible was 40, not 45 as initially thought, because each handshake involves 2 people and you cannot divide by 2.",
+    "question": "What math problem did Pujan, Arya, and Zareef discuss on October 21st, 2024?",
+    "ground_truth": "Pujan, Arya, and Zareef were discussing a math problem involving handshakes on October 21st, 2024. The problem involved pairs of people and the number of possible handshakes.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Pujan Patel | DATETIME: 2024-10-21 06:17:00 | MESSAGE: Ahh rip I didn\u2019t see the message in time\nHow would u mathematically formalize this?",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:45:00 | MESSAGE: There are 5 pairs, A1,A2, B1, B2, ..., E1, E2",
+      "SENDER: Arya GJ | DATETIME: 2024-10-21 08:45:00 | MESSAGE: Permutations and combinations",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:47:00 | MESSAGE: Each x_i can create a pair with some y_1 or y_2. Each x_i can make more than 1 pair.",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-21 08:47:00 | MESSAGE: Yes I got that far, but I wasn\u2019t sure how to solve it from there",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:48:00 | MESSAGE: Consider the set S_{x_i} of permutations where x_i \n\u2208 pair then |S_{x_i}| \u2260 |S_{y_j}| for all x_i and y_j where x_i \u2260 y_j\noh do you want the answer?",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-21 08:48:00 | MESSAGE: Ya",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:48:00 | MESSAGE: bruh\nthis is probably small enough where you can just think of the unique case\nit's probably like 0 handshakes, 1 handshake -> 9 handshakes\nso 9(10)/2 = 45",
+      "SENDER: Arya GJ | DATETIME: 2024-10-21 08:50:00 | MESSAGE: That\u2019s the max numb of handshakes\nIf everyone shook everyone",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:50:00 | MESSAGE: no idt so\n0 + 1 + 2 + ...+ 9 = 45",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-21 08:51:00 | MESSAGE: Max would be 90\nIf everyone shook everyone",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:51:00 | MESSAGE: 8 * 10 = 80 cuz you can't shake with yourself or your partner\nyeah something like 45 prob",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-21 08:51:00 | MESSAGE: Oh right",
+      "SENDER: Arya GJ | DATETIME: 2024-10-21 08:52:00 | MESSAGE: U half it",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:52:00 | MESSAGE: allah knows",
+      "SENDER: Arya GJ | DATETIME: 2024-10-21 08:52:00 | MESSAGE: Coz each handshake involves 2 ppl",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:52:00 | MESSAGE: yeah you're right",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-21 08:52:00 | MESSAGE: Oh sure the number of handshakes is 45"
+    ]
+  },
+  {
+    "score": 5,
+    "reasoning": "The model response accurately identifies that the group frequently engages in playing soccer together. Although the ground truth mentions that they coordinate times and locations, which implies discussions around the activity, the model's answer is still correct in identifying the core activity. The supporting messages involve members expressing interest and confirming attendance for playing football/soccer. No additional information in the model's response is incorrect.",
+    "model_answer": "The group in the Intramural Activities chat frequently engages in playing soccer together.",
+    "question": "Which activities do the group in the Intramural Activities chat frequently engage in together?",
+    "ground_truth": "The group frequently discusses playing football/soccer together. They often coordinate times and locations to meet up and play.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Maanav Agraval | DATETIME: 2023-02-10 17:54:00 | MESSAGE: I\u2019m gonna go to ima later around 8 if anyone wanna join me\ni am going at 8 for football only ",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2023-02-10 18:51:00 | MESSAGE: Ok who all are coming at 7:30\nMe, Rituraj And Krishna\nSoham\nBazil?\nShridhar might come with Manav at 8\nRest pls confirm ",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2023-02-24 18:42:00 | MESSAGE: Guys who all are coming today "
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model's answer implies a broader issue ('slightly disabled due to a gym accident') without specifically mentioning the knee injury or its impact on playing sports, which is crucial according to the ground-truth. Although it suggests a reason that aligns generally with why Yash can't play, it lacks the specifics provided in the ground-truth answer regarding his knees being the issue. Thus, the model's response includes only part of the correct information.",
+    "model_answer": "Yash can't play with his friends because he is slightly disabled due to a gym accident.",
+    "question": "Why can't Yash play with hs friends?",
+    "ground_truth": "Yash has mentioned multiple times that his knees are broken and that he may not be able to play sports.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Yash | DATETIME: 2023-03-31 20:01:00 | MESSAGE: Knees still broken \u2026 inshallah I will come next week",
+      "SENDER: Yash | DATETIME: 2023-04-14 13:28:00 | MESSAGE: Knees \ud83d\ude32",
+      "SENDER: Yash | DATETIME: 2023-04-27 10:07:00 | MESSAGE: Nahin mere ghutanon toot gaye"
+    ]
+  },
+  {
+    "score": 4,
+    "reasoning": "The model's response identifies Saturday as the day with the most votes, which aligns with the ground-truth answer, indicating that Saturday had the highest votes (11) for playing soccer/football. However, the ground-truth also mentions other days had votes, including Friday, Tuesday, and Wednesday, which the model did not mention. Therefore, although the answer correctly highlights the day with the most votes, it does not encompass all the days on which soccer/football was voted to be played.",
+    "model_answer": "Most people voted to play soccer/football on Saturday.",
+    "question": "On which days did most people vote to play soccer/football?",
+    "ground_truth": "The group voted on playing soccer/football on multiple days, including Friday, Saturday, Tuesday, and Wednesday. Saturday had the most votes.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Zareef Amyeen | DATETIME: 2024-05-04 12:04:00 | MESSAGE: POLL: What days other than Friday are people most free? OPTION: Saturday (11 votes) OPTION: Monday (3 votes) OPTION: Tuesday (7 votes) OPTION: Wednesday (3 votes) OPTION: Thursday (2 votes) "
+    ]
+  },
+  {
+    "score": 5,
+    "reasoning": "The model response is entirely correct. It notes the ongoing discussion about changing the soccer game day from Friday to Saturday, which coincides with the ground truth that highlights academic commitments as a reason for the proposed change. Both statements align with the supporting messages showing discussion around the day change proposal, confirming the model's accuracy.",
+    "model_answer": "Yes, there has been discussion about changing the day of the week for soccer games from Friday to Saturday based on the conversation in the documents provided.",
+    "question": "Has there been any discussion about changing the day of the week for soccer games?",
+    "ground_truth": "The group discusses the possibility of changing the day they play soccer from Friday to Saturday due to academic commitments.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Zareef Amyeen | DATETIME: 2025-01-29 20:50:00 | MESSAGE: I propose that we move friday soccer for winter quarter to saturday\nPOLL: Which day soccer OPTION: I prefer Friday (5 votes) OPTION: I prefer Saturday (4 votes) OPTION: I can come on Friday (6 votes) OPTION: I can come on Saturday (8 votes)",
+      "SENDER: Pujan Patel | DATETIME: 2025-01-30 09:00:00 | MESSAGE: That might be a good idea since everything\u2019s always due on Fridays \ud83d\ude2d",
+      "SENDER: Krishna Saxena | DATETIME: 2025-01-30 09:02:00 | MESSAGE: @15037915387 what time do you propose for Sat? Depending on that, it might be a good option",
+      "SENDER: Soham Raut | DATETIME: 2025-01-30 09:02:00 | MESSAGE: i think the main problem for most people might be the weather lowkey",
+      "SENDER: Krishna Saxena | DATETIME: 2025-01-30 09:05:00 | MESSAGE: we've had great games in much worse conditions, lol",
+      "SENDER: Soham Raut | DATETIME: 2025-01-30 09:06:00 | MESSAGE: yeah i agree this is just general feedback from the people who wanna show up but arent",
+      "SENDER: Pujan Patel | DATETIME: 2025-01-30 09:07:00 | MESSAGE: Peak gaming",
+      "SENDER: Shridhar Sinha | DATETIME: 2025-01-30 09:26:00 | MESSAGE: The golden days."
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model's response is completely incorrect as it does not match the ground-truth information about Aditi's pickup times. The information given by the model - pickup times at '5:15, 4:30, and 5:30' - is inconsistent with the ground-truth answer stating pickups at '2:10 PM on Tuesdays and Fridays, and 3:00 PM on other days.' The mentioned pickup times in the model's answer are not even close to any of the ground-truth supporting messages.",
+    "model_answer": "The pickup times for Aditi from school are at 5:15, 4:30, and 5:30 based on the information in the documents.",
+    "question": "What are the pickup times for Aditi from school?",
+    "ground_truth": "Aditi has school pickups at 2:10 PM on Tuesdays and Fridays, and 3:00 PM on other days.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aditi | DATETIME: 2022-08-29 07:59:00 | MESSAGE: 2:10 pickup on tuesdays and fridays",
+      "SENDER: Aditi | DATETIME: 2022-08-22 15:05:00 | MESSAGE: 3:00",
+      "SENDER: Aditi | DATETIME: 2022-09-07 15:16:00 | MESSAGE: also tomorrow pickups at 3pm",
+      "SENDER: Aditi | DATETIME: 2022-09-06 10:04:00 | MESSAGE: school ends at 2:00 today",
+      "SENDER: Aditi | DATETIME: 2022-09-21 18:42:00 | MESSAGE: 4pm pickup today :)"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model response partially captures the essence of the ground truth by mentioning the OCI visa and the discussion surrounding it. However, it diverges with additional details that are not directly supported by the ground truth messages, such as the confusion about the tourist visa process, appointment requirements, and obtaining a visa at SFO. The reference to an e-visa link relates indirectly to the ground truth where \"Ma provided a link to apply for an e-visa.\" Despite these connections, the response lacks full alignment with the provided ground truth details and specific supporting messages, resulting in an incomplete match.",
+    "model_answer": "The discussion regarding visas included confusion about the process for obtaining a tourist visa, uncertainty about whether an appointment is required to visit the consulate, and questions about the OCI visa sticker requirement. There was also mention of the option to obtain a visa directly at SFO and the need to apply in advance of travel.",
+    "question": "What was discussed regarding visas?",
+    "ground_truth": "The family discussed the possibility of getting an OCI visa, and Ma provided a link to apply for an e-visa.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | DATETIME: 2023-06-09 17:15:00 | MESSAGE: Sure if they say that we need Oci visa sticker... ",
+      "SENDER: Ma | DATETIME: 2023-06-09 17:16:00 | MESSAGE: https://indianvisaonline.gov.in/evisa/tvoa.html\nThey do thai within 24 hours\nThey send visa in email "
+    ]
+  },
+  {
+    "score": 5,
+    "reasoning": "The model response comprehensively captures all essential elements of the ground-truth answer. It outlines the travel route and itinerary parallels with the ground-truth supporting messages, mentioning stops like Mammoth Hot Springs, Norris Geyser, Canyon Village, and Yellowstone Lake, all in line with the guide mentioned in the supporting message. Furthermore, budgeting details for flights, car rental, and accommodations align with the ground-truth answer. The response provides a vivid depiction without introducing any inaccuracies.",
+    "model_answer": "The details of the family's trip to Yellowstone include the best route from Sjc to Bozeman, then to Yellowstone with stops at Mammoth hot springs, Norris Geyser, Canyon Village, and Yellowstone Lake. They also plan to visit Grand Teton with stops at Jenny Lake and Teton Village before heading back to Salt Lake City and Sjc. The cost includes air tickets at $220 per person, car rental at $1000, and lodging at Canyon Village, Yellowstone Lake, and Teton Village at $500 per night.",
+    "question": "What are the details of the family's trip to Yellowstone?",
+    "ground_truth": "The family is planning a trip to Yellowstone and Grand Teton National Parks from SJC to Bozeman, then to Yellowstone, Grand Teton, and finally to Salt Lake City before returning to SJC. The trip is planned to follow a guide and the estimated cost is around $220 per person for air tickets and $1000 for car rental. Lodging is estimated to be $500 per night.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | DATETIME: 2024-07-01 11:56:00 | MESSAGE: https://www.earthtrekkers.com/yellowstone-and-grand-teton-itinerary/  We will follow this guide-  Best route:  Sjc to Bozeman  Bozeman to Yellowstone (2+ hrs)  - Mammoth hot springs (maybe) - \u2060Norris Geyser - \u2060Canyon Village (many) - \u2060Yellowstone Lake (many)  To Grand Teton - Jenny Lake (many) - \u2060Teton Village  Jackson to Salt Lake City (4 hours)  SLC to Sjc\nAir tickets ~ 220 per person Car rental ~ 1000 Canyon Village, Yellowstone Lake Lodging, Teton Village Lodging ~ 500/night <This message was edited>"
+    ]
+  },
+  {
+    "score": 5,
+    "reasoning": "The model's response accurately captures the car-related decisions and expands on them, which aligns well with the ground-truth information. The details about the color selection (slate grey and black options), as well as additional features like heated and massage seats, thermal insulation, and panoramic roof, are all consistent with the supporting messages. Although the model provided a more comprehensive description, it did not include incorrect information, making it a thorough and complete answer.",
+    "model_answer": "The car-related decisions that have been made include selecting the color slate grey for the car, opting for extras like heated seats, massage seats, thermally and noise insulated glass, panoramic roof with variable light control, and active lane keep. Additionally, there was a discussion between slate grey and black color options for the car.",
+    "question": "What car-related decisions have been made?",
+    "ground_truth": "The conversation includes discussion of a car purchase, including the selection of features like color and roof options.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | DATETIME: 2024-07-29 12:27:00 | MESSAGE: Here are the selected extras:  Base           99,400 Battery plus                5,780 Color              1,420 (Provence) Premium      6,900 package (includes adaptive cruise control, soft close doors, head up display, power seats 14 way with memory, ionizer)  All weather tires:                        0  Interior: Slate grey:             0 * is this ok?  Heated seats rear:                   360  Massage seat front:                 960  Thermally and noise insulated glass:               1,130  Panoramic roof with variable light control:          4,760  Active lane keep:               1,320",
+      "SENDER: Ma | DATETIME: 2024-07-29 12:28:00 | MESSAGE: Slate grey is similar to Prius and Highlander",
+      "SENDER: Papa | DATETIME: 2024-07-29 12:29:00 | MESSAGE: Ok then black",
+      "SENDER: Papa | DATETIME: 2024-07-29 12:34:00 | MESSAGE: Also showing roof choices above - I like variable light control\u2026 it will help keeping the car cooler in summer"
+    ]
+  },
+  {
+    "score": 4,
+    "reasoning": "The model response accurately captures the key element of the ground-truth answer by stating that the family plans on being in Portland for Thanksgiving. While the model response uses more definitive language, implying certainty that they will spend Thanksgiving in Portland, the ground-truth merely suggests it was a discussed plan. The term \"involve\" can imply a plan but not certainty. Given the phrasing in both the ground-truth and supporting messages, the model's interpretation, while slightly more assertive than the source information, still aligns with the intended meaning of the ground-truth, which is that Portland was the discussed location for Thanksgiving. Thus, the answer merits a score of 4 for being mostly correct with a minor overstatement. \n\nAdditional language differences aside, the essential understanding matches the ground-truth. \n\nThe slight overstatement is why it does not achieve a perfect score, yet the essence of the plan being associated with Portland remains accurate.",
+    "model_answer": "The family's plans for Thanksgiving 2022 involve most family members being in Portland for the Thanksgiving weekend, indicating that they plan on spending Thanksgiving in Portland.",
+    "question": "What are the family\u2019s plans for Thanksgiving 2022?",
+    "ground_truth": "The family discussed a possible trip to Portland for Thanksgiving weekend.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Ma | DATETIME: 2022-09-07 10:21:00 | MESSAGE: Most everyone will be in Portland thanksgiving weekend",
+      "SENDER: Aditi | DATETIME: 2022-09-07 15:16:00 | MESSAGE: i am down to go \ud83d\udc4d"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is completely incorrect. The ground-truth answer states that the family's plan is to travel to Seattle for Thanksgiving, as indicated by Ma's completion of the booking. The model's mention of getting groceries and putting together a meal, as well as the possibility of dining at Seattle-area restaurants, is inaccurate and not supported by the ground-truth information provided. There is no mention of a trip or booking in the model's response.",
+    "model_answer": "The family's plans for Thanksgiving 2024 involve getting groceries in the morning from QFC and putting together a quick taihiri meal. They may also consider dining at Seattle-area restaurants open for last-minute Thanksgiving diners.",
+    "question": "What are the family\u2019s plans for Thanksgiving 2024?",
+    "ground_truth": "The family is planning a trip to Seattle for Thanksgiving. Ma completed the booking.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Ma | DATETIME: 2024-09-24 23:01:00 | MESSAGE: Seattle booking completed for thanksgiving"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is considered incorrect since it outright states that the documents provided do not contain the information, whereas the ground-truth answer clearly states that both Papa and Aditi tested positive for COVID on May 29th, 2022. The supporting messages explicitly confirm this information, hence the model's answer does not align with the known facts.",
+    "model_answer": "The documents provided do not contain information about who tested positive for COVID in 2022.",
+    "question": "Who tested positive for COVID in 2022?",
+    "ground_truth": "Papa and Aditi both tested positive for COVID on May 29th, 2022.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | DATETIME: 2022-05-29 18:27:00 | MESSAGE: Aditi's COVID test came back positive, so I have it too... Though I don't feel anything... Aditi is having persistent cough. The doctor checked her lungs and they were clear. Let's see...",
+      "SENDER: Ma | DATETIME: 2022-05-29 19:46:00 | MESSAGE: Yes, her school especially"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is completely incorrect. The ground-truth answer clearly states that the group discussed going to Portage Bay for food on March 9th. None of the options provided by the model, Burger Hut or a new Indian place on the ave, matches the ground-truth answer or the supporting messages. Therefore, the model's answer does not provide any correct information.",
+    "model_answer": "The group discussed going to Burger Hut or a new Indian place on the ave for dinner.",
+    "question": "What restaurant did the group discuss going to?",
+    "ground_truth": "The group discussed going to Portage Bay for food on March 9th.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Zareef Amyeen | DATETIME: 2024-03-09 12:48:00 | MESSAGE: Portage Bay?",
+      "SENDER: Shridhar Sinha | DATETIME: 2024-03-09 12:49:00 | MESSAGE: I'll try to come",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-03-09 13:01:00 | MESSAGE: made reservation for 3\n@arya\n1:15",
+      "SENDER: Arya GJ | DATETIME: 2024-03-09 13:03:00 | MESSAGE: Done\nWhere do we meet?",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-03-09 13:03:00 | MESSAGE: i\u2019m right next to the standard",
+      "SENDER: Arya GJ | DATETIME: 2024-03-09 13:03:00 | MESSAGE: Ok give me 5 and I\u2019ll meet at the standard"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model's response partially captures the essence of the chat's dynamic around Ali but diverges significantly from the ground-truth. While the model mentions confusion and mistaking Ali for Ajay, these details are not part of the messages provided. The mention of graduating and leaving UW also seems irrelevant to the topic discussed in the messages. The core aspect of the ground-truth, Ali's removal and the discussion of adding him back, was not directly addressed by the model, although it touched on certain confusion regarding Ali's presence in the group. Overall, the response includes some relevant context, but misses the main point of repeated removal and discussion around adding Ali back, thus warranting a score of 3 for partial correctness.",
+    "model_answer": "The history of Ali in this chat is that there is confusion about who Ali is, with some members mistaking him for Ajay and questioning why he is still in the group after graduating and leaving UW.",
+    "question": "What is the history of Ali in this chat?",
+    "ground_truth": "Ali was removed from the chat multiple times, and there was discussion about adding him back.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-23 13:39:00 | MESSAGE: Ali hamza ki Gand me lamba",
+      "SENDER: Maanav Agraval | DATETIME: 2024-04-23 13:40:00 | MESSAGE: does this mean ali isn\u2019t invited to the tiktok rizz party",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-23 13:44:00 | MESSAGE: Man had the audacity to talk some absolute jackshit after getting removed once",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-04-23 14:26:00 | MESSAGE: why do we keep adding him back",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-23 14:26:00 | MESSAGE: He ain\u2019t coming back son I",
+      "SENDER: Krishna Saxena | DATETIME: 2024-04-23 16:17:00 | MESSAGE: Can someone add him back though. Mans just wants to play \u26bd",
+      "SENDER: Andrew Awada | DATETIME: 2024-04-23 17:12:00 | MESSAGE: U can bro",
+      "SENDER: Arya GJ | DATETIME: 2024-04-30 17:14:00 | MESSAGE: Bruh he\u2019s calling u a cuck\nShow him his place",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-30 17:15:00 | MESSAGE: Sorry boys\nHe is gone",
+      "SENDER: Arya GJ | DATETIME: 2024-04-30 17:16:00 | MESSAGE: Nah Soham add him back and reply and then kick him out again \ud83d\ude02"
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model's response, \"The group played poker and the game ended in a four-way all-in situation,\" does not align with the ground-truth answer, which states that \"Chris won the poker game at his place.\" The model's response introduces a scenario of a four-way all-in, which is not supported by the supplied evidence. There is no indication of this situation in the ground-truth supporting messages. The model's answer lacks the specific correct information indicating Chris's victory, making it vague and not directly related to the confirmed details.",
+    "model_answer": "The group played poker and the game ended in a four-way all-in situation.",
+    "question": "What happened when the group played poker?",
+    "ground_truth": "Chris won the poker game at his place.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Chris Hunt | DATETIME: 2024-06-25 14:28:00 | MESSAGE: How do y\u2019all feel about poker",
+      "SENDER: Chris Hunt | DATETIME: 2024-06-26 13:39:00 | MESSAGE: Poker tonight at my place at 6:30, if you don\u2019t want to play feel free to come and hang out\n5 dollar buy in\n@12065326226 @12067569178 @19717270030 @12069349827?",
+      "SENDER: Chris Hunt | DATETIME: 2024-06-26 20:27:00 | MESSAGE: Sorry for that ending boys\nIf anyone wants to come back and play some werewolf I\u2019d be down\nAlso my venmo is chris-hunt-150 and my number is (914) 574-9125 if you\u2019re using zelle"
+    ]
+  },
+  {
+    "score": 4,
+    "reasoning": "The model response closely matches the ground-truth answer, indicating that Chris's car didn't start because it required gas. The model adds additional context by specifying that the issue occurred a week ago and attributes the lack of resolution to Chris being \"too lazy\" to address it. While the phrase \"a week ago\" does not precisely match the timeline provided in the supporting messages, indicating a potential minor discrepancy, the overall understanding of the car's status (needing gas) is conveyed correctly. The additional contextual information about laziness does not detract significantly from the core correctness of the response.",
+    "model_answer": "The status of Chris's car is that it didn't start a week ago because there wasn't enough gas, and he has been too lazy to do anything about it.",
+    "question": "What is the status of Chris's car?",
+    "ground_truth": "Chris's car may not start because it needs gas.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Chris Hunt | DATETIME: 2024-07-28 17:11:00 | MESSAGE: I can drive if I can figure out how to start my car\nIt probably just needs gas",
+      "SENDER: Chris Hunt | DATETIME: 2024-08-01 18:09:00 | MESSAGE: I\u2019ll get some gas tomorrow and let you know if my car starts",
+      "SENDER: Chris Hunt | DATETIME: 2024-08-02 20:13:00 | MESSAGE: I haven\u2019t gotten gas"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model's response partially overlaps with the ground-truth answer but misses some correct individuals and includes incorrect ones. The model correctly identifies Soham Raut but incorrectly includes Zareef Amyeen. It also fails to mention Aaryaman and Shridhar who were part of the ground-truth answer, while Zareef is only mentioned in the supporting messages for humorous context and not as someone who took the course.",
+    "model_answer": "Zareef Amyeen and Soham Raut have taken CS 333 with Hannah Tang.",
+    "question": "Who has taken CS 333 with Hannah Tang?",
+    "ground_truth": "Aaryaman, Shridhar, and Soham took CS 333 with Hannah Tang. Zareef is taking it now.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Shridhar Sinha | DATETIME: 2024-09-25 11:31:00 | MESSAGE: Me soham and ariman ",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-09-25 11:31:00 | MESSAGE: oh fml\nariman was constantly fighting for his life\ni feel like that's not a good sign "
+    ]
+  },
+  {
+    "score": 4,
+    "reasoning": "The model's response includes phrases from the ground-truth supporting messages, demonstrating good alignment with the intended examples. The inclusion of statements like \"if you hate CS majors so much, drop out,\" and \"you\u2019ll have a CS degree \ud83d\udc80\\ni\u2019m saying forfeit it\" echoes the teasing nature highlighted in the ground-truth answer. However, the initial joke, \"There's no reason to take a programming class in the CS department when I can do amath, lol,\" doesn't appear in the supporting messages, indicating a minor deviation. Nevertheless, it doesn't detract significantly from the overall accuracy of the response.",
+    "model_answer": "Examples of jokes that people have made about CS majors include:\n1. \"There's no reason to take a programming class in the CS department when I can do amath, lol.\"\n2. \"If you hate CS majors so much, drop out.\"\n3. \"You'll have a CS degree, I'm saying forfeit it.\"\n4. \"Permanent shit stain.\"",
+    "question": "Give examples of jokes that people have made about CS majors.",
+    "ground_truth": "Aaryaman is often the target of jokes about CS majors, with Zareef and others teasing him about his CS degree and his feelings about the CS building.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Zareef Amyeen | DATETIME: 2024-09-25 14:36:00 | MESSAGE: if you hate cs majors so much drop out",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-09-25 14:37:00 | MESSAGE: Boss once im done after this quarter and i have a degree in my hand i will gladly",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-09-25 14:37:00 | MESSAGE: you\u2019ll have a CS degree \ud83d\udc80\ni\u2019m saying forfeit it",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-09-25 14:37:00 | MESSAGE: Permanent shit stain"
+    ]
+  },
+  {
+    "score": 4,
+    "reasoning": "The model's response suggests a negative sentiment towards the CS career fair, which is not entirely supported by the ground truth or supporting messages. The ground truth focused on the high attendance and long lines, without explicitly stating a sentiment. However, there are negative undertones in some messages, such as the overwhelming line and frustration with waiting, which the model picked up on. The model's mention of negative sentiment is somewhat speculative but not entirely baseless, given the context of the supporting messages.",
+    "model_answer": "The general sentiment around the CS career fair seems to be negative, as indicated by comments such as \"There are already more people in line for this career fair than people these guys will hire\" and the use of emojis like \ud83d\ude2d.",
+    "question": "What is the general sentiment around the CS career fair?",
+    "ground_truth": "The group discusses the CS career fair, with many people attending or planning to attend. The line is very long.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Krishna Saxena | DATETIME: 2024-10-03 11:07:00 | MESSAGE: There are already more people in line for this career fair than people these guys will hire",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:08:00 | MESSAGE: Are you there alr\ud83d\udc80",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-03 11:08:00 | MESSAGE: \ud83d\ude2d",
+      "SENDER: Krishna Saxena | DATETIME: 2024-10-03 11:08:00 | MESSAGE: I wanted to ensure I get to stat 535 by 12:30 UwU",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-03 11:08:00 | MESSAGE: Is it the cs fair",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-03 11:09:00 | MESSAGE: yuh",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:09:00 | MESSAGE: Lmao yeah",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-03 11:09:00 | MESSAGE: U there Zareef?\nUnlucky \ud83d\ude2d",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:09:00 | MESSAGE: Im in the lab printing out my resume and every single person here is talking about the fair",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-03 11:09:00 | MESSAGE: \ud83d\ude2d",
+      "SENDER: Krishna Saxena | DATETIME: 2024-10-03 11:09:00 | MESSAGE: Worst part is that I'm only here to talk to a recruiter for a nepo job",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-03 11:10:00 | MESSAGE: mashallah nepo job",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-03 11:10:00 | MESSAGE: Real \ud83d\ude4f",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:12:00 | MESSAGE: How long is the line lmao",
+      "SENDER: Krishna Saxena | DATETIME: 2024-10-03 11:13:00 | MESSAGE: Easily 400 people ahead of me \ud83d\ude2d",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:14:00 | MESSAGE: Where are you standing wtf",
+      "SENDER: Maanav Agraval | DATETIME: 2024-10-03 11:14:00 | MESSAGE: soham please go to the edgile table\ntalk to the recruiter about edging",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:14:00 | MESSAGE: Lmao",
+      "SENDER: Krishna Saxena | DATETIME: 2024-10-03 11:15:00 | MESSAGE: Hopefully this is intelligible: I'm facing THO, but close to turning the corner",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:18:00 | MESSAGE: Oh wow",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-10-03 11:19:00 | MESSAGE: Shit is it a good idea to go a little later",
+      "SENDER: Chris Hunt | DATETIME: 2024-10-03 11:23:00 | MESSAGE: Wtf\nI\u2019m probably gonna go around 12:30\nAlthough honestly it might be better to go a little later",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:24:00 | MESSAGE: Before the non majors come tho",
+      "SENDER: Chris Hunt | DATETIME: 2024-10-03 11:24:00 | MESSAGE: That\u2019s at 2\nSo maybe I\u2019ll go at 1",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:27:00 | MESSAGE: Bro the line wraps around inside the hub\nIm literally near like dub street",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-10-03 11:28:00 | MESSAGE: @19145749125 I\u2019ll meet u at 12:30-1",
+      "SENDER: Arya GJ | DATETIME: 2024-10-03 11:38:00 | MESSAGE: Damn the unemployment is crazy"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model's response is partially correct. It correctly identifies Pujan Patel and Arya GJ as attendees of the Kygo concert, which matches information from the supporting messages. However, it omits mentioning Shridhar, who is also confirmed to be attending according to the ground-truth and supporting messages. Thus, the response lacks completeness.",
+    "model_answer": "Pujan Patel and Arya GJ are going to the Kygo concert.",
+    "question": "Who is going to the Kygo concert?",
+    "ground_truth": "Arya, Shridhar, and Pujan are going to the Kygo concert.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Shridhar Sinha | DATETIME: 2024-10-09 13:01:00 | MESSAGE: Ur going to kygo right",
+      "SENDER: Arya GJ | DATETIME: 2024-10-09 13:08:00 | MESSAGE: Who @15034810370?",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-09 13:12:00 | MESSAGE: Yeah I am",
+      "SENDER: Shridhar Sinha | DATETIME: 2024-10-09 13:22:00 | MESSAGE: YOOOOO\nMe too",
+      "SENDER: Arya GJ | DATETIME: 2024-10-09 13:22:00 | MESSAGE: I\u2019m going too"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The response mentions permutations and combinations, which relates to a part of the conversation about the math problem. However, it doesn't accurately capture the specific details of the problem, which involves calculating handshakes among pairs of people. The mention of permutations and combinations shows an understanding of the mathematical approach, but the focus of the discussion was more directly tied to the handshake problem. Thus, the response captures a relevant concept but misses the specificity of the actual problem.",
+    "model_answer": "Pujan, Arya, and Zareef discussed permutations and combinations on October 21st, 2024.",
+    "question": "What math problem did Pujan, Arya, and Zareef discuss on October 21st, 2024?",
+    "ground_truth": "Pujan, Arya, and Zareef were discussing a math problem involving handshakes on October 21st, 2024. The problem involved pairs of people and the number of possible handshakes.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Pujan Patel | DATETIME: 2024-10-21 06:17:00 | MESSAGE: Ahh rip I didn\u2019t see the message in time\nHow would u mathematically formalize this?",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:45:00 | MESSAGE: There are 5 pairs, A1,A2, B1, B2, ..., E1, E2",
+      "SENDER: Arya GJ | DATETIME: 2024-10-21 08:45:00 | MESSAGE: Permutations and combinations",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:47:00 | MESSAGE: Each x_i can create a pair with some y_1 or y_2. Each x_i can make more than 1 pair.",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-21 08:47:00 | MESSAGE: Yes I got that far, but I wasn\u2019t sure how to solve it from there",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:48:00 | MESSAGE: Consider the set S_{x_i} of permutations where x_i \n\u2208 pair then |S_{x_i}| \u2260 |S_{y_j}| for all x_i and y_j where x_i \u2260 y_j\noh do you want the answer?",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-21 08:48:00 | MESSAGE: Ya",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:48:00 | MESSAGE: bruh\nthis is probably small enough where you can just think of the unique case\nit's probably like 0 handshakes, 1 handshake -> 9 handshakes\nso 9(10)/2 = 45",
+      "SENDER: Arya GJ | DATETIME: 2024-10-21 08:50:00 | MESSAGE: That\u2019s the max numb of handshakes\nIf everyone shook everyone",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:50:00 | MESSAGE: no idt so\n0 + 1 + 2 + ...+ 9 = 45",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-21 08:51:00 | MESSAGE: Max would be 90\nIf everyone shook everyone",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:51:00 | MESSAGE: 8 * 10 = 80 cuz you can't shake with yourself or your partner\nyeah something like 45 prob",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-21 08:51:00 | MESSAGE: Oh right",
+      "SENDER: Arya GJ | DATETIME: 2024-10-21 08:52:00 | MESSAGE: U half it",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:52:00 | MESSAGE: allah knows",
+      "SENDER: Arya GJ | DATETIME: 2024-10-21 08:52:00 | MESSAGE: Coz each handshake involves 2 ppl",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:52:00 | MESSAGE: yeah you're right",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-21 08:52:00 | MESSAGE: Oh sure the number of handshakes is 45"
+    ]
+  },
+  {
+    "score": 4,
+    "reasoning": "The model's answer captures the core activity the group frequently engages in, which is playing soccer. However, while the model mentions 'intramurals,' it seems to focus specifically on soccer. The model also references playing near campus, aligning with the location discussed in the messages. The omission lies in not mentioning other sports that might also be discussed but are not explicitly mentioned in the ground-truth or supporting messages. The response is nearly complete but could include slight elaborations for completeness.",
+    "model_answer": "The group in the Intramural Activities chat frequently engages in playing intramurals together, specifically soccer at fields on or near campus.",
+    "question": "Which activities do the group in the Intramural Activities chat frequently engage in together?",
+    "ground_truth": "The group frequently discusses playing football/soccer together. They often coordinate times and locations to meet up and play.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Maanav Agraval | DATETIME: 2023-02-10 17:54:00 | MESSAGE: I\u2019m gonna go to ima later around 8 if anyone wanna join me\ni am going at 8 for football only ",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2023-02-10 18:51:00 | MESSAGE: Ok who all are coming at 7:30\nMe, Rituraj And Krishna\nSoham\nBazil?\nShridhar might come with Manav at 8\nRest pls confirm ",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2023-02-24 18:42:00 | MESSAGE: Guys who all are coming today "
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model's response indicates Yash's inability to play with his friends due to a physical issue, specifically attributing it to a gym accident. Though the exact details differ slightly, the essence of not being able to play because of a knee-related problem is conveyed. The response partially aligns with the ground truth, which centers on Yash mentioning his broken knees as the reason. Therefore, the model's answer is mostly relatable but not entirely accurate, as it cites a gym accident rather than directly referencing the broken knees communicated in the ground truth.",
+    "model_answer": "Yash can't play with his friends because he is slightly disabled due to a gym accident.",
+    "question": "Why can't Yash play with hs friends?",
+    "ground_truth": "Yash has mentioned multiple times that his knees are broken and that he may not be able to play sports.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Yash | DATETIME: 2023-03-31 20:01:00 | MESSAGE: Knees still broken \u2026 inshallah I will come next week",
+      "SENDER: Yash | DATETIME: 2023-04-14 13:28:00 | MESSAGE: Knees \ud83d\ude32",
+      "SENDER: Yash | DATETIME: 2023-04-27 10:07:00 | MESSAGE: Nahin mere ghutanon toot gaye"
+    ]
+  },
+  {
+    "score": 4,
+    "reasoning": "The model's response is mostly correct as it identifies Saturday as the day when most people voted to play soccer/football, which aligns with the ground-truth answer where Saturday had the most votes. However, it doesn't mention that the group also voted to play on other days like Friday, Tuesday, and Wednesday, which are part of the complete ground-truth answer. Despite this minor omission, the core information about Saturday is accurately captured, which is sufficient for a mostly correct evaluation.",
+    "model_answer": "Most people voted to play soccer/football on Saturday.",
+    "question": "On which days did most people vote to play soccer/football?",
+    "ground_truth": "The group voted on playing soccer/football on multiple days, including Friday, Saturday, Tuesday, and Wednesday. Saturday had the most votes.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Zareef Amyeen | DATETIME: 2024-05-04 12:04:00 | MESSAGE: POLL: What days other than Friday are people most free? OPTION: Saturday (11 votes) OPTION: Monday (3 votes) OPTION: Tuesday (7 votes) OPTION: Wednesday (3 votes) OPTION: Thursday (2 votes) "
+    ]
+  },
+  {
+    "score": 5,
+    "reasoning": "The model response accurately reflects the ground-truth answer by stating there has been discussion about changing the day of the week for soccer games from Friday to Saturday. This aligns perfectly with the supporting messages and the reasoning for considering the change. The model response includes all relevant information without any errors or omissions.",
+    "model_answer": "Yes, there has been discussion about changing the day of the week for soccer games from Friday to Saturday based on the conversation in the documents provided.",
+    "question": "Has there been any discussion about changing the day of the week for soccer games?",
+    "ground_truth": "The group discusses the possibility of changing the day they play soccer from Friday to Saturday due to academic commitments.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Zareef Amyeen | DATETIME: 2025-01-29 20:50:00 | MESSAGE: I propose that we move friday soccer for winter quarter to saturday\nPOLL: Which day soccer OPTION: I prefer Friday (5 votes) OPTION: I prefer Saturday (4 votes) OPTION: I can come on Friday (6 votes) OPTION: I can come on Saturday (8 votes)",
+      "SENDER: Pujan Patel | DATETIME: 2025-01-30 09:00:00 | MESSAGE: That might be a good idea since everything\u2019s always due on Fridays \ud83d\ude2d",
+      "SENDER: Krishna Saxena | DATETIME: 2025-01-30 09:02:00 | MESSAGE: @15037915387 what time do you propose for Sat? Depending on that, it might be a good option",
+      "SENDER: Soham Raut | DATETIME: 2025-01-30 09:02:00 | MESSAGE: i think the main problem for most people might be the weather lowkey",
+      "SENDER: Krishna Saxena | DATETIME: 2025-01-30 09:05:00 | MESSAGE: we've had great games in much worse conditions, lol",
+      "SENDER: Soham Raut | DATETIME: 2025-01-30 09:06:00 | MESSAGE: yeah i agree this is just general feedback from the people who wanna show up but arent",
+      "SENDER: Pujan Patel | DATETIME: 2025-01-30 09:07:00 | MESSAGE: Peak gaming",
+      "SENDER: Shridhar Sinha | DATETIME: 2025-01-30 09:26:00 | MESSAGE: The golden days."
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model's response is completely incorrect and does not align with the ground-truth information. The correct pickup times for Aditi are 2:10 PM on Tuesdays and Fridays and 3:00 PM on other days. The model's response provided times (5:15, 4:30, and 5:30) that were not mentioned or supported by any of the messages in the ground truth.",
+    "model_answer": "The pickup times for Aditi from school are at 5:15, 4:30, and 5:30 based on the information in the documents.",
+    "question": "What are the pickup times for Aditi from school?",
+    "ground_truth": "Aditi has school pickups at 2:10 PM on Tuesdays and Fridays, and 3:00 PM on other days.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aditi | DATETIME: 2022-08-29 07:59:00 | MESSAGE: 2:10 pickup on tuesdays and fridays",
+      "SENDER: Aditi | DATETIME: 2022-08-22 15:05:00 | MESSAGE: 3:00",
+      "SENDER: Aditi | DATETIME: 2022-09-07 15:16:00 | MESSAGE: also tomorrow pickups at 3pm",
+      "SENDER: Aditi | DATETIME: 2022-09-06 10:04:00 | MESSAGE: school ends at 2:00 today",
+      "SENDER: Aditi | DATETIME: 2022-09-21 18:42:00 | MESSAGE: 4pm pickup today :)"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model's response captures part of the discussion about the visa process, such as the issues of confusion and uncertainty about the visa process. However, it lacks the specificity present in the ground-truth answer, which discusses the consideration of an OCI visa and the sharing of a link for an e-visa application. Therefore, the response references the correct topic but does not convey the complete details discussed in the ground-truth answer.",
+    "model_answer": "The discussion regarding visas included confusion about the process for obtaining a tourist visa, uncertainty about whether an appointment is required to visit the consulate, and questions about the necessity of an OCI visa sticker.",
+    "question": "What was discussed regarding visas?",
+    "ground_truth": "The family discussed the possibility of getting an OCI visa, and Ma provided a link to apply for an e-visa.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | DATETIME: 2023-06-09 17:15:00 | MESSAGE: Sure if they say that we need Oci visa sticker... ",
+      "SENDER: Ma | DATETIME: 2023-06-09 17:16:00 | MESSAGE: https://indianvisaonline.gov.in/evisa/tvoa.html\nThey do thai within 24 hours\nThey send visa in email "
+    ]
+  },
+  {
+    "score": 4,
+    "reasoning": "The model's response provides a comprehensive overview of the family's trip to Yellowstone and included additional details about sites they plan to visit within the park. While it did not explicitly mention the visit to Grand Teton, the information about Jenny Lake and Teton Village implies this part of the itinerary, which aligns with the ground-truth. However, the model failed to mention the trip extends to Salt Lake City and subsequent return to SJC. This omission deducts from a perfect score but does not severely detract from the response's correctness.",
+    "model_answer": "The family's trip to Yellowstone includes visiting Mammoth hot springs, Norris Geyser, Canyon Village, Yellowstone Lake, Jenny Lake in Grand Teton, and Teton Village. They will be traveling from Sjc to Bozeman and then to Yellowstone, with air tickets costing around $220 per person and car rental at $1000. Lodging costs at Canyon Village, Yellowstone Lake, and Teton Village are around $500 per night.",
+    "question": "What are the details of the family's trip to Yellowstone?",
+    "ground_truth": "The family is planning a trip to Yellowstone and Grand Teton National Parks from SJC to Bozeman, then to Yellowstone, Grand Teton, and finally to Salt Lake City before returning to SJC. The trip is planned to follow a guide and the estimated cost is around $220 per person for air tickets and $1000 for car rental. Lodging is estimated to be $500 per night.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | DATETIME: 2024-07-01 11:56:00 | MESSAGE: https://www.earthtrekkers.com/yellowstone-and-grand-teton-itinerary/  We will follow this guide-  Best route:  Sjc to Bozeman  Bozeman to Yellowstone (2+ hrs)  - Mammoth hot springs (maybe) - \u2060Norris Geyser - \u2060Canyon Village (many) - \u2060Yellowstone Lake (many)  To Grand Teton - Jenny Lake (many) - \u2060Teton Village  Jackson to Salt Lake City (4 hours)  SLC to Sjc\nAir tickets ~ 220 per person Car rental ~ 1000 Canyon Village, Yellowstone Lake Lodging, Teton Village Lodging ~ 500/night <This message was edited>"
+    ]
+  },
+  {
+    "score": 5,
+    "reasoning": "The model response accurately summarizes the car-related decisions discussed, including selecting slate grey as the interior color, choosing the panoramic roof with variable light control, and opting for all-weather tires. It also mentions the discussion about technology choices and exterior color options, aligning well with the supporting messages provided. The response captures all relevant decisions without introducing incorrect information.",
+    "model_answer": "The car-related decisions that have been made include selecting slate grey as the interior color, choosing the panoramic roof with variable light control, opting for all-weather tires, and deciding on the tech choices while not choosing night vision. Additionally, there was a discussion about the exterior color choices between slate grey and black.",
+    "question": "What car-related decisions have been made?",
+    "ground_truth": "The conversation includes discussion of a car purchase, including the selection of features like color and roof options.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | DATETIME: 2024-07-29 12:27:00 | MESSAGE: Here are the selected extras:  Base           99,400 Battery plus                5,780 Color              1,420 (Provence) Premium      6,900 package (includes adaptive cruise control, soft close doors, head up display, power seats 14 way with memory, ionizer)  All weather tires:                        0  Interior: Slate grey:             0 * is this ok?  Heated seats rear:                   360  Massage seat front:                 960  Thermally and noise insulated glass:               1,130  Panoramic roof with variable light control:          4,760  Active lane keep:               1,320",
+      "SENDER: Ma | DATETIME: 2024-07-29 12:28:00 | MESSAGE: Slate grey is similar to Prius and Highlander",
+      "SENDER: Papa | DATETIME: 2024-07-29 12:29:00 | MESSAGE: Ok then black",
+      "SENDER: Papa | DATETIME: 2024-07-29 12:34:00 | MESSAGE: Also showing roof choices above - I like variable light control\u2026 it will help keeping the car cooler in summer"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is completely incorrect as it states the plans were not mentioned, whereas the ground-truth clearly outlines that the family discussed a trip to Portland for Thanksgiving weekend, as evidenced by the supporting messages.",
+    "model_answer": "The family's plans for Thanksgiving 2022 are not mentioned in the provided documents.",
+    "question": "What are the family\u2019s plans for Thanksgiving 2022?",
+    "ground_truth": "The family discussed a possible trip to Portland for Thanksgiving weekend.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Ma | DATETIME: 2022-09-07 10:21:00 | MESSAGE: Most everyone will be in Portland thanksgiving weekend",
+      "SENDER: Aditi | DATETIME: 2022-09-07 15:16:00 | MESSAGE: i am down to go \ud83d\udc4d"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is not correct, as it doesn't align with the ground-truth answer about the family's planned trip to Seattle for Thanksgiving. Additionally, the information provided by the model about groceries, a taihiri meal, and dining at local restaurants is unrelated to the ground-truth message that emphasizes a completed booking for a trip to Seattle. The model's answer contains details that do not match the verified information.",
+    "model_answer": "The family's plans for Thanksgiving 2024 involve getting groceries in the morning from QFC and putting together a quick taihiri meal. They may also consider dining at Seattle-area restaurants open for last-minute Thanksgiving diners.",
+    "question": "What are the family\u2019s plans for Thanksgiving 2024?",
+    "ground_truth": "The family is planning a trip to Seattle for Thanksgiving. Ma completed the booking.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Ma | DATETIME: 2024-09-24 23:01:00 | MESSAGE: Seattle booking completed for thanksgiving"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is incorrect because it claims that there wasn't any explicit information about who tested positive for COVID in 2022. However, the ground-truth answer and supporting messages clearly indicate that both Papa and Aditi tested positive on May 29th, 2022. The model either misinterpreted or overlooked this specific information, leading to an incorrect evaluation.",
+    "model_answer": "Based on the information in the documents provided, it is not explicitly stated who tested positive for COVID in 2022.",
+    "question": "Who tested positive for COVID in 2022?",
+    "ground_truth": "Papa and Aditi both tested positive for COVID on May 29th, 2022.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | DATETIME: 2022-05-29 18:27:00 | MESSAGE: Aditi's COVID test came back positive, so I have it too... Though I don't feel anything... Aditi is having persistent cough. The doctor checked her lungs and they were clear. Let's see...",
+      "SENDER: Ma | DATETIME: 2022-05-29 19:46:00 | MESSAGE: Yes, her school especially"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response does not mention the specific restaurant, Portage Bay, that the group discussed going to. Instead, it provides a vague location, \"a restaurant in the U district,\" which does not align with the exact ground truth provided in the messages. The key information - the restaurant's name, Portage Bay - is missing from the model's response.",
+    "model_answer": "The group discussed going to a restaurant in the U district.",
+    "question": "What restaurant did the group discuss going to?",
+    "ground_truth": "The group discussed going to Portage Bay for food on March 9th.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Zareef Amyeen | DATETIME: 2024-03-09 12:48:00 | MESSAGE: Portage Bay?",
+      "SENDER: Shridhar Sinha | DATETIME: 2024-03-09 12:49:00 | MESSAGE: I'll try to come",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-03-09 13:01:00 | MESSAGE: made reservation for 3\n@arya\n1:15",
+      "SENDER: Arya GJ | DATETIME: 2024-03-09 13:03:00 | MESSAGE: Done\nWhere do we meet?",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-03-09 13:03:00 | MESSAGE: i\u2019m right next to the standard",
+      "SENDER: Arya GJ | DATETIME: 2024-03-09 13:03:00 | MESSAGE: Ok give me 5 and I\u2019ll meet at the standard"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model's response does not align with the ground-truth answer. While the model mentions confusion about Ali's identity and being invited to events, it fails to capture the key elements that Ali was repeatedly removed and there was discussion about adding him back, which are critical points as evidenced by the supporting messages.",
+    "model_answer": "The history of Ali in this chat involves confusion about his identity, with some members mistaking him for Ajay and questioning why he is still in the group after graduating and leaving UW. There are also mentions of Ali being invited to events and performances.",
+    "question": "What is the history of Ali in this chat?",
+    "ground_truth": "Ali was removed from the chat multiple times, and there was discussion about adding him back.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-23 13:39:00 | MESSAGE: Ali hamza ki Gand me lamba",
+      "SENDER: Maanav Agraval | DATETIME: 2024-04-23 13:40:00 | MESSAGE: does this mean ali isn\u2019t invited to the tiktok rizz party",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-23 13:44:00 | MESSAGE: Man had the audacity to talk some absolute jackshit after getting removed once",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-04-23 14:26:00 | MESSAGE: why do we keep adding him back",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-23 14:26:00 | MESSAGE: He ain\u2019t coming back son I",
+      "SENDER: Krishna Saxena | DATETIME: 2024-04-23 16:17:00 | MESSAGE: Can someone add him back though. Mans just wants to play \u26bd",
+      "SENDER: Andrew Awada | DATETIME: 2024-04-23 17:12:00 | MESSAGE: U can bro",
+      "SENDER: Arya GJ | DATETIME: 2024-04-30 17:14:00 | MESSAGE: Bruh he\u2019s calling u a cuck\nShow him his place",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-04-30 17:15:00 | MESSAGE: Sorry boys\nHe is gone",
+      "SENDER: Arya GJ | DATETIME: 2024-04-30 17:16:00 | MESSAGE: Nah Soham add him back and reply and then kick him out again \ud83d\ude02"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model's response did not mention that Chris won the poker game, which is the core component of the ground-truth answer. Instead, the model focused on discussions and jokes made during the poker game, missing the specific outcome mentioned in the ground truth.",
+    "model_answer": "When the group played poker, they discussed the possibility of making money back and becoming no longer broke. They also joked about needing 17 all-ins to make a million dollars and mentioned that most people quit before their big win.",
+    "question": "What happened when the group played poker?",
+    "ground_truth": "Chris won the poker game at his place.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Chris Hunt | DATETIME: 2024-06-25 14:28:00 | MESSAGE: How do y\u2019all feel about poker",
+      "SENDER: Chris Hunt | DATETIME: 2024-06-26 13:39:00 | MESSAGE: Poker tonight at my place at 6:30, if you don\u2019t want to play feel free to come and hang out\n5 dollar buy in\n@12065326226 @12067569178 @19717270030 @12069349827?",
+      "SENDER: Chris Hunt | DATETIME: 2024-06-26 20:27:00 | MESSAGE: Sorry for that ending boys\nIf anyone wants to come back and play some werewolf I\u2019d be down\nAlso my venmo is chris-hunt-150 and my number is (914) 574-9125 if you\u2019re using zelle"
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model response correctly identifies that Chris's car didn't start due to a lack of gas, aligning with the ground truth that the car may not start because it needs gas. However, while the model adds context with a statement about Chris's laziness, this information is not supported by the ground truth messages. Thus, while partially correct, it introduces an unsupported element that slightly detracts from the core answer.",
+    "model_answer": "The status of Chris's car is that it didn't start a week ago because there wasn't enough gas in it. Chris has been too lazy to do anything about it.",
+    "question": "What is the status of Chris's car?",
+    "ground_truth": "Chris's car may not start because it needs gas.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Chris Hunt | DATETIME: 2024-07-28 17:11:00 | MESSAGE: I can drive if I can figure out how to start my car\nIt probably just needs gas",
+      "SENDER: Chris Hunt | DATETIME: 2024-08-01 18:09:00 | MESSAGE: I\u2019ll get some gas tomorrow and let you know if my car starts",
+      "SENDER: Chris Hunt | DATETIME: 2024-08-02 20:13:00 | MESSAGE: I haven\u2019t gotten gas"
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model's response correctly identifies Soham Raut as one of the individuals who took CS 333 with Hannah Tang, aligning with the ground-truth information. However, it incorrectly states that Zareef Amyeen also took the course with Hannah Tang, while the ground-truth indicates that he is only currently taking it, causing a discrepancy in the response. Additionally, the model omits two other names - Aaryaman and Shridhar - who are part of the ground-truth answer. Although some part of the answer is correct, these errors and omissions necessitate a partial correctness rating.",
+    "model_answer": "Zareef Amyeen and Soham Raut have taken CS 333 with Hannah Tang.",
+    "question": "Who has taken CS 333 with Hannah Tang?",
+    "ground_truth": "Aaryaman, Shridhar, and Soham took CS 333 with Hannah Tang. Zareef is taking it now.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Shridhar Sinha | DATETIME: 2024-09-25 11:31:00 | MESSAGE: Me soham and ariman ",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-09-25 11:31:00 | MESSAGE: oh fml\nariman was constantly fighting for his life\ni feel like that's not a good sign "
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model's response contains an example of a joke made about computer science majors, aligning with the concept of teasing and banter illustrated in the ground-truth supporting messages. However, it lacks context or reference to Aaryaman, Zareef, or their conversation about the CS degree, which the ground-truth details exhibit more comprehensively. Therefore, while the example can be considered relevant, it does not fully capture the unique context provided in the ground-truth explanation.",
+    "model_answer": "One example of a joke made about CS majors is \"if you hate CS majors so much, drop out.\"",
+    "question": "Give examples of jokes that people have made about CS majors.",
+    "ground_truth": "Aaryaman is often the target of jokes about CS majors, with Zareef and others teasing him about his CS degree and his feelings about the CS building.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Zareef Amyeen | DATETIME: 2024-09-25 14:36:00 | MESSAGE: if you hate cs majors so much drop out",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-09-25 14:37:00 | MESSAGE: Boss once im done after this quarter and i have a degree in my hand i will gladly",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-09-25 14:37:00 | MESSAGE: you\u2019ll have a CS degree \ud83d\udc80\ni\u2019m saying forfeit it",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-09-25 14:37:00 | MESSAGE: Permanent shit stain"
+    ]
+  },
+  {
+    "score": 2,
+    "reasoning": "The model response identifies a negative sentiment regarding the CS career fair, reflected in comments about the long line and the use of emojis indicating frustration or disappointment. However, the ground truth focuses on the high attendance and long lines, without explicitly stating a negative sentiment. While the model's interpretation captures part of the sentiment expressed in the messages (such as the frustration with long lines), it extrapolates a generalized negativity not explicitly stated in the ground truth, leading to a partial correctness.",
+    "model_answer": "The general sentiment around the CS career fair seems to be negative, as indicated by comments such as \"There are already more people in line for this career fair than people these guys will hire\" and the use of emojis like \ud83d\ude2d.",
+    "question": "What is the general sentiment around the CS career fair?",
+    "ground_truth": "The group discusses the CS career fair, with many people attending or planning to attend. The line is very long.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Krishna Saxena | DATETIME: 2024-10-03 11:07:00 | MESSAGE: There are already more people in line for this career fair than people these guys will hire",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:08:00 | MESSAGE: Are you there alr\ud83d\udc80",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-03 11:08:00 | MESSAGE: \ud83d\ude2d",
+      "SENDER: Krishna Saxena | DATETIME: 2024-10-03 11:08:00 | MESSAGE: I wanted to ensure I get to stat 535 by 12:30 UwU",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-03 11:08:00 | MESSAGE: Is it the cs fair",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-03 11:09:00 | MESSAGE: yuh",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:09:00 | MESSAGE: Lmao yeah",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-03 11:09:00 | MESSAGE: U there Zareef?\nUnlucky \ud83d\ude2d",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:09:00 | MESSAGE: Im in the lab printing out my resume and every single person here is talking about the fair",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-03 11:09:00 | MESSAGE: \ud83d\ude2d",
+      "SENDER: Krishna Saxena | DATETIME: 2024-10-03 11:09:00 | MESSAGE: Worst part is that I'm only here to talk to a recruiter for a nepo job",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-03 11:10:00 | MESSAGE: mashallah nepo job",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-03 11:10:00 | MESSAGE: Real \ud83d\ude4f",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:12:00 | MESSAGE: How long is the line lmao",
+      "SENDER: Krishna Saxena | DATETIME: 2024-10-03 11:13:00 | MESSAGE: Easily 400 people ahead of me \ud83d\ude2d",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:14:00 | MESSAGE: Where are you standing wtf",
+      "SENDER: Maanav Agraval | DATETIME: 2024-10-03 11:14:00 | MESSAGE: soham please go to the edgile table\ntalk to the recruiter about edging",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:14:00 | MESSAGE: Lmao",
+      "SENDER: Krishna Saxena | DATETIME: 2024-10-03 11:15:00 | MESSAGE: Hopefully this is intelligible: I'm facing THO, but close to turning the corner",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:18:00 | MESSAGE: Oh wow",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-10-03 11:19:00 | MESSAGE: Shit is it a good idea to go a little later",
+      "SENDER: Chris Hunt | DATETIME: 2024-10-03 11:23:00 | MESSAGE: Wtf\nI\u2019m probably gonna go around 12:30\nAlthough honestly it might be better to go a little later",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:24:00 | MESSAGE: Before the non majors come tho",
+      "SENDER: Chris Hunt | DATETIME: 2024-10-03 11:24:00 | MESSAGE: That\u2019s at 2\nSo maybe I\u2019ll go at 1",
+      "SENDER: Soham Raut | DATETIME: 2024-10-03 11:27:00 | MESSAGE: Bro the line wraps around inside the hub\nIm literally near like dub street",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-10-03 11:28:00 | MESSAGE: @19145749125 I\u2019ll meet u at 12:30-1",
+      "SENDER: Arya GJ | DATETIME: 2024-10-03 11:38:00 | MESSAGE: Damn the unemployment is crazy"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model response correctly identified the individuals who are going to the Kygo concert: Pujan Patel, Arya GJ, and Shridhar Sinha. The names match the ground truth answer and supporting messages, indicating no errors or omissions from the response. The use of full names in the model response is acceptable and does not alter the accuracy of the answer.",
+    "model_answer": "Pujan Patel, Arya GJ, and Shridhar Sinha are going to the Kygo concert.",
+    "question": "Who is going to the Kygo concert?",
+    "ground_truth": "Arya, Shridhar, and Pujan are going to the Kygo concert.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Shridhar Sinha | DATETIME: 2024-10-09 13:01:00 | MESSAGE: Ur going to kygo right",
+      "SENDER: Arya GJ | DATETIME: 2024-10-09 13:08:00 | MESSAGE: Who @15034810370?",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-09 13:12:00 | MESSAGE: Yeah I am",
+      "SENDER: Shridhar Sinha | DATETIME: 2024-10-09 13:22:00 | MESSAGE: YOOOOO\nMe too",
+      "SENDER: Arya GJ | DATETIME: 2024-10-09 13:22:00 | MESSAGE: I\u2019m going too"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model's response accurately captures the essence of the discussion by mentioning the specifics of the math problem involving handshakes and the conclusion reached, which is 45 handshakes for 10 people. The model's inclusion of details regarding the involvement of pairs and the understanding that each handshake involves two people aligns with the ground-truth and supporting messages. Additionally, the response did not contain any incorrect information or omissions, warranting a score of 3.",
+    "model_answer": "Pujan, Arya, and Zareef discussed the math problem of determining the number of handshakes that can occur between a group of people on October 21st, 2024. They concluded that the maximum number of handshakes possible with 10 people is 45, as each handshake involves 2 people.",
+    "question": "What math problem did Pujan, Arya, and Zareef discuss on October 21st, 2024?",
+    "ground_truth": "Pujan, Arya, and Zareef were discussing a math problem involving handshakes on October 21st, 2024. The problem involved pairs of people and the number of possible handshakes.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Pujan Patel | DATETIME: 2024-10-21 06:17:00 | MESSAGE: Ahh rip I didn\u2019t see the message in time\nHow would u mathematically formalize this?",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:45:00 | MESSAGE: There are 5 pairs, A1,A2, B1, B2, ..., E1, E2",
+      "SENDER: Arya GJ | DATETIME: 2024-10-21 08:45:00 | MESSAGE: Permutations and combinations",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:47:00 | MESSAGE: Each x_i can create a pair with some y_1 or y_2. Each x_i can make more than 1 pair.",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-21 08:47:00 | MESSAGE: Yes I got that far, but I wasn\u2019t sure how to solve it from there",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:48:00 | MESSAGE: Consider the set S_{x_i} of permutations where x_i \n\u2208 pair then |S_{x_i}| \u2260 |S_{y_j}| for all x_i and y_j where x_i \u2260 y_j\noh do you want the answer?",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-21 08:48:00 | MESSAGE: Ya",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:48:00 | MESSAGE: bruh\nthis is probably small enough where you can just think of the unique case\nit's probably like 0 handshakes, 1 handshake -> 9 handshakes\nso 9(10)/2 = 45",
+      "SENDER: Arya GJ | DATETIME: 2024-10-21 08:50:00 | MESSAGE: That\u2019s the max numb of handshakes\nIf everyone shook everyone",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:50:00 | MESSAGE: no idt so\n0 + 1 + 2 + ...+ 9 = 45",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-21 08:51:00 | MESSAGE: Max would be 90\nIf everyone shook everyone",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:51:00 | MESSAGE: 8 * 10 = 80 cuz you can't shake with yourself or your partner\nyeah something like 45 prob",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-21 08:51:00 | MESSAGE: Oh right",
+      "SENDER: Arya GJ | DATETIME: 2024-10-21 08:52:00 | MESSAGE: U half it",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:52:00 | MESSAGE: allah knows",
+      "SENDER: Arya GJ | DATETIME: 2024-10-21 08:52:00 | MESSAGE: Coz each handshake involves 2 ppl",
+      "SENDER: Zareef Amyeen | DATETIME: 2024-10-21 08:52:00 | MESSAGE: yeah you're right",
+      "SENDER: Pujan Patel | DATETIME: 2024-10-21 08:52:00 | MESSAGE: Oh sure the number of handshakes is 45"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model response accurately identifies one of the primary activities that the group engages in according to the ground-truth answer. It mentions playing soccer, which aligns with the ground truth where the group frequently discusses and coordinates to meet up and play soccer. The model's expression of 'playing soccer together' encapsulates the activity effectively and without contradiction to the provided ground-truth messages.",
+    "model_answer": "The group in the Intramural Activities chat frequently engages in playing soccer together.",
+    "question": "Which activities do the group in the Intramural Activities chat frequently engage in together?",
+    "ground_truth": "The group frequently discusses playing football/soccer together. They often coordinate times and locations to meet up and play.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Maanav Agraval | DATETIME: 2023-02-10 17:54:00 | MESSAGE: I\u2019m gonna go to ima later around 8 if anyone wanna join me\ni am going at 8 for football only ",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2023-02-10 18:51:00 | MESSAGE: Ok who all are coming at 7:30\nMe, Rituraj And Krishna\nSoham\nBazil?\nShridhar might come with Manav at 8\nRest pls confirm ",
+      "SENDER: Aaryaman Chakravarthi | DATETIME: 2023-02-24 18:42:00 | MESSAGE: Guys who all are coming today "
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model's response suggests that Yash is slightly disabled due to a gym accident, which introduces new information that is not supported by the ground-truth messages. The ground-truth messages specifically state that Yash's inability to play is due to his broken knees, with no mention of a gym accident or general disability. As a result, the model's response is incorrect regarding the cause of Yash's condition.",
+    "model_answer": "Yash can't play with his friends because he is slightly disabled due to a gym accident.",
+    "question": "Why can't Yash play with hs friends?",
+    "ground_truth": "Yash has mentioned multiple times that his knees are broken and that he may not be able to play sports.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Yash | DATETIME: 2023-03-31 20:01:00 | MESSAGE: Knees still broken \u2026 inshallah I will come next week",
+      "SENDER: Yash | DATETIME: 2023-04-14 13:28:00 | MESSAGE: Knees \ud83d\ude32",
+      "SENDER: Yash | DATETIME: 2023-04-27 10:07:00 | MESSAGE: Nahin mere ghutanon toot gaye"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model's response is consistent with the ground-truth answer and ground_truth supporting messages. Both confirm that Saturday received the most votes for playing soccer/football. The model identified Saturday correctly as the day with the most votes and provided the exact number of votes (11), which closely aligns with the supporting messages.",
+    "model_answer": "Most people voted to play soccer/football on Saturday, with 11 votes in favor of that day.",
+    "question": "On which days did most people vote to play soccer/football?",
+    "ground_truth": "The group voted on playing soccer/football on multiple days, including Friday, Saturday, Tuesday, and Wednesday. Saturday had the most votes.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Zareef Amyeen | DATETIME: 2024-05-04 12:04:00 | MESSAGE: POLL: What days other than Friday are people most free? OPTION: Saturday (11 votes) OPTION: Monday (3 votes) OPTION: Tuesday (7 votes) OPTION: Wednesday (3 votes) OPTION: Thursday (2 votes) "
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model's response is aligned with the ground-truth answer. Both responses indicate that there is discussion about changing the day for soccer games from Friday to Saturday. Furthermore, the model mentions 'based on the conversation in the documents provided,' which aligns with the supporting messages detailing the poll and discussion justifications, such as academic commitments.",
+    "model_answer": "Yes, there has been discussion about changing the day of the week for soccer games from Friday to Saturday based on the conversation in the documents provided.",
+    "question": "Has there been any discussion about changing the day of the week for soccer games?",
+    "ground_truth": "The group discusses the possibility of changing the day they play soccer from Friday to Saturday due to academic commitments.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Zareef Amyeen | DATETIME: 2025-01-29 20:50:00 | MESSAGE: I propose that we move friday soccer for winter quarter to saturday\nPOLL: Which day soccer OPTION: I prefer Friday (5 votes) OPTION: I prefer Saturday (4 votes) OPTION: I can come on Friday (6 votes) OPTION: I can come on Saturday (8 votes)",
+      "SENDER: Pujan Patel | DATETIME: 2025-01-30 09:00:00 | MESSAGE: That might be a good idea since everything\u2019s always due on Fridays \ud83d\ude2d",
+      "SENDER: Krishna Saxena | DATETIME: 2025-01-30 09:02:00 | MESSAGE: @15037915387 what time do you propose for Sat? Depending on that, it might be a good option",
+      "SENDER: Soham Raut | DATETIME: 2025-01-30 09:02:00 | MESSAGE: i think the main problem for most people might be the weather lowkey",
+      "SENDER: Krishna Saxena | DATETIME: 2025-01-30 09:05:00 | MESSAGE: we've had great games in much worse conditions, lol",
+      "SENDER: Soham Raut | DATETIME: 2025-01-30 09:06:00 | MESSAGE: yeah i agree this is just general feedback from the people who wanna show up but arent",
+      "SENDER: Pujan Patel | DATETIME: 2025-01-30 09:07:00 | MESSAGE: Peak gaming",
+      "SENDER: Shridhar Sinha | DATETIME: 2025-01-30 09:26:00 | MESSAGE: The golden days."
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response does not accurately reflect the pickup schedule outlined in the ground-truth answer and supporting messages. The ground-truth specifies pickups at 2:10 PM on Tuesdays and Fridays, and 3:00 PM on other days, while the model lists completely different times (5:15 PM, 4:30 PM, and 3:00 PM) without any mention of specific days like Tuesday and Friday. Thus, the model's response is incorrect regarding Aditi's pickup times and does not match the ground-truth data.",
+    "model_answer": "The pickup times for Aditi from school are at 5:15 PM, 4:30 PM, and 3:00 PM based on the information provided in the documents.",
+    "question": "What are the pickup times for Aditi from school?",
+    "ground_truth": "Aditi has school pickups at 2:10 PM on Tuesdays and Fridays, and 3:00 PM on other days.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Aditi | DATETIME: 2022-08-29 07:59:00 | MESSAGE: 2:10 pickup on tuesdays and fridays",
+      "SENDER: Aditi | DATETIME: 2022-08-22 15:05:00 | MESSAGE: 3:00",
+      "SENDER: Aditi | DATETIME: 2022-09-07 15:16:00 | MESSAGE: also tomorrow pickups at 3pm",
+      "SENDER: Aditi | DATETIME: 2022-09-06 10:04:00 | MESSAGE: school ends at 2:00 today",
+      "SENDER: Aditi | DATETIME: 2022-09-21 18:42:00 | MESSAGE: 4pm pickup today :)"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model's response did not align with the ground-truth answer regarding the visa discussion. While the model mentioned a tourist visa, a 5-day timeframe, and issues with consulate appointments, it failed to address the core elements of the ground truth, which involved a discussion about an OCI visa and a link provided for applying for an e-visa. The mentioned details did not appear in the messages supporting the ground truth and therefore indicate a misunderstanding of the visa discussion.",
+    "model_answer": "Regarding visas, the discussion in the documents indicates that the process for getting a tourist visa was mentioned, with a timeframe of 5 business days. However, it was also noted that getting a tourist visa was not an option at that time. The conversation also touched upon the need for an appointment to visit the consulate for visa-related matters, with some frustration expressed about the unclear instructions.",
+    "question": "What was discussed regarding visas?",
+    "ground_truth": "The family discussed the possibility of getting an OCI visa, and Ma provided a link to apply for an e-visa.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | DATETIME: 2023-06-09 17:15:00 | MESSAGE: Sure if they say that we need Oci visa sticker... ",
+      "SENDER: Ma | DATETIME: 2023-06-09 17:16:00 | MESSAGE: https://indianvisaonline.gov.in/evisa/tvoa.html\nThey do thai within 24 hours\nThey send visa in email "
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model's response accurately reflects the main details found in the ground truth and supporting messages. It mentions the destination points within Yellowstone and Grand Teton, including Mammoth Hot Springs, Norris Geyser, Canyon Village, Yellowstone Lake, Jenny Lake, and Teton Village. The route is accurately described starting from SJC to Bozeman, visiting both national parks, before heading to Salt Lake City. The costs for air tickets, car rental, and lodging are also correctly outlined in terms of approximations. The key details and sequence from the supporting messages align well with the model's response, with no significant omissions or incorrect information added.",
+    "model_answer": "The details of the family's trip to Yellowstone include the best route from Sjc to Bozeman, visiting Mammoth hot springs, Norris Geyser, Canyon Village, Yellowstone Lake, Grand Teton, Jenny Lake, and Teton Village. The air tickets cost around $220 per person, car rental is approximately $1000, and lodging at Canyon Village, Yellowstone Lake, and Teton Village is about $500 per night.",
+    "question": "What are the details of the family's trip to Yellowstone?",
+    "ground_truth": "The family is planning a trip to Yellowstone and Grand Teton National Parks from SJC to Bozeman, then to Yellowstone, Grand Teton, and finally to Salt Lake City before returning to SJC. The trip is planned to follow a guide and the estimated cost is around $220 per person for air tickets and $1000 for car rental. Lodging is estimated to be $500 per night.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | DATETIME: 2024-07-01 11:56:00 | MESSAGE: https://www.earthtrekkers.com/yellowstone-and-grand-teton-itinerary/  We will follow this guide-  Best route:  Sjc to Bozeman  Bozeman to Yellowstone (2+ hrs)  - Mammoth hot springs (maybe) - \u2060Norris Geyser - \u2060Canyon Village (many) - \u2060Yellowstone Lake (many)  To Grand Teton - Jenny Lake (many) - \u2060Teton Village  Jackson to Salt Lake City (4 hours)  SLC to Sjc\nAir tickets ~ 220 per person Car rental ~ 1000 Canyon Village, Yellowstone Lake Lodging, Teton Village Lodging ~ 500/night <This message was edited>"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model response accurately captures the car-related decisions discussed in the messages, including the selection of slate grey as the interior color, opting between slate grey and black for the exterior color, choosing the premium package, and deciding on a panoramic roof with variable light control. The response aligns with the ground-truth supporting messages, capturing all the relevant decisions without error.",
+    "model_answer": "The car-related decisions that have been made include selecting slate grey as the interior color, choosing the premium package with various features, opting for a panoramic roof with variable light control, and deciding on the color choice between slate grey and black for the car exterior.",
+    "question": "What car-related decisions have been made?",
+    "ground_truth": "The conversation includes discussion of a car purchase, including the selection of features like color and roof options.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | DATETIME: 2024-07-29 12:27:00 | MESSAGE: Here are the selected extras:  Base           99,400 Battery plus                5,780 Color              1,420 (Provence) Premium      6,900 package (includes adaptive cruise control, soft close doors, head up display, power seats 14 way with memory, ionizer)  All weather tires:                        0  Interior: Slate grey:             0 * is this ok?  Heated seats rear:                   360  Massage seat front:                 960  Thermally and noise insulated glass:               1,130  Panoramic roof with variable light control:          4,760  Active lane keep:               1,320",
+      "SENDER: Ma | DATETIME: 2024-07-29 12:28:00 | MESSAGE: Slate grey is similar to Prius and Highlander",
+      "SENDER: Papa | DATETIME: 2024-07-29 12:29:00 | MESSAGE: Ok then black",
+      "SENDER: Papa | DATETIME: 2024-07-29 12:34:00 | MESSAGE: Also showing roof choices above - I like variable light control\u2026 it will help keeping the car cooler in summer"
+    ]
+  },
+  {
+    "score": 3,
+    "reasoning": "The model response aligns well with the ground truth and supporting messages. Both indicate the family's plan to be in Portland for the Thanksgiving weekend. Despite not mentioning the discussion element, the model's response encompasses the primary plan and accurately reflects the planned family gathering. The wording is slightly different, but the core information matches.",
+    "model_answer": "The family's plans for Thanksgiving 2022 involve most family members being in Portland for the Thanksgiving weekend.",
+    "question": "What are the family\u2019s plans for Thanksgiving 2022?",
+    "ground_truth": "The family discussed a possible trip to Portland for Thanksgiving weekend.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Ma | DATETIME: 2022-09-07 10:21:00 | MESSAGE: Most everyone will be in Portland thanksgiving weekend",
+      "SENDER: Aditi | DATETIME: 2022-09-07 15:16:00 | MESSAGE: i am down to go \ud83d\udc4d"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is incorrect as it does not mention the trip to Seattle or Ma's completion of the booking, which are crucial parts of the ground-truth answer. Instead, it focuses on grocery shopping and dining options, which are not referenced in the supporting messages or the ground-truth answer.",
+    "model_answer": "The family's plans for Thanksgiving 2024 include getting groceries in the morning from QFC and putting together a quick taihiri meal. They may also consider dining at Seattle-area restaurants open for last-minute Thanksgiving diners.",
+    "question": "What are the family\u2019s plans for Thanksgiving 2024?",
+    "ground_truth": "The family is planning a trip to Seattle for Thanksgiving. Ma completed the booking.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Ma | DATETIME: 2024-09-24 23:01:00 | MESSAGE: Seattle booking completed for thanksgiving"
+    ]
+  },
+  {
+    "score": 1,
+    "reasoning": "The model response is incorrect because it contradicts the ground-truth information. The ground-truth clearly states that Papa and Aditi tested positive for COVID, while the model indicates there is no explicit information about who tested positive in 2022. This shows an omission of crucial information identified in the supporting messages.",
+    "model_answer": "Based on the information in the documents provided, it is not explicitly stated who tested positive for COVID in 2022.",
+    "question": "Who tested positive for COVID in 2022?",
+    "ground_truth": "Papa and Aditi both tested positive for COVID on May 29th, 2022.",
+    "ground_truth_supporting_messages": [
+      "SENDER: Papa | DATETIME: 2022-05-29 18:27:00 | MESSAGE: Aditi's COVID test came back positive, so I have it too... Though I don't feel anything... Aditi is having persistent cough. The doctor checked her lungs and they were clear. Let's see...",
+      "SENDER: Ma | DATETIME: 2022-05-29 19:46:00 | MESSAGE: Yes, her school especially"
+    ]
+  }
+]

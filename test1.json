@@ -1,0 +1,83 @@
+[
+  {
+    "question": "Who requested Andrew's approval in the chat on 2/24/24?",
+    "answer": "Soham Raut",
+    "messages": [
+      "SENDER: Soham Raut | MESSAGE: Approve my andre request | DATETIME: 2/24/24 5:33 PM "
+    ]
+  },
+  {
+    "question": "Who offered Shridhar food in the conversation?",
+    "answer": "Pujan Patel",
+    "messages": [
+      "Pujan Patel | MESSAGE: Food anyone? \ud83d\udc40 | DATETIME: 4/11/24 5:41 PM",
+      "Shridhar Sinha | MESSAGE: Food | DATETIME: 4/11/24 5:43 PM"
+    ]
+  },
+  {
+    "question": "Who did Aaryaman Chakravarthi cut ties with on 4/23/24?",
+    "answer": "An unnamed person who Aaryaman refers to as 'this bitch'.",
+    "messages": [
+      "Aaryaman Chakravarthi | \ud83d\ude05\ud83d\ude05\ud83d\ude05: I just cut ties with this bitch | 4/23/24 1:38 PM"
+    ]
+  },
+  {
+    "question": "Does the Mexican store near Sahil Singhvi's place have sugarcane juice?",
+    "answer": "No",
+    "messages": [
+      "SENDER: Krishna Saxena | MESSAGE: @12065325725 does the Mexican store near your place have sugarcane juice? | DATETIME: 4/25/24 5:01 PM",
+      "SENDER: Sahil Singhvi | MESSAGE: nah they don\u2019t | DATETIME: 4/25/24 6:57 PM"
+    ]
+  },
+  {
+    "question": "What event did Zareef Amyeen invite people to on 5/3/2024 at 5:16 PM?",
+    "answer": "His IM game at the same place they play soccer at 7 PM.",
+    "messages": [
+      "SENDER: Zareef Amyeen | MESSAGE: I love people who test limits for science oh yeah if y'all are not doing anything at 7 come support me at my IM game (we're gonna get cooked) it's at the same place we place soccer | DATETIME: 5/3/24 5:16 PM",
+      "SENDER: Soham Raut | MESSAGE: What if i say no | DATETIME: 5/3/24 5:18 PM",
+      "SENDER: Zareef Amyeen | MESSAGE: that's fine i'll still love you | DATETIME: 5/3/24 5:18 PM",
+      "SENDER: Soham Raut | MESSAGE: I meant What if i say no you're not cooked | DATETIME: 5/3/24 5:19 PM"
+    ]
+  },
+  {
+    "question": "Who is the person Arya GJ did not want to think they were friends with?",
+    "answer": "Lil Ali",
+    "messages": [
+      "SENDER: Arya GJ | MESSAGE: Bruh I didn\u2019t ask him",
+      "I made my friend ask him \ud83d\ude02\ud83d\ude02 | DATETIME: 5/7/24 11:13 PM",
+      "SENDER: Zareef Amyeen | MESSAGE: oh",
+      "LMAO",
+      "bro did not want ali to think they were friends | DATETIME: 5/7/24 11:13 PM"
+    ]
+  },
+  {
+    "question": "Who invited people to Hamza's performance on May 9, 2024?",
+    "answer": "Aaryaman Chakravarthi",
+    "messages": [
+      "SENDER: Aaryaman Chakravarthi | MESSAGE: https://www.instagram.com/p/C6cI0MQSKmw/?igsh=MTVodmhqMGw0eW9xZg== We invited to hamzas performance | DATETIME: 5/9/24 3:42 PM"
+    ]
+  },
+  {
+    "question": "Who did Pujan Patel beat in the best of 7 game?",
+    "answer": "Zareef",
+    "messages": [
+      "SENDER: Pujan Patel | MESSAGE: I literally beat Zareef best of 7 yesterday | DATETIME: 5/10/24 8:51 PM"
+    ]
+  },
+  {
+    "question": "Who were playing chess according to the conversation on May 17, 2024?",
+    "answer": "Pujan and Andrew",
+    "messages": [
+      "SENDER: Chris Hunt | MESSAGE: Who\u2019s playing | DATETIME: 5/17/24 9:56 PM ",
+      "SENDER: Shridhar Sinha | MESSAGE: Pujan and andrew | DATETIME: 5/17/24 9:57 PM "
+    ]
+  },
+  {
+    "question": "When does the event that Sahil Singhvi asked about on May 21, 2024, end fully?",
+    "answer": "730",
+    "messages": [
+      "SENDER: Sahil Singhvi | MESSAGE: when does it end | DATETIME: 5/21/24 6:36 PM",
+      "SENDER: Shridhar Sinha | MESSAGE: 730 | DATETIME: 5/21/24 6:36 PM"
+    ]
+  }
+]

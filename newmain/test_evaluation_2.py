@@ -12,11 +12,13 @@ from evaluation.eval import Evaluator
 from data_loader.loader import ChatDB, discord_loader, krishna_loader
 
 # questions = json.load(open("/Users/kastenwelsh/Documents/cse481-p/newmain/test_question_1.json"))
-questions = json.load(open("/Users/kastenwelsh/Documents/cse481-p/main/questions.json"))[0:5]
+# questions = json.load(open("/Users/kastenwelsh/Documents/cse481-p/main/questions.json"))[0:5]
+# questions = json.load(open("/Users/kastenwelsh/Documents/cse481-p/main/questions_krishna.json"))
+questions = json.load(open("/Users/kastenwelsh/Documents/cse481-p/test_questions_10am.json"))
 
 # db = ChatDB("openai_0.0.3")
-# db = krishna_loader()
-db = discord_loader()
+db = krishna_loader()
+# db = discord_loader()
 
 retriever = db.retriever
 
@@ -55,7 +57,7 @@ from langchain_openai import ChatOpenAI
 from data_loader.loader import discord_loader
 import logging
 
-db = discord_loader()
+# db = discord_loader()
 vectordb = db.vector_store
 llm = ChatOpenAI(temperature=0)
 retriever_from_llm = MultiQueryRetriever.from_llm(
@@ -99,7 +101,15 @@ for question in questions:
     print("Question: ", question.get("question"))
     print("Model Answer: ", model_answer.content)
 # print(model_responses)
+
+# save model_responses to a file
+with open('multi_model_responses_krishna.json', 'w') as f:
+    json.dump(model_responses, f)
+
+# open model_responses from a file
+with open('multi_model_responses_krishna.json', 'r') as f:
+    model_responses = json.load(f)
 evaluator = Evaluator(model_responses, questions)
 evaluator.evaluate()
-evaluator.save_evaluations("evaluations_test.json")
+evaluator.save_evaluations("big_multi.json")
 print(evaluator.average_score())

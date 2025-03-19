@@ -45,17 +45,6 @@
     ]
   },
   {
-    "question": "What restaurants have the group discussed going to?",
-    "answer": "The group discussed going to Lezzet Brunch on August 3rd, and Portage Bay on August 4th and 11th. They also discussed going to U Village on August 10th and 11th.",
-    "messages": [
-      "SENDER: Sahil Singhvi | DATETIME: 2024-08-03 12:09:00 | MESSAGE: Lezzet Brunch (253) 737-4601 https://g.co/kgs/PzKGyhZ",
-      "SENDER: Shridhar Sinha | DATETIME: 2024-08-04 11:59:00 | MESSAGE: Portage bay was pretty good last time",
-      "SENDER: Krishna Saxena | DATETIME: 2024-08-04 13:51:00 | MESSAGE: Boys, Portage Bay closes at 2",
-      "SENDER: Krishna Saxena | DATETIME: 2024-08-10 10:14:00 | MESSAGE: Anyone still down for u village at 12:30?",
-      "SENDER: Rituraj | DATETIME: 2024-08-11 11:31:00 | MESSAGE: Boys, Uvill today for lunch at 2? <This message was edited>"
-    ]
-  },
-  {
     "question": "Who has taken CS 333 with Hannah Tang?",
     "answer": "Aaryaman, Shridhar, and Soham took CS 333 with Hannah Tang. Zareef is taking it now.",
     "messages": [
@@ -118,13 +107,6 @@
     ]
   },
   {
-    "question": "Where is Sahil currently?",
-    "answer": "Sahil is in Lausanne.",
-    "messages": [
-      "SENDER: Aaryaman Chakravarthi | DATETIME: 2024-10-03 09:54:00 | MESSAGE: How is my goat doing in Lausanne"
-    ]
-  },
-  {
     "question": "What math problem did Pujan, Arya, and Zareef discuss on October 21st, 2024?",
     "answer": "Pujan, Arya, and Zareef were discussing a math problem involving handshakes on October 21st, 2024. The problem involved pairs of people and the number of possible handshakes.",
     "messages": [
@@ -149,52 +131,6 @@
     ]
   },
   {
-    "question": "What play did the group go to?",
-    "answer": "Pujan, Maanav, Shridhar, and Arya went to the play \"The Caucasian Chalk Circle\".",
-    "messages": [
-      "SENDER: Pujan Patel | DATETIME: 2024-10-28 10:26:00 | MESSAGE: who is trying to accompany me to The Caucasian Chalk Circle",
-      "SENDER: Zareef Amyeen | DATETIME: 2024-10-28 10:27:00 | MESSAGE: what’s that",
-      "SENDER: Pujan Patel | DATETIME: 2024-10-28 10:30:00 | MESSAGE: its https://drama.washington.edu/events/2024-11-02/caucasian-chalk-circle\nIts a play the Uni is throwing, I have to go cause of Drama",
-      "SENDER: Maanav Agraval | DATETIME: 2024-10-28 10:49:00 | MESSAGE: yessir when\ni’m down",
-      "SENDER: Pujan Patel | DATETIME: 2024-10-28 15:39:00 | MESSAGE: <Media omitted>\nWhatever day works best for you? Ideally this Thursday or Saturday?",
-      "SENDER: Shridhar Sinha | DATETIME: 2024-10-28 15:40:00 | MESSAGE: I'm booked for thursday",
-      "SENDER: Soham Raut | DATETIME: 2024-10-28 15:40:00 | MESSAGE: I'll pull up as well if I'm free",
-      "SENDER: Shridhar Sinha | DATETIME: 2024-10-28 15:40:00 | MESSAGE: I have to attend it for drama 101",
-      "SENDER: Soham Raut | DATETIME: 2024-10-28 15:40:00 | MESSAGE: Ah",
-      "SENDER: Pujan Patel | DATETIME: 2024-10-28 15:40:00 | MESSAGE: Saturday then? Its 10 per ticket",
-      "SENDER: Shridhar Sinha | DATETIME: 2024-10-28 15:40:00 | MESSAGE: Brudda I mean\nI'm going on Thursday",
-      "SENDER: Pujan Patel | DATETIME: 2024-10-28 15:40:00 | MESSAGE: ohh\nlmao",
-      "SENDER: Soham Raut | DATETIME: 2024-10-28 15:40:00 | MESSAGE: I thought you meant you were booked",
-      "SENDER: Shridhar Sinha | DATETIME: 2024-10-28 15:41:00 | MESSAGE: I'll book your dad",
-      "SENDER: Pujan Patel | DATETIME: 2024-10-28 15:41:00 | MESSAGE: ^ Lets go Thursday @14255353544 @12065326226 ?",
-      "SENDER: Soham Raut | DATETIME: 2024-10-28 15:41:00 | MESSAGE: What does this mean",
-      "SENDER: Shridhar Sinha | DATETIME: 2024-10-28 15:41:00 | MESSAGE: My fault <This message was edited>",
-      "SENDER: Soham Raut | DATETIME: 2024-10-28 15:41:00 | MESSAGE: I'm down",
-      "SENDER: Maanav Agraval | DATETIME: 2024-10-28 15:41:00 | MESSAGE: it’s 5\nfor students",
-      "SENDER: Soham Raut | DATETIME: 2024-10-28 15:41:00 | MESSAGE: Lovely",
-      "SENDER: Shridhar Sinha | DATETIME: 2024-10-28 15:41:00 | MESSAGE: It was 10 for me",
-      "SENDER: Soham Raut | DATETIME: 2024-10-28 15:42:00 | MESSAGE: Bro got scammed",
-      "SENDER: Pujan Patel | DATETIME: 2024-10-28 15:42:00 | MESSAGE: <Media omitted>\nwtf",
-      "SENDER: Maanav Agraval | DATETIME: 2024-10-28 15:42:00 | MESSAGE: ohh yeah it’s showing up as 8 for me\ni should be able to go",
-      "SENDER: Pujan Patel | DATETIME: 2024-10-28 15:43:00 | MESSAGE: better then 10 LOL",
-      "SENDER: Maanav Agraval | DATETIME: 2024-10-28 15:43:00 | MESSAGE: on thursday",
-      "SENDER: Pujan Patel | DATETIME: 2024-10-28 15:43:00 | MESSAGE: perfect ill book for 31st"
-    ]
-  },
-  {
-    "question": "When was Diwali in 2024?",
-    "answer": "The group wished each other a Happy Diwali on October 31st, 2024.",
-    "messages": [
-      "SENDER: Pujan Patel | DATETIME: 2024-10-31 09:22:00 | MESSAGE: Happy Diwali!",
-      "SENDER: Shridhar Sinha | DATETIME: 2024-10-31 09:23:00 | MESSAGE: Happy Diwali boys",
-      "SENDER: Maanav Agraval | DATETIME: 2024-10-31 09:25:00 | MESSAGE: Happy Diwali!",
-      "SENDER: Krishna Saxena | DATETIME: 2024-10-31 10:19:00 | MESSAGE: दिपावली की हार्दिक शुभकामनाएँ 🪔🎆",
-      "SENDER: Arya GJ | DATETIME: 2024-10-31 11:16:00 | MESSAGE: Happy Diwali folks",
-      "SENDER: Soham Raut | DATETIME: 2024-10-31 11:18:00 | MESSAGE: Happy Diwali boys!!\nDrama gang when we meeting",
-      "SENDER: Rituraj | DATETIME: 2024-10-31 17:00:00 | MESSAGE: Happy Diwali!"
-    ]
-  },
-  {
     "question": "Which activities do the group in the Intramural Activities chat frequently engage in together?",
     "answer": "The group frequently discusses playing football/soccer together. They often coordinate times and locations to meet up and play.",
     "messages": [
@@ -210,20 +146,6 @@
       "SENDER: Yash | DATETIME: 2023-03-31 20:01:00 | MESSAGE: Knees still broken … inshallah I will come next week",
       "SENDER: Yash | DATETIME: 2023-04-14 13:28:00 | MESSAGE: Knees 😲",
       "SENDER: Yash | DATETIME: 2023-04-27 10:07:00 | MESSAGE: Nahin mere ghutanon toot gaye"
-    ]
-  },
-  {
-    "question": "Where have they discussed playing basketball?",
-    "answer": "The group has discussed the possibility of playing basketball at the IMA and the outdoor courts near Denny Hall.",
-    "messages": [
-      "SENDER: Zareef Amyeen | DATETIME: 2024-02-16 14:30:00 | MESSAGE: mashallah\nOn the fields or in the IMA?\nhere",
-      "SENDER: Shridhar Sinha | DATETIME: 2024-02-24 16:42:00 | MESSAGE: Playing bball from 5 onwards at ima if anyone wants to join",
-      "SENDER: Zareef Amyeen | DATETIME: 2024-02-24 17:27:00 | MESSAGE: north?\nthe outdoor courts next to Denny?",
-      "SENDER: Arya GJ | DATETIME: 2024-02-24 17:27:00 | MESSAGE: There’s a court in Denny",
-      "SENDER: Shridhar Sinha | DATETIME: 2024-02-24 17:27:00 | MESSAGE: Yes",
-      "SENDER: Arya GJ | DATETIME: 2024-02-24 17:27:00 | MESSAGE: Yeah that one",
-      "SENDER: Zareef Amyeen | DATETIME: 2024-02-24 17:27:00 | MESSAGE: ack\nonly sweats play there and it's outdoor\nnot tryna freeze\nlet's go M",
-      "SENDER: Shridhar Sinha | DATETIME: 2024-02-24 17:27:00 | MESSAGE: Okay let's go m"
     ]
   },
   {

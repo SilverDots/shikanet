@@ -3,6 +3,8 @@ from langchain_chroma import Chroma
 from langchain.schema import Document
 import pandas as pd
 import chromadb
+import datetime
+import numpy as np
 
 
 class ChatDB:
@@ -55,6 +57,7 @@ class ChatDB:
         metadata["username"] = record[self.username_field]
         metadata["content"] = record[self.content_field]
         metadata["date"] = record[self.date_field]
+        # metadata["datetime_int"] = record["datetime_int"].item()
         for field in self.other_metafields:
             metadata[field] = record[field]
         return metadata
@@ -108,14 +111,13 @@ class ChatDB:
         return conversation_batches
     
     def add_datetime(self):
+        # TODO maybe drop or indicate if date invalid?
         self.data["datetime_formatted"] = pd.to_datetime(self.data[self.date_field], errors='coerce', utc=True)
         return self.data
-        # # Drop rows with invalid dates
-        # self.data.dropna(subset=[self.date_field], inplace=True)
-        # start_time = pd.to_datetime(start_time, errors='coerce', utc=True)
-        # end_time = pd.to_datetime(end_time, errors='coerce', utc=True)
-        
-        # return db.data[(db.data[db.date_field] >= start_time) & (db.data[db.date_field] <= end_time)]
+    
+    def get_last_date(self):
+        print(self.data["datetime_formatted"].max())
+        return self.data["datetime_formatted"].max()
 
 def discord_loader():
     df_list = []
@@ -139,7 +141,7 @@ def discord_loader():
 
 def krishna_loader():
     DATA_FILE = "data/WhatsAppCleaned/WhatsAppCombined.tsv"
-    COLLECTION_NAME = 'timescale_WA_v4'
+    COLLECTION_NAME = 'timescale_WA_v5'
 
     df = pd.read_csv(DATA_FILE, sep='\t')
     df.dropna(inplace=True)

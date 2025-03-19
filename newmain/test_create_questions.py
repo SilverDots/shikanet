@@ -17,5 +17,5 @@ vector_db = ChatDB(COLLECTION_NAME, df, 'SENDER', 'MESSAGE', 'DATETIME', other_m
 # docs = vector_db.retriever.invoke("hello")
 # print(docs)
 question_gen = QuestionGenerator(vector_db)
-question_gen.generate_questions()
-question_gen.save_questions("test.json")
+question_gen.generate_questions(num_batches=100)
+question_gen.save_questions("test_questions_10am.json")
