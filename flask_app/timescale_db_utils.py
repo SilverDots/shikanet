@@ -57,7 +57,6 @@ vector_db = TimescaleVector(
   embedding=embed_model,
 )
 
-print('COLLECTION_NAME_SUMM', COLLECTION_NAME_SUMM)
 vector_db_summ = TimescaleVector(
     collection_name=COLLECTION_NAME_SUMM,
     service_url=os.environ['TIMESCALE_SERVICE_URL'],
@@ -182,8 +181,8 @@ grade_prompt = ChatPromptTemplate.from_messages(
   ]
 )
 #   Result Summarize
-result_system = """You are an assistant for question-answering tasks. Answer the question based upon the given conversation snippets.
-Use three-to-five sentences maximum and keep the answer concise."""
+result_system = """You are an assistant for question-answering tasks. Answer the question based upon the given conversation snippets, using three-to-five sentences maximum.
+Please keep the answer concise and focused."""
 result_prompt = ChatPromptTemplate.from_messages(
     [
         ("system", result_system),
@@ -308,11 +307,11 @@ def my_get_relevant_documents(self, query: str, *, run_manager: CallbackManagerF
   return docs
 
 METADATA_FIELD_INFO = [
-  AttributeInfo(
-    name="DATETIME",
-    description="The time the message was sent. Formatted as %Y-%m-%d %H:%M:%S-0800 **A high priority filter**",
-    type="timestamp",
-  ),
+  # AttributeInfo(
+  #   name="DATETIME",
+  #   description="The time the message was sent. Formatted as %Y-%m-%d %H:%M:%S-0800 **A high priority filter**",
+  #   type="timestamp",
+  # ),
   AttributeInfo(
     name="SENDER",
     description="The *case sensitive* name or ID of the message's author. **A high priority filter**",
@@ -335,11 +334,11 @@ METADATA_FIELD_INFO = [
   ),
 ]
 METADATA_FIELD_INFO_SUMM = [
-  AttributeInfo(
-    name="DATETIME",
-    description="The time the message was sent. Formatted as %Y-%m-%d %H:%M:%S-0800 **A high priority filter**",
-    type="timestamp",
-  ),
+  # AttributeInfo(
+  #   name="DATETIME",
+  #   description="The time the message was sent. Formatted as %Y-%m-%d %H:%M:%S-0800 **A high priority filter**",
+  #   type="timestamp",
+  # ),
   AttributeInfo(
     name="ID",
     description="A UUID v1 generated from the timestamp of the message",
@@ -375,7 +374,7 @@ def no_docs_output():
   """
   return '', 'yes', []
 
-def format_retrieved_docs(question, docs, retrieve_more_context_fn, user_aliases, friend_aliases):
+def format_retrieved_docs(question, docs, retrieve_more_context_fn, user_aliases, friend_aliases, verbose=False):
   if len(docs) == 0:
     return no_docs_output()
 
@@ -397,9 +396,11 @@ def format_retrieved_docs(question, docs, retrieve_more_context_fn, user_aliases
   docs_to_use = []
 
   for (msg_id, msg_context, metadata) in fuller_context:
-    print(msg_context, '\n', '-' * 50)
+    if verbose:
+      print(msg_context, '\n', '-' * 50)
     res = retrieval_grader.invoke({"question": question, "document": msg_context})
-    print(res, '\n\n\n')
+    if verbose:
+      print(res, '\n\n\n')
     if res and res.binary_score == 'yes':
       docs_to_use.append({'MSG_ID': msg_id, 'FULL_CONTEXT': msg_context, 'METADATA': metadata})
 
@@ -453,7 +454,7 @@ def answer_user_question_ts_self_query(question, start_dt, end_dt, user_aliases,
     structured_query_translator=TimescaleVectorTranslator(),
     enable_limit=True,
     use_original_query=True,
-    verbose=True,
+    verbose=False,
     search_kwargs={"start_date": start_dt, "end_date": end_dt, 'k': 10}
   )
   sq_retriever._get_relevant_documents = MethodType(my_get_relevant_documents, sq_retriever)
@@ -478,10 +479,10 @@ def answer_user_question_sem_chunk_sq(question, start_dt, end_dt, user_aliases, 
     structured_query_translator=TimescaleVectorTranslator(),
     enable_limit=True,
     use_original_query=True,
-    verbose=True,
+    verbose=False,
     search_kwargs={"start_date": start_dt, "end_date": end_dt, 'k': 10}
   )
   retriever_summ._get_relevant_documents = MethodType(my_get_relevant_documents, retriever_summ)
 
   docs = retriever_summ.invoke(question)
-  return format_retrieved_docs(question, docs, retrieve_more_context_summ, user_aliases, friend_aliases)
+  return format_retrieved_docs(question, docs, retrieve_more_context_summ, user_aliases, friend_aliases, verbose=True)
